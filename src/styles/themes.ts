@@ -15,7 +15,7 @@ export const DefaultTheme: ThemeType = {
 	name: "default",
 	primary: "#089C54",
 	primaryText: "#FFFFFF",
-	secondary: "#FEFEFE",
+	secondary: "#FFDD3D",
 	background: "#EEEEEE",
 	background2: "#505050",
 	text: "#333333",
