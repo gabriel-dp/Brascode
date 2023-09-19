@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+const ACTIVE_BORDER_SIZE = 5;
+
 export const NavContainer = styled.nav`
 	width: 100%;
 	padding: 0 1.5rem;
@@ -22,19 +24,22 @@ export const NavContainer = styled.nav`
 		justify-content: center;
 
 		:hover {
-			color: ${(props) => props.theme.secondary};
+			text-shadow: 0px 0px 2px ${(props) => props.theme.primaryText}; // BOLD
 		}
 
 		.active {
-			text-shadow: 0px 0px 2px ${(props) => props.theme.secondary}; // BOLD
-			color: ${(props) => props.theme.secondary};
+			text-shadow: 0px 0px 2px ${(props) => props.theme.primaryText}; // BOLD
+			border-bottom: ${ACTIVE_BORDER_SIZE}px solid ${(props) => props.theme.primaryText};
 		}
 
 		a {
+			border-top: ${ACTIVE_BORDER_SIZE}px solid transparent;
+			border-bottom: ${ACTIVE_BORDER_SIZE}px solid transparent;
 			height: 100%;
-			padding: 1rem;
+			padding: 0.75rem;
 			display: flex;
 			align-items: center;
+			transition: all ease-in-out 0.2s;
 		}
 	}
 
