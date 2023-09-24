@@ -34,7 +34,7 @@ export default function Navbar() {
 				</Link>
 			</NavHome>
 			<ul className={menuActive ? "menu-on" : "menu-off"}>
-				<NavComponent title="Tabelas" path="/tabelas" />
+				<NavComponent title="Torneios" path="/torneios" />
 				<NavComponent title="Jogos" path="/jogos" />
 				<NavComponent title="Times" path="/times" />
 				<NavComponent title="Jogadores" path="/jogadores" />
