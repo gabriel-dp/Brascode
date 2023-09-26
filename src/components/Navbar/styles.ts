@@ -5,6 +5,7 @@ export const NavContainer = styled.nav`
 	padding: 0 2rem;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.primaryText};
+	filter: drop-shadow(0 0 0.5rem #00000077);
 
 	display: flex;
 	justify-content: center;
