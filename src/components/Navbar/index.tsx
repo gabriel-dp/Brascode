@@ -1,7 +1,7 @@
 import { useState } from "react";
-
 import { Link, NavLink } from "react-router-dom";
 import { MdMenu, MdOutlineClose } from "react-icons/md";
+
 import { NavContainer, NavHome, MenuIconContainer, NavWrapper } from "./styles";
 
 export default function Navbar() {

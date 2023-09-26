@@ -16,11 +16,11 @@ export const DefaultTheme: ThemeType = {
 	primary: "#006D4E",
 	primaryText: "#FFFFFF",
 	secondary: "#0978DD",
-	background: "#EAEEEf",
-	background2: "#CCCCCC",
+	background: "#F5F5F5",
+	background2: "#E0E0E0",
 	text: "#444444",
 	white: "#FFFFFF",
-	gray: "#727376",
+	gray: "#AAAAAA",
 	black: "#373435",
 };
 
