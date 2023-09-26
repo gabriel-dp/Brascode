@@ -1,0 +1,29 @@
+{
+	"players": [
+		{
+			"id": "1",
+			"name": "Gabriel de Paula Meira",
+			"nickname": "de Paula",
+			"birthdate": "2004-06-19T07:40:00.000Z",
+			"country": "BR",
+			"weight": 67.5,
+			"height": 185,
+			"position": "GK",
+			"foot": "R",
+			"team": "Atlethic"
+		},
+		{
+			"id": "2",
+			"name": "Pedro Antônio Machado Silva",
+			"nickname": "Machado",
+			"birthdate": "2002-01-01T01:15:00.000Z",
+			"country": "BR",
+			"weight": 65,
+			"height": 175,
+			"position": "FW",
+			"foot": "L",
+			"team": "Expedicionários"
+		}
+	]
+}
+

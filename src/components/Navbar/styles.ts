@@ -2,14 +2,15 @@ import styled from "styled-components";
 
 export const NavContainer = styled.nav`
 	width: 100%;
-	height: 3rem;
 	padding: 0 2rem;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.primaryText};
 
 	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	justify-content: center;
+
+	position: fixed;
+	top: 0;
 
 	ul {
 		height: 100%;
@@ -94,6 +95,14 @@ export const NavContainer = styled.nav`
 			height: auto;
 		}
 	}
+`;
+
+export const NavWrapper = styled.div`
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 `;
 
 export const NavHome = styled.div`
