@@ -15,10 +15,10 @@ export function TableHeader(props: { header: string[] }) {
 export function TableBody(props: { body: string[][] }) {
 	return (
 		<tbody>
-			{props.body.map((row) => (
-				<tr key={row[0]}>
-					{row.map((column) => (
-						<td key={column[0]}>{column}</td>
+			{props.body.map((row, i) => (
+				<tr key={row[i]}>
+					{row.map((column, j) => (
+						<td key={column[j]}>{column}</td>
 					))}
 				</tr>
 			))}
