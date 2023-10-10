@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Entity } from "@/utils/types";
 import { stringIncludes, stringMatches } from "@/utils/strings";
 
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdCheck } from "react-icons/md";
 import { DropdownContainer, DropdownHeader, DropdownContent, DropdownItem } from "./styles";
 import Searchbar from "../Searchbar";
 
@@ -24,9 +24,8 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 	// Triggers when click the clear input option
 	const handleClearClick = () => {
 		props.setSelected(null);
+		if (search == "") setIsOpen(false);
 		setSearch("");
-		setMatchSearch([]);
-		setIsOpen(false);
 	};
 
 	// Triggers when click on a item
@@ -38,20 +37,27 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 
 	// Controls which items will appear as options
 	useEffect(() => {
-		if (search != "" && (props.selected == null || !stringMatches(search, props.selected.text))) setIsOpen(true);
+		if (search != "" && (props.selected == null || !stringMatches(search, props.selected.text))) {
+			setIsOpen(true);
+		}
+		if (props.selected != null && !stringMatches(search, props.selected.text)) {
+			props.setSelected(null);
+		}
 		setMatchSearch(props.items.filter((item) => stringIncludes(item.text, search)).slice(0, 10));
-	}, [search, props.items, props.selected]);
+	}, [search, props]);
 
 	return (
 		<DropdownContainer>
 			<DropdownHeader onClick={toggleOpen}>
 				<Searchbar placeholder="Nome do Time" value={search} setValue={setSearch} />
-				<div className="icon">{isOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}</div>
+				<div className="icon">
+					{props.selected ? <MdCheck /> : isOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+				</div>
 			</DropdownHeader>
 			{isOpen && (
 				<DropdownContent>
 					<DropdownItem className="clear" onClick={handleClearClick}>
-						<p>-- Limpar seleção --</p>
+						<p>-- Cancelar --</p>
 					</DropdownItem>
 					{matchSearch.map((item) => (
 						<DropdownItem key={item.id} onClick={() => handleItemClick(item)}>

@@ -45,7 +45,7 @@ export const DropdownContent = styled.div`
 	overflow-y: scroll;
 	width: 100%;
 	border-radius: 0.5rem;
-	box-shadow: 0 0 1rem #00000077;
+	box-shadow: 0 0 1rem #00000033;
 
 	position: absolute;
 	top: 110%;
