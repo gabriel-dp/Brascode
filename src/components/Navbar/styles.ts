@@ -69,7 +69,7 @@ export const NavContainer = styled.nav`
 			background-color: ${(props) => props.theme.primary};
 
 			position: fixed;
-			right: 0;
+			left: 100%;
 			top: 3rem;
 			height: 100vh;
 			padding: 1rem 2rem 1rem 3rem;
@@ -89,7 +89,7 @@ export const NavContainer = styled.nav`
 		}
 
 		.menu-off {
-			right: -50%;
+			left: 100%;
 		}
 
 		li {

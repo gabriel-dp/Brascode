@@ -18,5 +18,9 @@ export const SearchInput = styled.input`
 	padding: 0 1rem;
 	background-color: transparent;
 	border: none;
+
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 `;
 
