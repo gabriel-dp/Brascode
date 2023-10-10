@@ -13,11 +13,19 @@ export const FilterContainer = styled.div`
 
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	gap: 1rem;
 `;
 
 export const NameSearchContainer = styled.div`
+	width: min(20rem, 100%);
 	height: 2.5rem;
-	flex-grow: 2;
+	flex-grow: 1;
+`;
+
+export const TeamSearchContainer = styled.div`
+	width: min(15rem, 100%);
+	height: 2.5rem;
+	flex-grow: 1;
 `;
 
