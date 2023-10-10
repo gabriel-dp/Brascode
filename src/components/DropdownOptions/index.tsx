@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Entity } from "@/utils/types";
 import { stringIncludes, stringMatches } from "@/utils/strings";
@@ -15,6 +15,8 @@ interface DropdownOptionsI {
 }
 
 export default function DropdownOptions(props: DropdownOptionsI) {
+	const dropdownRef = useRef<HTMLDivElement>(null);
+
 	const [search, setSearch] = useState("");
 	const [matchSearch, setMatchSearch] = useState<Entity[]>([]);
 
@@ -40,14 +42,31 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 		if (search != "" && (props.selected == null || !stringMatches(search, props.selected.text))) {
 			setIsOpen(true);
 		}
+
 		if (props.selected != null && !stringMatches(search, props.selected.text)) {
 			props.setSelected(null);
 		}
+
 		setMatchSearch(props.items.filter((item) => stringIncludes(item.text, search)).slice(0, 10));
 	}, [search, props]);
 
+	// Controls outside clicks
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+				setIsOpen(false);
+			}
+		};
+
+		document.addEventListener("mousedown", handleClickOutside);
+
+		return () => {
+			document.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
+
 	return (
-		<DropdownContainer>
+		<DropdownContainer ref={dropdownRef}>
 			<DropdownHeader onClick={toggleOpen}>
 				<Searchbar placeholder="Nome do Time" value={search} setValue={setSearch} />
 				<div className="icon">
