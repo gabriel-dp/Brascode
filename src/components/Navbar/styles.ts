@@ -12,13 +12,13 @@ export const NavContainer = styled.nav`
 
 	position: fixed;
 	top: 0;
+	z-index: 1;
 
 	ul {
 		height: 100%;
 		list-style: none;
 		display: flex;
 		gap: 1rem;
-		transition: right ease-in-out 0.5s;
 	}
 
 	li {
@@ -67,6 +67,7 @@ export const NavContainer = styled.nav`
 			align-items: flex-end;
 			justify-content: flex-start;
 			background-color: ${(props) => props.theme.primary};
+			transition: transform ease-in-out 0.5s;
 
 			position: fixed;
 			left: 100%;
@@ -88,8 +89,8 @@ export const NavContainer = styled.nav`
 			}
 		}
 
-		.menu-off {
-			left: 100%;
+		.menu-on {
+			transform: translateX(-100%);
 		}
 
 		li {
