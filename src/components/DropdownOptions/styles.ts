@@ -71,7 +71,7 @@ export const DropdownItem = styled.div`
 	}
 
 	&:hover {
-		background-color: ${(props) => props.theme.gray};
+		background-color: ${(props) => props.theme.lightgray};
 	}
 `;
 

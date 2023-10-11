@@ -11,7 +11,7 @@ export const TableContainer = styled.table`
 	color: ${(props) => props.theme.text};
 
 	thead {
-		background-color: ${(props) => props.theme.background2};
+		background-color: ${(props) => props.theme.lightgray};
 
 		th {
 			padding: 0.75rem 1rem;
@@ -21,7 +21,7 @@ export const TableContainer = styled.table`
 	}
 
 	tbody {
-		background-color: ${(props) => props.theme.background};
+		background-color: ${(props) => props.theme.white};
 
 		td {
 			padding: 0.625rem 1rem;
