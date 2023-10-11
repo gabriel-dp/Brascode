@@ -1,12 +1,12 @@
 import { SearchContainer, SearchInput } from "./styles";
 
-interface SearchBarProps {
+interface SearchBarPropsI {
 	placeholder: string;
 	value: string;
 	setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Searchbar(props: SearchBarProps) {
+export default function Searchbar(props: SearchBarPropsI) {
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		props.setValue(event.target.value);
 	};

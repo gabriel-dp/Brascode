@@ -7,6 +7,7 @@ import data from "@/data/players.json";
 
 import { PlayersContainer, FilterContainer, NameSearchContainer, TeamSearchContainer } from "./styles";
 import DropdownOptions from "@/components/DropdownOptions";
+import useSearchTimeout from "@/hooks/useSearchTimeout";
 
 interface PlayerI {
 	name: string;
@@ -15,12 +16,12 @@ interface PlayerI {
 }
 
 export default function Players() {
-	const [playerName, setPlayerName] = useState("");
+	const [playerName, setPlayerName, playerNameTimed] = useSearchTimeout(1000);
 	const [team, setTeam] = useState<Entity | null>(null);
 
 	useEffect(() => {
-		console.log(playerName);
-	}, [playerName]);
+		console.log(playerNameTimed, team);
+	}, [playerNameTimed, team]);
 
 	const PlayerTableHeader = {
 		name: "Nome",
