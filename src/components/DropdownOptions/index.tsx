@@ -12,13 +12,14 @@ interface DropdownOptionsI {
 	items: Entity[];
 	selected: Entity | null;
 	setSelected: React.Dispatch<React.SetStateAction<Entity | null>>;
+	textInput?: boolean;
 }
 
 export default function DropdownOptions(props: DropdownOptionsI) {
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
 	const [search, setSearch] = useState("");
-	const [matchSearch, setMatchSearch] = useState<Entity[]>([]);
+	const [matchSearch, setMatchSearch] = useState<Entity[]>(props.textInput ? [] : props.items);
 
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleOpen = () => setIsOpen(!isOpen);
@@ -26,28 +27,34 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 	// Triggers when click the clear input option
 	const handleClearClick = () => {
 		props.setSelected(null);
-		if (search == "") setIsOpen(false);
-		setSearch("");
+		if (props.textInput) {
+			if (search == "") setIsOpen(false);
+			setSearch("");
+		}
 	};
 
 	// Triggers when click on a item
 	const handleItemClick = (item: Entity) => {
 		props.setSelected(item);
-		setSearch(item.text);
+		if (props.textInput) setSearch(item.text);
 		setIsOpen(false);
 	};
 
 	// Controls which items will appear as options
 	useEffect(() => {
-		if (search != "" && (props.selected == null || !stringMatches(search, props.selected.text))) {
-			setIsOpen(true);
-		}
+		if (props.textInput) {
+			// Opens menu when user is typing
+			if (search != "" && (props.selected == null || !stringMatches(search, props.selected.text))) {
+				setIsOpen(true);
+			}
 
-		if (props.selected != null && !stringMatches(search, props.selected.text)) {
-			props.setSelected(null);
-		}
+			// Clear selection if user edit when element was selected
+			if (props.selected != null && !stringMatches(search, props.selected.text)) {
+				props.setSelected(null);
+			}
 
-		setMatchSearch(props.items.filter((item) => stringIncludes(item.text, search)).slice(0, 10));
+			setMatchSearch(props.items.filter((item) => stringIncludes(item.text, search)).slice(0, 10));
+		}
 	}, [search, props]);
 
 	// Controls outside clicks
@@ -65,10 +72,16 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 		};
 	}, []);
 
+	const PLACEHOLDER = "Nome do Time";
+
 	return (
 		<DropdownContainer ref={dropdownRef}>
 			<DropdownHeader onClick={toggleOpen}>
-				<Searchbar placeholder="Nome do Time" value={search} setValue={setSearch} />
+				{props.textInput ? (
+					<Searchbar placeholder={PLACEHOLDER} value={search} setValue={setSearch} />
+				) : (
+					<p>{props.selected ? props.selected.text : PLACEHOLDER}</p>
+				)}
 				<div className="icon">
 					{props.selected ? <MdCheck /> : isOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
 				</div>

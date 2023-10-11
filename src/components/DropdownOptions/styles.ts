@@ -14,8 +14,17 @@ export const DropdownHeader = styled.div`
 	height: 100%;
 	border-radius: 100rem;
 	background-color: ${(props) => props.theme.white};
+	border: 1px solid ${(props) => props.theme.gray};
 	color: ${(props) => props.theme.text};
 	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+
+	p {
+		margin-left: 1rem;
+		font-size: 0.85rem;
+	}
 
 	.icon {
 		font-size: 1.25rem;
@@ -23,6 +32,10 @@ export const DropdownHeader = styled.div`
 		right: 1rem;
 		top: 50%;
 		transform: translateY(-40%);
+	}
+
+	* {
+		border: none;
 	}
 `;
 

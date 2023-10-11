@@ -50,7 +50,7 @@ export default function Players() {
 					<Searchbar placeholder="Nome do jogador" value={playerName} setValue={setPlayerName} />
 				</Filter>
 				<Filter className="team">
-					<DropdownOptions title="Selecione o Time" selected={team} setSelected={setTeam} items={teams} />
+					<DropdownOptions textInput title="Selecione o Time" selected={team} setSelected={setTeam} items={teams} />
 				</Filter>
 			</FilterContainer>
 			<DataTable header={Object.values(PlayerTableHeader)} body={PlayerTableBody} />
