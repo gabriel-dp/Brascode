@@ -17,15 +17,16 @@ export const FilterContainer = styled.div`
 	gap: 1rem;
 `;
 
-export const NameSearchContainer = styled.div`
-	width: min(20rem, 100%);
+export const Filter = styled.div`
 	height: 2.5rem;
 	flex-grow: 1;
-`;
 
-export const TeamSearchContainer = styled.div`
-	width: min(15rem, 100%);
-	height: 2.5rem;
-	flex-grow: 1;
+	&.player {
+		width: min(100%, 15rem);
+	}
+
+	&.team {
+		width: min(100%, 15rem);
+	}
 `;
 

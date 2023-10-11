@@ -5,7 +5,7 @@ import DataTable from "@/components/DataTable";
 import Searchbar from "@/components/Searchbar";
 import data from "@/data/players.json";
 
-import { PlayersContainer, FilterContainer, NameSearchContainer, TeamSearchContainer } from "./styles";
+import { PlayersContainer, FilterContainer, Filter } from "./styles";
 import DropdownOptions from "@/components/DropdownOptions";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
 
@@ -46,12 +46,12 @@ export default function Players() {
 		<PlayersContainer>
 			<h1>Jogadores</h1>
 			<FilterContainer>
-				<NameSearchContainer>
+				<Filter className="player">
 					<Searchbar placeholder="Nome do jogador" value={playerName} setValue={setPlayerName} />
-				</NameSearchContainer>
-				<TeamSearchContainer>
+				</Filter>
+				<Filter className="team">
 					<DropdownOptions title="Selecione o Time" selected={team} setSelected={setTeam} items={teams} />
-				</TeamSearchContainer>
+				</Filter>
 			</FilterContainer>
 			<DataTable header={Object.values(PlayerTableHeader)} body={PlayerTableBody} />
 		</PlayersContainer>

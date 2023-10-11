@@ -12,20 +12,10 @@ export const DropdownContainer = styled.div`
 export const DropdownHeader = styled.div`
 	width: 100%;
 	height: 100%;
-	padding-right: 1.5rem;
-	border-radius: 0.5rem;
+	border-radius: 100rem;
 	background-color: ${(props) => props.theme.white};
-	border: 1px solid ${(props) => props.theme.gray};
 	color: ${(props) => props.theme.text};
 	cursor: pointer;
-
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-
-	.title {
-		font-size: 0.85rem;
-	}
 
 	.icon {
 		font-size: 1.25rem;
@@ -33,10 +23,6 @@ export const DropdownHeader = styled.div`
 		right: 1rem;
 		top: 50%;
 		transform: translateY(-40%);
-	}
-
-	* {
-		border: none;
 	}
 `;
 
