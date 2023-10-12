@@ -30,7 +30,7 @@ export const MainContainer = styled.div.attrs({
 })`
 	width: 100%;
 	padding: 1.5rem;
-	height: 100dvh;
+	min-height: calc(100dvh - NAVBAR_HEIGHT);
 	color: ${(props) => props.theme.text};
 
 	display: flex;
