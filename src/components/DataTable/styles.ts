@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
-export const TableContainer = styled.table`
+export const TableContainer = styled.div`
 	width: 100%;
 	border: 1px solid ${(props) => props.theme.gray};
-	border-spacing: 0;
 	border-radius: 0.5rem;
-	overflow: hidden;
+	overflow-x: scroll;
+`;
 
+export const Table = styled.table`
+	width: max(100%, 25rem);
+	border-spacing: 0;
 	font-size: 0.85rem;
 	color: ${(props) => props.theme.text};
 
 	thead {
+		width: 100%;
 		background-color: ${(props) => props.theme.lightgray};
 
 		th {
@@ -21,6 +25,7 @@ export const TableContainer = styled.table`
 	}
 
 	tbody {
+		width: 100%;
 		background-color: ${(props) => props.theme.white};
 
 		td {
@@ -28,7 +33,13 @@ export const TableContainer = styled.table`
 			border-top: 1px solid ${(props) => props.theme.gray};
 		}
 	}
-`;
 
-export const TableRow = styled.tr``;
+	* {
+		transition: all 0.25s ease-in-out;
+	}
+
+	@media (max-width: 480px) {
+		font-size: 0.75rem;
+	}
+`;
 

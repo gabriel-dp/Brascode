@@ -1,4 +1,4 @@
-import { TableContainer } from "./styles";
+import { TableContainer, Table } from "./styles";
 
 export function TableHeader(props: { header: string[] }) {
 	return (
@@ -34,8 +34,10 @@ interface TableProps {
 export default function DataTable(props: TableProps) {
 	return (
 		<TableContainer>
-			<TableHeader header={props.header} />
-			<TableBody body={props.body} />
+			<Table>
+				<TableHeader header={props.header} />
+				<TableBody body={props.body} />
+			</Table>
 		</TableContainer>
 	);
 }
