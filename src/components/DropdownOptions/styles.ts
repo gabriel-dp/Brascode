@@ -9,7 +9,7 @@ export const DropdownContainer = styled.div`
 	flex-wrap: wrap;
 `;
 
-export const DropdownHeader = styled.div`
+export const DropdownHeader = styled.div<{ loading: string }>`
 	width: 100%;
 	height: 100%;
 	border-radius: 100rem;
@@ -17,6 +17,15 @@ export const DropdownHeader = styled.div`
 	border: 1px solid ${(props) => props.theme.gray};
 	color: ${(props) => props.theme.text};
 	cursor: pointer;
+
+	${(props) =>
+		props.loading == "true" &&
+		`
+		background-color: ${props.theme.lightgray}; 
+		* {
+			cursor: wait;
+		}
+	`};
 
 	display: flex;
 	align-items: center;
@@ -34,8 +43,9 @@ export const DropdownHeader = styled.div`
 		transform: translateY(-40%);
 	}
 
-	* {
+	.search-container {
 		border: none;
+		background-color: transparent;
 	}
 `;
 

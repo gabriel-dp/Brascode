@@ -12,6 +12,7 @@ interface DropdownOptionsI {
 	items: Entity[];
 	selected: Entity | null;
 	setSelected: React.Dispatch<React.SetStateAction<Entity | null>>;
+	loading: boolean;
 	textInput?: boolean;
 }
 
@@ -76,7 +77,7 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 
 	return (
 		<DropdownContainer ref={dropdownRef}>
-			<DropdownHeader onClick={toggleOpen}>
+			<DropdownHeader onClick={toggleOpen} loading={props.loading.toString()}>
 				{props.textInput ? (
 					<Searchbar placeholder={PLACEHOLDER} value={search} setValue={setSearch} />
 				) : (

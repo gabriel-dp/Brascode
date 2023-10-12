@@ -12,7 +12,7 @@ export default function Searchbar(props: SearchBarPropsI) {
 	};
 
 	return (
-		<SearchContainer>
+		<SearchContainer className="search-container">
 			<SearchInput value={props.value} onChange={(event) => handleInputChange(event)} placeholder={props.placeholder} />
 		</SearchContainer>
 	);
