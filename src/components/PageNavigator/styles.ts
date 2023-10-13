@@ -32,6 +32,7 @@ export const NavigatorContainer = styled.div`
 			font-weight: bold;
 
 			&.disabled {
+				cursor: auto;
 				color: transparent !important;
 			}
 		}
