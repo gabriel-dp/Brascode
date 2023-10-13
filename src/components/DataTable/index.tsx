@@ -26,7 +26,11 @@ function TableHeader(props: TableHeaderI) {
 	);
 }
 
-function TableBody(props: { body: TableEntity[] }) {
+interface TableBodyI {
+	body: TableEntity[];
+}
+
+function TableBody(props: TableBodyI) {
 	const navigate = useNavigate();
 	const handleRowClick = (id: string | number) => {
 		navigate(id.toString());
@@ -52,14 +56,13 @@ interface TableProps {
 }
 
 export default function DataTable(props: TableProps) {
-	const [sortIndex, setSortIndex] = useState(props.sortIndex ?? 0);
 	const [body, setBody] = useState(props.body);
 	const [intervalBody, setIntervalBody] = useState<typeof body>([]);
-
-	const MAX_PAGE_LENGTH = 20;
-	const [page, PageComponent] = PageNavigator({ length: body.length, max_per_page: MAX_PAGE_LENGTH, interval: 1 });
+	const [sortIndex, setSortIndex] = useState(props.sortIndex ?? 0);
 
 	// Controls the interval that will be displayed in the actual page
+	const MAX_PAGE_LENGTH = 20;
+	const [page, PageComponent] = PageNavigator({ length: body.length, max_per_page: MAX_PAGE_LENGTH, interval: 1 });
 	useEffect(() => {
 		setIntervalBody(body.slice(MAX_PAGE_LENGTH * (page - 1), Math.min(body.length, MAX_PAGE_LENGTH * page)));
 	}, [page, body]);

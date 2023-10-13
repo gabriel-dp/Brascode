@@ -27,6 +27,7 @@ export default function useSearchTimeout(
 		handleChangeSearchRef.current = handleChangeSearch;
 	}, [handleChangeSearch]);
 
+	// Triggers every time the search changes
 	useEffect(() => {
 		handleChangeSearchRef.current();
 	}, [search]);

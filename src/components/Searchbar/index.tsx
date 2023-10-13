@@ -7,6 +7,7 @@ interface SearchBarPropsI {
 }
 
 export default function Searchbar(props: SearchBarPropsI) {
+	// Controls text change on input
 	const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		props.setValue(event.target.value);
 	};

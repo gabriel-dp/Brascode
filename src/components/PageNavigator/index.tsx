@@ -27,6 +27,7 @@ export default function PageNavigator(props: PageNavigatorI): [number, () => JSX
 		setPage(index);
 	};
 
+	// Generates a array with the page indexes based on the actual page and configs passed by props
 	const generatePageInterval = () => {
 		let initial = Math.max(1, page - props.interval);
 		let final = Math.min(getMaxPage(), page + props.interval);

@@ -1,0 +1,11 @@
+{
+	"teams": [
+		{ "id": "Vasco da Gama", "text": "Vasco da Gama" },
+		{ "id": "Botafogo", "text": "Botafogo" },
+		{ "id": "Flamengo", "text": "Flamengo" },
+		{ "id": "Atlético Mineiro", "text": "Atlético Mineiro" },
+		{ "id": "Cruzeiro", "text": "Cruzeiro" },
+		{ "id": "Palmeiras", "text": "Palmeiras" }
+	]
+}
+

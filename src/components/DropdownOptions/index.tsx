@@ -8,7 +8,7 @@ import Searchbar from "@/components/Searchbar";
 import { DropdownContainer, DropdownHeader, DropdownContent, DropdownItem } from "./styles";
 
 interface DropdownOptionsI {
-	title: string;
+	placeholder: string;
 	items: MenuEntity[];
 	selected: MenuEntity | null;
 	setSelected: React.Dispatch<React.SetStateAction<MenuEntity | null>>;
@@ -73,15 +73,13 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 		};
 	}, []);
 
-	const PLACEHOLDER = "Nome do Time";
-
 	return (
 		<DropdownContainer ref={dropdownRef}>
 			<DropdownHeader onClick={toggleOpen} loading={props.loading.toString()}>
 				{props.textInput ? (
-					<Searchbar placeholder={PLACEHOLDER} value={search} setValue={setSearch} />
+					<Searchbar placeholder={props.placeholder} value={search} setValue={setSearch} />
 				) : (
-					<p>{props.selected ? props.selected.text : PLACEHOLDER}</p>
+					<p>{props.selected ? props.selected.text : props.placeholder}</p>
 				)}
 				<div className="icon">
 					{props.selected ? <MdCheck /> : isOpen ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}

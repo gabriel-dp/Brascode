@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 
 import Navbar from "@/components/Navbar";
 
-import { MainContainer, Screen } from "./style";
+import { MainContainer, Screen } from "./styles";
 
 interface ParentProps {
 	children: ReactNode;

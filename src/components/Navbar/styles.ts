@@ -89,7 +89,7 @@ export const NavContainer = styled.nav`
 			}
 		}
 
-		.menu-on {
+		.on {
 			transform: translateX(-100%);
 		}
 

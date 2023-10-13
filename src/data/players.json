@@ -1,4 +1,5 @@
 {
+	"header": ["Nome", "Posição", "Time"],
 	"players": [
 		{
 			"id": "1",
