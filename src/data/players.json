@@ -2,27 +2,167 @@
 	"players": [
 		{
 			"id": "1",
-			"name": "Gabriel de Paula Meira",
-			"nickname": "de Paula",
-			"birthdate": "2004-06-19T07:40:00.000Z",
-			"country": "BR",
-			"weight": 67.5,
-			"height": 185,
-			"position": "GK",
-			"foot": "R",
-			"team": "Atlethic"
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "3",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "4",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "5",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "6",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "7",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "8",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "9",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "10",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "11",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "12",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "13",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "14",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "15",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "16",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "17",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "18",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "19",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "60",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "61",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "62",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "63",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "64",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "65",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "66",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "67",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "68",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "69",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "20",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "21",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "22",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "23",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "24",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "25",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "26",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "27",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "28",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "29",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
+		},
+		{
+			"id": "30",
+			"data": ["Gabriel de Paula Meira", "GK", "Athletic"]
 		},
 		{
 			"id": "2",
-			"name": "Pedro Antônio Machado Silva",
-			"nickname": "Machado",
-			"birthdate": "2002-01-01T01:15:00.000Z",
-			"country": "BR",
-			"weight": 65,
-			"height": 175,
-			"position": "FW",
-			"foot": "L",
-			"team": "Expedicionários"
+			"data": ["Pedro Antônio Machado Silva", "FW", "Expedicionários"]
+		},
+		{
+			"id": "82",
+			"data": ["Pedro Antônio Machado Silva", "FW", "Expedicionários"]
 		}
 	]
 }

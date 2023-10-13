@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+export const DataTableContainer = styled.div`
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+`;
+
 export const TableContainer = styled.div`
 	width: 100%;
 	border: 1px solid ${(props) => props.theme.gray};
@@ -18,9 +25,22 @@ export const Table = styled.table`
 		background-color: ${(props) => props.theme.lightgray};
 
 		th {
-			padding: 0.75rem 1rem;
 			font-weight: normal;
 			text-align: left;
+
+			&.selected {
+				* {
+					text-decoration: underline;
+				}
+			}
+
+			button {
+				padding: 0.75rem 1rem;
+				border: none;
+				background-color: transparent;
+				height: 100%;
+				cursor: pointer;
+			}
 		}
 	}
 
@@ -28,14 +48,18 @@ export const Table = styled.table`
 		width: 100%;
 		background-color: ${(props) => props.theme.white};
 
+		tr {
+			cursor: pointer;
+			&:hover {
+				background-color: ${(props) => props.theme.primaryHighlight};
+				color: ${(props) => props.theme.primaryText};
+			}
+		}
+
 		td {
 			padding: 0.625rem 1rem;
 			border-top: 1px solid ${(props) => props.theme.gray};
 		}
-	}
-
-	* {
-		transition: all 0.25s ease-in-out;
 	}
 
 	@media (max-width: 480px) {

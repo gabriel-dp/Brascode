@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
-
-import { Entity } from "@/utils/types";
-import { stringIncludes, stringMatches } from "@/utils/strings";
-
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdCheck } from "react-icons/md";
+
+import { MenuEntity } from "@/utils/types";
+import { stringIncludes, stringMatches } from "@/utils/strings";
+import Searchbar from "@/components/Searchbar";
+
 import { DropdownContainer, DropdownHeader, DropdownContent, DropdownItem } from "./styles";
-import Searchbar from "../Searchbar";
 
 interface DropdownOptionsI {
 	title: string;
-	items: Entity[];
-	selected: Entity | null;
-	setSelected: React.Dispatch<React.SetStateAction<Entity | null>>;
+	items: MenuEntity[];
+	selected: MenuEntity | null;
+	setSelected: React.Dispatch<React.SetStateAction<MenuEntity | null>>;
 	loading: boolean;
 	textInput?: boolean;
 }
@@ -20,7 +20,7 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
 	const [search, setSearch] = useState("");
-	const [matchSearch, setMatchSearch] = useState<Entity[]>(props.textInput ? [] : props.items);
+	const [matchSearch, setMatchSearch] = useState<MenuEntity[]>(props.textInput ? [] : props.items);
 
 	const [isOpen, setIsOpen] = useState(false);
 	const toggleOpen = () => setIsOpen(!isOpen);
@@ -35,7 +35,7 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 	};
 
 	// Triggers when click on a item
-	const handleItemClick = (item: Entity) => {
+	const handleItemClick = (item: MenuEntity) => {
 		props.setSelected(item);
 		if (props.textInput) setSearch(item.text);
 		setIsOpen(false);

@@ -1,23 +1,17 @@
 import { useState, useEffect } from "react";
 
-import { Entity } from "@/utils/types";
+import { MenuEntity } from "@/utils/types";
+import useSearchTimeout from "@/hooks/useSearchTimeout";
 import DataTable from "@/components/DataTable";
+import DropdownOptions from "@/components/DropdownOptions";
 import Searchbar from "@/components/Searchbar";
 import data from "@/data/players.json";
 
 import { PlayersContainer, FilterContainer, Filter } from "./styles";
-import DropdownOptions from "@/components/DropdownOptions";
-import useSearchTimeout from "@/hooks/useSearchTimeout";
-
-interface PlayerI {
-	name: string;
-	position: string;
-	team: string;
-}
 
 export default function Players() {
 	const [playerName, setPlayerName, playerNameTimed] = useSearchTimeout(1000);
-	const [team, setTeam] = useState<Entity | null>(null);
+	const [team, setTeam] = useState<MenuEntity | null>(null);
 
 	useEffect(() => {
 		console.log(playerNameTimed, team);
@@ -29,11 +23,7 @@ export default function Players() {
 		team: "Time",
 	};
 
-	const PlayerTableBody: string[][] = data.players.map((player) => {
-		return Object.keys(PlayerTableHeader).map((property) => player[property as keyof PlayerI]);
-	});
-
-	const teams: Entity[] = [
+	const teams: MenuEntity[] = [
 		{ id: "Vasco da Gama", text: "Vasco da Gama" },
 		{ id: "Botafogo", text: "Botafogo" },
 		{ id: "Flamengo", text: "Flamengo" },
@@ -60,7 +50,7 @@ export default function Players() {
 					/>
 				</Filter>
 			</FilterContainer>
-			<DataTable header={Object.values(PlayerTableHeader)} body={PlayerTableBody} />
+			<DataTable header={Object.values(PlayerTableHeader)} body={data.players} />
 		</PlayersContainer>
 	);
 }
