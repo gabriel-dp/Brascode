@@ -20,10 +20,6 @@ export const Table = styled.table`
 	font-size: 0.85rem;
 	color: ${(props) => props.theme.text};
 
-	* {
-		transition: all 0.25s ease;
-	}
-
 	thead {
 		width: 100%;
 		background-color: ${(props) => props.theme.lightgray};
@@ -54,9 +50,9 @@ export const Table = styled.table`
 
 		tr {
 			cursor: pointer;
+			transition: background 0.25s ease;
 			&:hover {
-				background-color: ${(props) => props.theme.primaryHighlight};
-				color: ${(props) => props.theme.primaryText};
+				background-color: ${(props) => props.theme.primaryHighlight}55;
 			}
 		}
 
