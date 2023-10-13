@@ -15,6 +15,7 @@ export const FilterContainer = styled.div`
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 1rem;
+	row-gap: 0.5rem;
 `;
 
 export const Filter = styled.div`
