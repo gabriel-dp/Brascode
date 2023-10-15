@@ -25,21 +25,22 @@ export const Table = styled.table`
 		background-color: ${(props) => props.theme.lightgray};
 
 		th {
-			font-weight: normal;
 			text-align: left;
 
-			&.selected {
-				* {
-					text-decoration: underline;
-				}
-			}
-
 			button {
+				font-weight: bold;
+				color: ${(props) => props.theme.text};
 				padding: 0.75rem 1rem;
 				border: none;
 				background-color: transparent;
 				height: 100%;
 				cursor: pointer;
+			}
+
+			&.selected {
+				button {
+					text-decoration: underline;
+				}
 			}
 		}
 	}
