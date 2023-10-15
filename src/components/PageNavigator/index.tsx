@@ -28,7 +28,7 @@ export default function PageNavigator(props: PageNavigatorI): [number, () => JSX
 	};
 
 	// Generates a array with the page indexes based on the actual page and configs passed by props
-	const generatePageInterval = () => {
+	const generatePageInterval = (): number[] => {
 		let initial = Math.max(1, page - props.interval);
 		let final = Math.min(getMaxPage(), page + props.interval);
 		if (page - props.interval < 1) {
@@ -41,6 +41,11 @@ export default function PageNavigator(props: PageNavigatorI): [number, () => JSX
 	};
 
 	function PageComponent() {
+		// Hides Component if there is only one page to navigate
+		if (generatePageInterval().length == 1) {
+			return <></>;
+		}
+
 		return (
 			<NavigatorContainer>
 				<button className={page == 1 ? "navigator disabled" : "navigator"} onClick={pageDecrement}>
