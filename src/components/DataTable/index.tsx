@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { TableEntity } from "@/utils/types";
 import PageNavigator from "@/components/PageNavigator";
 
+import { TableEntity } from "./types";
 import { DataTableContainer, TableContainer, Table } from "./styles";
 
 interface TableHeaderI {
@@ -40,8 +40,10 @@ function TableBody(props: TableBodyI) {
 		<tbody>
 			{props.body.map((row) => (
 				<tr key={row.id} onClick={() => handleRowClick(row.id)}>
-					{row.data.map((column, j) => (
-						<td key={column[j]}>{column}</td>
+					{Object.values(row.data).map((column, j) => (
+						<td key={column[j]}>
+							<p>{column}</p>
+						</td>
 					))}
 				</tr>
 			))}
@@ -52,6 +54,7 @@ function TableBody(props: TableBodyI) {
 interface TableProps {
 	header: string[];
 	body: TableEntity[];
+	perpage: number;
 	sortIndex?: number;
 }
 
@@ -61,18 +64,18 @@ export default function DataTable(props: TableProps) {
 	const [sortIndex, setSortIndex] = useState(props.sortIndex ?? 0);
 
 	// Controls the interval that will be displayed in the actual page
-	const MAX_PAGE_LENGTH = 20;
-	const [page, PageComponent] = PageNavigator({ length: body.length, max_per_page: MAX_PAGE_LENGTH, interval: 1 });
+	const [page, PageComponent] = PageNavigator({ length: body.length, max_per_page: props.perpage, interval: 1 });
 	useEffect(() => {
-		setIntervalBody(body.slice(MAX_PAGE_LENGTH * (page - 1), Math.min(body.length, MAX_PAGE_LENGTH * page)));
-	}, [page, body]);
+		console.log(body.slice(props.perpage * (page - 1), Math.min(body.length, props.perpage * page)));
+		setIntervalBody(body.slice(props.perpage * (page - 1), Math.min(body.length, props.perpage * page)));
+	}, [page, body, props]);
 
 	// Controls Header interactions
 	const handleHeaderButtonClick = (index: number) => {
 		let newBody: typeof body;
 		if (sortIndex != index) {
 			// Sort based on the desired column
-			newBody = [...body.sort((a, b) => a.data[index].localeCompare(b.data[index]))];
+			newBody = [...body.sort((a, b) => Object.values(a.data)[index].localeCompare(Object.values(b.data)[index]))];
 			setSortIndex(index);
 		} else {
 			// Reverse sorting

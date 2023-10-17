@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdCheck } from "react-icons/md";
 
-import { MenuEntity } from "@/utils/types";
 import { stringIncludes, stringMatches } from "@/utils/strings";
 import Searchbar from "@/components/Searchbar";
 
+import { MenuEntity } from "./types";
 import { DropdownContainer, DropdownHeader, DropdownContent, DropdownItem } from "./styles";
 
 interface DropdownOptionsI {
@@ -17,12 +17,11 @@ interface DropdownOptionsI {
 }
 
 export default function DropdownOptions(props: DropdownOptionsI) {
-	const dropdownRef = useRef<HTMLDivElement>(null);
-
 	const [search, setSearch] = useState("");
 	const [matchSearch, setMatchSearch] = useState<MenuEntity[]>(props.textInput ? [] : props.items);
-
 	const [isOpen, setIsOpen] = useState(false);
+
+	// Switches open/close menu state
 	const toggleOpen = () => setIsOpen(!isOpen);
 
 	// Triggers when click the clear input option
@@ -59,6 +58,7 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 	}, [search, props]);
 
 	// Controls outside clicks
+	const dropdownRef = useRef<HTMLDivElement>(null);
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {

@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
-import { MenuEntity } from "@/utils/types";
+import { TableEntity, convertToTableRow } from "@/components/DataTable/types";
+import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
+import { generateTeamText } from "@/types/team";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
 import DataTable from "@/components/DataTable";
 import DropdownOptions from "@/components/DropdownOptions";
@@ -13,12 +15,31 @@ import { PlayersContainer, FilterContainer, Filter } from "./styles";
 
 export default function Players() {
 	const [playerName, setPlayerName, playerNameTimed] = useSearchTimeout(1000);
-	const [team, setTeam] = useState<MenuEntity | null>(null);
+	const [teamSelected, setTeamSelected] = useState<MenuEntity | null>(null);
+
+	const headerPlayerTable = useMemo(
+		() => ({
+			name: "Nome",
+			position: "Posição",
+			teamId: "Time",
+		}),
+		[]
+	);
+
+	const bodyPlayerTable: TableEntity[] = useMemo(
+		() => dataPlayers.players.map((player) => convertToTableRow(player, Object.keys(headerPlayerTable))),
+		[headerPlayerTable]
+	);
+
+	const teamsMenu: MenuEntity[] = useMemo(
+		() => dataTeams.teams.map((teamq) => convertToMenuEntity(teamq, generateTeamText(teamq))),
+		[]
+	);
 
 	// Triggers when the filters change
 	useEffect(() => {
-		console.log(playerNameTimed, team);
-	}, [playerNameTimed, team]);
+		console.log(playerNameTimed, teamSelected);
+	}, [playerNameTimed, teamSelected]);
 
 	return (
 		<PlayersContainer>
@@ -31,14 +52,14 @@ export default function Players() {
 					<DropdownOptions
 						textInput
 						placeholder="Nome do Time"
-						selected={team}
-						setSelected={setTeam}
-						items={dataTeams.teams}
+						selected={teamSelected}
+						setSelected={setTeamSelected}
+						items={teamsMenu}
 						loading={false}
 					/>
 				</Filter>
 			</FilterContainer>
-			<DataTable header={dataPlayers.header} body={dataPlayers.players} />
+			<DataTable header={Object.values(headerPlayerTable)} body={bodyPlayerTable} perpage={30} />
 		</PlayersContainer>
 	);
 }
