@@ -42,6 +42,10 @@ export const Table = styled.table`
 					text-decoration: underline;
 				}
 			}
+
+			&.min {
+				width: 0;
+			}
 		}
 	}
 
@@ -60,6 +64,10 @@ export const Table = styled.table`
 		td {
 			padding: 0.625rem 1rem;
 			border-top: 1px solid ${(props) => props.theme.gray};
+
+			img {
+				max-height: 1.25rem;
+			}
 		}
 	}
 

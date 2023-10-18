@@ -5,49 +5,56 @@
 			"name": "Vasco da Gama",
 			"abbreviation": "VAS",
 			"foundation": "01-01-1900",
-			"coach": "Dorival Junior"
+			"coach": "Dorival Junior",
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/3454.png&scale=crop&cquality=40&location=origin&w=80&h=80"
 		},
 		{
 			"id": "Flamengo",
 			"name": "Flamengo",
 			"abbreviation": "FLA",
 			"foundation": "01-01-1900",
-			"coach": "Dunga"
+			"coach": "Dunga",
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/819.png&scale=crop&cquality=40&location=origin&w=80&h=80"
 		},
 		{
 			"id": "Fluminense",
 			"name": "Fluminense",
 			"abbreviation": "FLU",
 			"foundation": "01-01-1900",
-			"coach": "Mano Menezes"
+			"coach": "Mano Menezes",
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/3445.png&scale=crop&cquality=40&location=origin&w=80&h=80"
 		},
 		{
 			"id": "São Paulo",
 			"name": "São Paulo",
 			"abbreviation": "SAO",
 			"foundation": "01-01-1900",
-			"coach": "Rogério Ceni"
+			"coach": "Rogério Ceni",
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2026.png&scale=crop&cquality=40&location=origin&w=80&h=80"
 		},
 		{
 			"id": "Palmeiras",
 			"name": "Palmeiras",
 			"abbreviation": "PAL",
 			"foundation": "01-01-1900",
-			"coach": "Tite"
+			"coach": "Tite",
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2029.png&scale=crop&cquality=40&location=origin&w=80&h=80"
 		},
 		{
 			"id": "Atlético Mineiro",
 			"name": "Atlético Mineiro",
 			"abbreviation": "CAM",
 			"foundation": "01-01-1900",
-			"coach": "Ronaldinho"
+			"coach": "Ronaldinho",
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/7632.png&scale=crop&cquality=40&location=origin&w=80&h=80"
 		},
 		{
 			"id": "Cruzeiro",
 			"name": "Cruzeiro",
 			"abbreviation": "CRU",
 			"foundation": "01-01-1900",
-			"coach": "Casagrande"
+			"coach": "Casagrande",
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2022.png&scale=crop&cquality=40&location=origin&w=80&h=80"
 		}
 	]
 }

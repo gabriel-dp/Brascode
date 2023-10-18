@@ -10,12 +10,14 @@ interface TableHeaderI {
 	header: string[];
 	sortIndex: number;
 	handleHeaderButtonClick: (value: number) => void;
+	image: boolean;
 }
 
 function TableHeader(props: TableHeaderI) {
 	return (
 		<thead>
 			<tr>
+				{props.image && <th className="min"></th>}
 				{props.header.map((column, index) => (
 					<th key={column} className={props.sortIndex == index ? "selected" : "unselected"}>
 						<button onClick={() => props.handleHeaderButtonClick(index)}>{column}</button>
@@ -28,6 +30,7 @@ function TableHeader(props: TableHeaderI) {
 
 interface TableBodyI {
 	body: TableEntity[];
+	image: boolean;
 }
 
 function TableBody(props: TableBodyI) {
@@ -40,6 +43,11 @@ function TableBody(props: TableBodyI) {
 		<tbody>
 			{props.body.map((row) => (
 				<tr key={row.id} onClick={() => handleRowClick(row.id)}>
+					{props.image && row.image && (
+						<td>
+							<img src={row.image} />
+						</td>
+					)}
 					{Object.values(row.data).map((column, j) => (
 						<td key={column[j]}>
 							<p>{column}</p>
@@ -56,6 +64,7 @@ interface TableProps {
 	body: TableEntity[];
 	perpage: number;
 	sortIndex?: number;
+	image?: boolean;
 }
 
 export default function DataTable(props: TableProps) {
@@ -92,8 +101,13 @@ export default function DataTable(props: TableProps) {
 		<DataTableContainer>
 			<TableContainer>
 				<Table>
-					<TableHeader header={props.header} sortIndex={sortIndex} handleHeaderButtonClick={handleHeaderButtonClick} />
-					<TableBody body={intervalBody} />
+					<TableHeader
+						header={props.header}
+						sortIndex={sortIndex}
+						handleHeaderButtonClick={handleHeaderButtonClick}
+						image={props.image != undefined}
+					/>
+					<TableBody body={intervalBody} image={props.image != undefined} />
 				</Table>
 			</TableContainer>
 			<PageComponent />

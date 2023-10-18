@@ -59,7 +59,7 @@ export default function Teams() {
 					/>
 				</Filter>
 			</FilterContainer>
-			<DataTable header={Object.values(headerTeamTable)} body={bodyTeamTable} perpage={20} />
+			<DataTable header={Object.values(headerTeamTable)} body={bodyTeamTable} perpage={20} image />
 		</TeamsContainer>
 	);
 }
