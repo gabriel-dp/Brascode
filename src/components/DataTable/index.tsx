@@ -66,23 +66,27 @@ export default function DataTable(props: TableProps) {
 	// Controls the interval that will be displayed in the actual page
 	const [page, PageComponent] = PageNavigator({ length: body.length, max_per_page: props.perpage, interval: 1 });
 	useEffect(() => {
-		console.log(body.slice(props.perpage * (page - 1), Math.min(body.length, props.perpage * page)));
 		setIntervalBody(body.slice(props.perpage * (page - 1), Math.min(body.length, props.perpage * page)));
 	}, [page, body, props]);
 
 	// Controls Header interactions
 	const handleHeaderButtonClick = (index: number) => {
-		let newBody: typeof body;
 		if (sortIndex != index) {
-			// Sort based on the desired column
-			newBody = [...body.sort((a, b) => Object.values(a.data)[index].localeCompare(Object.values(b.data)[index]))];
+			// Sets a new sorting index
 			setSortIndex(index);
 		} else {
 			// Reverse sorting
-			newBody = body.slice().reverse();
+			setBody((body) => body.slice().reverse());
 		}
-		setBody(newBody);
 	};
+
+	// Triggers when component is rendered and when sorting index changes
+	useEffect(() => {
+		// Sort based on the desired column
+		setBody((body) => [
+			...body.sort((a, b) => Object.values(a.data)[sortIndex].localeCompare(Object.values(b.data)[sortIndex])),
+		]);
+	}, [sortIndex]);
 
 	return (
 		<DataTableContainer>

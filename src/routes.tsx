@@ -4,7 +4,7 @@ import MainPanel from "@/components/MainPanel";
 import Home from "@/pages/Home";
 import Tournaments from "@/pages/Tornaments";
 import Games from "@/pages/Games";
-import Teams from "@/pages/Teams";
+import Teams from "@/pages/Teams/";
 import Players from "@/pages/Players";
 
 export default function Router() {

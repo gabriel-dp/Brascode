@@ -53,7 +53,7 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 				props.setSelected(null);
 			}
 
-			setMatchSearch(props.items.filter((item) => stringIncludes(item.text, search)).slice(0, 10));
+			setMatchSearch(props.items.filter((item) => stringIncludes(item.text, search)));
 		}
 	}, [search, props]);
 

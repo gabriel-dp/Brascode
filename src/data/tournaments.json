@@ -1,0 +1,30 @@
+{
+	"tournaments": [
+		{
+			"id": 1,
+			"name": "Campeonato Brasileiro Série A",
+			"year": 2023
+		},
+		{
+			"id": 2,
+			"name": "Campeonato Brasileiro Série B",
+			"year": 2023
+		},
+		{
+			"id": 3,
+			"name": "Campeonato Brasileiro Série A",
+			"year": 2022
+		},
+		{
+			"id": 5,
+			"name": "Campeonato Brasileiro Série B",
+			"year": 2022
+		},
+		{
+			"id": 4,
+			"name": "Champions Linux",
+			"year": 2023
+		}
+	]
+}
+
