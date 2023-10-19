@@ -1,6 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 
-import { TableEntity, convertToTableRow } from "@/components/DataTable/types";
+import { TableEntity } from "@/components/DataTable/types";
 import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
 import { generateTeamText } from "@/types/team";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
@@ -17,24 +17,15 @@ export default function Players() {
 	const [playerName, setPlayerName, playerNameTimed] = useSearchTimeout(1000);
 	const [teamSelected, setTeamSelected] = useState<MenuEntity | null>(null);
 
-	const headerPlayerTable = useMemo(
-		() => ({
-			name: "Nome",
-			position: "Posição",
-			teamId: "Time",
-		}),
-		[]
-	);
+	// Table header and body
+	const headerPlayerTable = ["Nome", "Posição", "Time"];
+	const bodyPlayerTable: TableEntity[] = dataPlayers.players.map((player) => ({
+		id: player.id,
+		data: [{ text: player.name }, { text: player.position }, { text: player.teamId }],
+	}));
 
-	const bodyPlayerTable: TableEntity[] = useMemo(
-		() => dataPlayers.players.map((player) => convertToTableRow(player, Object.keys(headerPlayerTable))),
-		[headerPlayerTable]
-	);
-
-	const teamsMenu: MenuEntity[] = useMemo(
-		() => dataTeams.teams.map((teamq) => convertToMenuEntity(teamq, generateTeamText(teamq))),
-		[]
-	);
+	// Menu entities
+	const teamsMenu: MenuEntity[] = dataTeams.teams.map((team) => convertToMenuEntity(team, generateTeamText(team)));
 
 	// Triggers when the filters change
 	useEffect(() => {
@@ -51,7 +42,7 @@ export default function Players() {
 				<Filter className="team">
 					<DropdownOptions
 						textInput
-						placeholder="Nome do Time"
+						placeholder="Time"
 						selected={teamSelected}
 						setSelected={setTeamSelected}
 						items={teamsMenu}
@@ -59,7 +50,7 @@ export default function Players() {
 					/>
 				</Filter>
 			</FilterContainer>
-			<DataTable header={Object.values(headerPlayerTable)} body={bodyPlayerTable} perpage={30} />
+			<DataTable header={headerPlayerTable} body={bodyPlayerTable} perpage={30} />
 		</PlayersContainer>
 	);
 }

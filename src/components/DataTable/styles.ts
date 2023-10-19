@@ -45,6 +45,9 @@ export const Table = styled.table`
 
 			&.min {
 				width: 0;
+				button {
+					display: none;
+				}
 			}
 		}
 	}
