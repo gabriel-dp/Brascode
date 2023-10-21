@@ -6,7 +6,11 @@
 			"abbreviation": "VAS",
 			"foundation": "01-01-1900",
 			"coach": "Dorival Junior",
-			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/3454.png&scale=crop&cquality=40&location=origin&w=80&h=80"
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/3454.png&scale=crop&cquality=40&location=origin&w=80&h=80",
+			"colors": {
+				"primary": "#000000",
+				"secondary": "#FFFFFF"
+			}
 		},
 		{
 			"id": "Flamengo",
@@ -14,7 +18,11 @@
 			"abbreviation": "FLA",
 			"foundation": "01-01-1900",
 			"coach": "Dunga",
-			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/819.png&scale=crop&cquality=40&location=origin&w=80&h=80"
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/819.png&scale=crop&cquality=40&location=origin&w=80&h=80",
+			"colors": {
+				"primary": "#FF0000",
+				"secondary": "#000000"
+			}
 		},
 		{
 			"id": "Fluminense",
@@ -22,7 +30,11 @@
 			"abbreviation": "FLU",
 			"foundation": "01-01-1900",
 			"coach": "Mano Menezes",
-			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/3445.png&scale=crop&cquality=40&location=origin&w=80&h=80"
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/3445.png&scale=crop&cquality=40&location=origin&w=80&h=80",
+			"colors": {
+				"primary": "#FF0000",
+				"secondary": "#00FF00"
+			}
 		},
 		{
 			"id": "São Paulo",
@@ -30,7 +42,11 @@
 			"abbreviation": "SAO",
 			"foundation": "01-01-1900",
 			"coach": "Rogério Ceni",
-			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2026.png&scale=crop&cquality=40&location=origin&w=80&h=80"
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2026.png&scale=crop&cquality=40&location=origin&w=80&h=80",
+			"colors": {
+				"primary": "#FF0000",
+				"secondary": "#FFFFFF"
+			}
 		},
 		{
 			"id": "Palmeiras",
@@ -38,7 +54,11 @@
 			"abbreviation": "PAL",
 			"foundation": "01-01-1900",
 			"coach": "Tite",
-			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2029.png&scale=crop&cquality=40&location=origin&w=80&h=80"
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2029.png&scale=crop&cquality=40&location=origin&w=80&h=80",
+			"colors": {
+				"primary": "#00FF00",
+				"secondary": "#FFFFFF"
+			}
 		},
 		{
 			"id": "Atlético Mineiro",
@@ -46,7 +66,11 @@
 			"abbreviation": "CAM",
 			"foundation": "01-01-1900",
 			"coach": "Ronaldinho",
-			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/7632.png&scale=crop&cquality=40&location=origin&w=80&h=80"
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/7632.png&scale=crop&cquality=40&location=origin&w=80&h=80",
+			"colors": {
+				"primary": "#000000",
+				"secondary": "#FFFFFF"
+			}
 		},
 		{
 			"id": "Cruzeiro",
@@ -54,7 +78,11 @@
 			"abbreviation": "CRU",
 			"foundation": "01-01-1900",
 			"coach": "Casagrande",
-			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2022.png&scale=crop&cquality=40&location=origin&w=80&h=80"
+			"image": "https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/2022.png&scale=crop&cquality=40&location=origin&w=80&h=80",
+			"colors": {
+				"primary": "#175AA3",
+				"secondary": "#FFFFFF"
+			}
 		}
 	]
 }

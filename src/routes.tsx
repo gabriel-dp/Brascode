@@ -6,6 +6,7 @@ import Tournaments from "@/pages/Tornaments";
 import Games from "@/pages/Games";
 import Teams from "@/pages/Teams/";
 import Players from "@/pages/Players";
+import PlayerPage from "./pages/Players/PlayerPage";
 
 export default function Router() {
 	return (
@@ -17,6 +18,7 @@ export default function Router() {
 					<Route path="/jogos" element={<Games />} />
 					<Route path="/times" element={<Teams />} />
 					<Route path="/jogadores" element={<Players />} />
+					<Route path="/jogadores/:id" element={<PlayerPage />} />
 				</Routes>
 			</MainPanel>
 		</BrowserRouter>

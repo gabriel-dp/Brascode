@@ -5,6 +5,10 @@ export interface TeamI extends Entity {
 	abbreviation: string;
 	foundation: string; // !
 	coach: string;
+	colors?: {
+		primary: string;
+		secondary: string;
+	};
 }
 
 export const generateTeamText = (t: TeamI): string => `${t.name} (${t.abbreviation})`;
