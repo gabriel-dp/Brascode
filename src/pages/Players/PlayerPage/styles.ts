@@ -5,7 +5,6 @@ export const PlayerContainer = styled.div`
 	padding: 1.5rem;
 	border-radius: 0.5rem;
 	background-color: ${(props) => props.theme.white};
-	overflow-x: hidden;
 
 	display: flex;
 	flex-direction: row;
@@ -14,9 +13,33 @@ export const PlayerContainer = styled.div`
 	flex-wrap: wrap;
 	gap: 2rem;
 
+	.bio-container {
+		flex-grow: 1;
+		max-width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+
 	.bio-wrapper {
 		flex-grow: 1;
 		overflow-x: scroll;
+		padding: 1rem 0;
+	}
+
+	.statistics-wrapper {
+		flex-grow: 1;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+
+		h2 {
+			color: ${(props) => props.theme.primary};
+		}
 	}
 `;
 
@@ -37,11 +60,12 @@ interface StyleProps {
 }
 
 export const BioContainer = styled.div<StyleProps>`
+	flex-grow: 1;
+	min-width: 18rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	gap: 0.125rem;
-	min-width: 18rem;
 
 	.main {
 		white-space: nowrap;

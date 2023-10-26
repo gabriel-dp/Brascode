@@ -1,14 +1,17 @@
 export function formatDateToDDMMYYYY(strDate: string): string {
 	const date = new Date(strDate);
+	if (isNaN(date.getTime())) return `--/--/----`;
+
 	const day = date.getDate().toString().padStart(2, "0");
 	const month = (date.getMonth() + 1).toString().padStart(2, "0");
 	const year = date.getFullYear().toString();
-
 	return `${day}/${month}/${year}`;
 }
 
 export function calculateAge(strDate: string): number {
 	const date = new Date(strDate);
+	if (isNaN(date.getTime())) return 0;
+
 	const birthYear = date.getFullYear();
 	const birthMonth = date.getMonth();
 	const birthDay = date.getDate();
