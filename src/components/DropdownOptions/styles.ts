@@ -60,6 +60,7 @@ export const DropdownContent = styled.div`
 	top: 110%;
 	padding: 0.25rem;
 	background-color: ${(props) => props.theme.white};
+	z-index: 1;
 `;
 
 export const DropdownItem = styled.div`

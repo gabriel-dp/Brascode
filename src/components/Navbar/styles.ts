@@ -12,7 +12,7 @@ export const NavContainer = styled.nav`
 
 	position: fixed;
 	top: 0;
-	z-index: 1;
+	z-index: 2;
 
 	ul {
 		height: 100%;
