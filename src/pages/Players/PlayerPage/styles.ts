@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const PlayerContainer = styled.div`
 	width: 100%;
-	padding: 1.5rem;
+	padding: 2.5rem 1.5rem;
 	border-radius: 0.5rem;
 	background-color: ${(props) => props.theme.white};
 
@@ -11,7 +11,7 @@ export const PlayerContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	gap: 2rem;
+	gap: 3rem;
 
 	.bio-container {
 		flex-grow: 1;
@@ -25,17 +25,18 @@ export const PlayerContainer = styled.div`
 
 	.bio-wrapper {
 		flex-grow: 1;
-		overflow-x: scroll;
+		overflow-x: auto;
 		padding: 1rem 0;
 	}
 
 	.statistics-wrapper {
 		flex-grow: 1;
+		max-width: 100%;
 
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 1rem;
+		gap: 1.5rem;
 
 		h2 {
 			color: ${(props) => props.theme.primary};
@@ -131,5 +132,16 @@ export const DataContainer = styled.div<StyleProps>`
 		font-weight: bold;
 		color: ${(props) => props.$teamColor ?? props.theme.primary};
 	}
+`;
+
+export const FilterContainer = styled.div`
+	width: min(100%, 30rem);
+	height: 2.5rem;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 1rem;
+	row-gap: 0.5rem;
 `;
 

@@ -17,6 +17,8 @@ export const DropdownHeader = styled.div<{ loading: string }>`
 	border: 1px solid ${(props) => props.theme.gray};
 	color: ${(props) => props.theme.text};
 	cursor: pointer;
+	white-space: nowrap;
+	overflow: hidden;
 
 	${(props) =>
 		props.loading == "true" &&

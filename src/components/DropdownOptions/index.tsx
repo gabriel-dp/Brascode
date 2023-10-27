@@ -14,11 +14,12 @@ interface DropdownOptionsI {
 	setSelected: React.Dispatch<React.SetStateAction<MenuEntity | null>>;
 	loading: boolean;
 	textInput?: boolean;
+	disableClear?: boolean;
 }
 
 export default function DropdownOptions(props: DropdownOptionsI) {
 	const [search, setSearch] = useState("");
-	const [matchSearch, setMatchSearch] = useState<MenuEntity[]>(props.textInput ? [] : props.items);
+	const [matchSearch, setMatchSearch] = useState<MenuEntity[]>([]);
 	const [isOpen, setIsOpen] = useState(false);
 
 	// Switches open/close menu state
@@ -39,6 +40,10 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 		if (props.textInput) setSearch(item.text);
 		setIsOpen(false);
 	};
+
+	useEffect(() => {
+		setMatchSearch(props.textInput ? [] : props.items);
+	}, [props]);
 
 	// Controls which items will appear as options
 	useEffect(() => {
@@ -87,9 +92,11 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 			</DropdownHeader>
 			{isOpen && (
 				<DropdownContent>
-					<DropdownItem className="clear" onClick={handleClearClick}>
-						<p>-- Cancelar --</p>
-					</DropdownItem>
+					{!props.disableClear && (
+						<DropdownItem className="clear" onClick={handleClearClick}>
+							<p>-- Cancelar --</p>
+						</DropdownItem>
+					)}
 					{matchSearch.map((item) => (
 						<DropdownItem key={item.id} onClick={() => handleItemClick(item)}>
 							<p>{item.text}</p>
