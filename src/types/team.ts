@@ -9,6 +9,7 @@ export interface TeamI extends Entity {
 		primary: string;
 		secondary: string;
 	};
+	country: string;
 }
 
 export const generateTeamText = (t: TeamI): string => `${t.name} (${t.abbreviation})`;

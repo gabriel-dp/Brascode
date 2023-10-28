@@ -10,6 +10,7 @@ export interface PlayerI extends Entity {
 	position: string; // !
 	foot: string; // !
 	teamId: Id | null;
+	teamName: string | null;
 	jersey: number | null;
 }
 

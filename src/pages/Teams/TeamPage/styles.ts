@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const PlayerContainer = styled.div`
+interface StyleProps {
+	$teamColor?: string;
+}
+
+export const TeamContainer = styled.div<StyleProps>`
 	width: 100%;
 	padding: 2.5rem 1.5rem;
 	border-radius: 0.5rem;
@@ -12,6 +16,10 @@ export const PlayerContainer = styled.div`
 	align-items: center;
 	flex-wrap: wrap;
 	gap: 3rem;
+
+	h2 {
+		color: ${(props) => props.$teamColor ?? props.theme.primary};
+	}
 
 	.bio-container {
 		flex-grow: 1;
@@ -29,6 +37,15 @@ export const PlayerContainer = styled.div`
 		padding: 1rem 0;
 	}
 
+	.roster-container {
+		width: 100%;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
 	.statistics-wrapper {
 		flex-grow: 1;
 		max-width: 100%;
@@ -37,28 +54,20 @@ export const PlayerContainer = styled.div`
 		flex-direction: column;
 		align-items: center;
 		gap: 1.5rem;
-
-		h2 {
-			color: ${(props) => props.theme.primary};
-		}
 	}
 `;
 
-export const PlayerImageContainer = styled.div`
+export const TeamImageContainer = styled.div`
 	overflow: hidden;
 
 	img {
-		&.player {
+		&.team {
 			max-height: 12rem;
 			max-width: 12rem;
 			height: 12rem;
 		}
 	}
 `;
-
-interface StyleProps {
-	$teamColor?: string;
-}
 
 export const BioContainer = styled.div<StyleProps>`
 	flex-grow: 1;
@@ -74,12 +83,12 @@ export const BioContainer = styled.div<StyleProps>`
 		flex-direction: row;
 		justify-content: space-between;
 
-		.name {
+		.abbreviation {
 			font-size: 1rem;
 		}
 
-		.nick {
-			color: ${(props) => props.theme.primary};
+		.name {
+			color: ${(props) => props.$teamColor};
 			font-size: 2rem;
 			font-weight: bold;
 		}
@@ -87,25 +96,6 @@ export const BioContainer = styled.div<StyleProps>`
 		.country {
 			max-height: 1.5rem;
 			transform: translateY(25%);
-		}
-
-		.team {
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-
-			gap: 0.5rem;
-			margin-left: 2rem;
-
-			p {
-				font-size: 1.25rem;
-				font-weight: bold;
-				color: ${(props) => props.$teamColor ?? props.theme.text};
-			}
-
-			img {
-				max-height: 3rem;
-			}
 		}
 	}
 
@@ -121,6 +111,10 @@ export const BioContainer = styled.div<StyleProps>`
 		justify-content: space-evenly;
 		gap: 2.5rem;
 		flex-wrap: wrap;
+
+		.title {
+			color: ${(props) => props.$teamColor ?? props.theme.primary};
+		}
 	}
 `;
 

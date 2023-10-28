@@ -10,7 +10,8 @@
 			"weight": 70,
 			"position": "Goleiro",
 			"foot": "Destro",
-			"teamId": "São Paulo",
+			"teamId": "SAO",
+			"teamName": "São Paulo",
 			"jersey": 23,
 			"image": "https://avatars.githubusercontent.com/u/66735014?v=4"
 		},
@@ -24,7 +25,8 @@
 			"weight": 70,
 			"position": "FW",
 			"foot": "Destro",
-			"teamId": "Cruzeiro",
+			"teamId": "CRU",
+			"teamName": "Cruzeiro",
 			"jersey": 10,
 			"image": "https://avatars.githubusercontent.com/u/102988416?v=4"
 		},
@@ -39,6 +41,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -52,6 +55,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -65,6 +69,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -78,6 +83,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -91,6 +97,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -104,6 +111,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -117,6 +125,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -130,6 +139,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -143,6 +153,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -156,6 +167,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -169,6 +181,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -182,6 +195,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -195,6 +209,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -208,6 +223,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -221,6 +237,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -234,6 +251,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -247,6 +265,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -260,6 +279,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -273,6 +293,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -286,6 +307,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -299,6 +321,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -312,6 +335,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -325,6 +349,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -338,6 +363,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -351,6 +377,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -364,6 +391,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -377,6 +405,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -390,6 +419,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -403,6 +433,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -416,6 +447,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -429,6 +461,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -442,6 +475,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -455,6 +489,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -468,6 +503,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -481,6 +517,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -494,6 +531,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -507,6 +545,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -520,6 +559,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -533,6 +573,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -546,6 +587,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -559,6 +601,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -572,6 +615,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -585,6 +629,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -598,6 +643,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -611,6 +657,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -624,6 +671,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -637,6 +685,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -650,6 +699,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -663,6 +713,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -676,6 +727,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -689,6 +741,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		},
 		{
@@ -702,6 +755,7 @@
 			"position": "GK",
 			"foot": "D",
 			"teamId": "Athletic",
+			"teamName": "Cruzeiro",
 			"jersey": null
 		}
 	]

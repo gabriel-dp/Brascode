@@ -30,12 +30,13 @@ function TableHeader(props: TableHeaderI) {
 
 interface TableBodyI {
 	body: TableEntity[];
+	url?: string;
 }
 
 function TableBody(props: TableBodyI) {
 	const navigate = useNavigate();
 	const handleRowClick = (id: string | number) => {
-		navigate(id.toString());
+		if (props.url != undefined) navigate(props.url + id.toString());
 	};
 
 	return (
@@ -56,12 +57,17 @@ interface TableProps {
 	body: TableEntity[];
 	perpage: number;
 	sortIndex?: number;
+	url?: string;
 }
 
 export default function DataTable(props: TableProps) {
-	const [body, setBody] = useState(props.body);
-	const [intervalBody, setIntervalBody] = useState<typeof body>([]);
+	const [body, setBody] = useState<TableEntity[]>([]);
+	const [intervalBody, setIntervalBody] = useState<TableEntity[]>([]);
 	const [sortIndex, setSortIndex] = useState(props.sortIndex ?? 0);
+
+	useEffect(() => {
+		setBody(props.body);
+	}, [props.body]);
 
 	// Controls the interval that will be displayed in the actual page
 	const [page, PageComponent] = PageNavigator({ length: body.length, max_per_page: props.perpage, interval: 1 });
@@ -95,7 +101,7 @@ export default function DataTable(props: TableProps) {
 			<TableContainer>
 				<Table>
 					<TableHeader header={props.header} sortIndex={sortIndex} handleHeaderButtonClick={handleHeaderButtonClick} />
-					<TableBody body={intervalBody} />
+					<TableBody body={intervalBody} url={props.url} />
 				</Table>
 			</TableContainer>
 			<PageComponent />

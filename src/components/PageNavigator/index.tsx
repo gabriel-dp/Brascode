@@ -12,7 +12,7 @@ export default function PageNavigator(props: PageNavigatorI): [number, () => JSX
 	const [page, setPage] = useState(1);
 
 	const getMaxPage = () => {
-		return Math.ceil(props.length / props.max_per_page);
+		return Math.max(Math.ceil(props.length / props.max_per_page), 1);
 	};
 
 	const pageIncrement = () => {
