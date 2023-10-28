@@ -9,7 +9,6 @@ export default function Navbar() {
 
 	// Controls menu visibility on low width
 	function handleMenuClick() {
-		console.log(!menuActive);
 		setMenuActive(!menuActive);
 	}
 
