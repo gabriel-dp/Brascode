@@ -7,15 +7,15 @@ import { generateTournamentText } from "@/types/tournaments";
 import { formatDateToDDMMYYYY, calculateAge } from "@/utils/dates";
 import { generateFlagUrl } from "@/utils/country";
 import StatisticsPanel from "@/components/StatisticsPanel";
+import { Statistics } from "@/components/StatisticsPanel/types";
 import DropdownOptions from "@/components/DropdownOptions";
+import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
 
 import dataPlayers from "@/data/players.json";
 import dataTeams from "@/data/teams.json";
 import dataTornaments from "@/data/tournaments.json";
 
 import { BioContainer, PlayerContainer, PlayerImageContainer, DataContainer, FilterContainer } from "./styles";
-import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
-import { Statistics } from "@/components/StatisticsPanel/types";
 
 export default function PlayerPage() {
 	const [playerData, setPlayerData] = useState<PlayerI | undefined>(undefined);

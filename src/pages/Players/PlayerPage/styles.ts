@@ -45,13 +45,13 @@ export const PlayerContainer = styled.div`
 `;
 
 export const PlayerImageContainer = styled.div`
-	border-radius: 0.5rem;
 	overflow: hidden;
 
 	img {
 		&.player {
 			max-height: 12rem;
 			max-width: 12rem;
+			height: 12rem;
 		}
 	}
 `;
