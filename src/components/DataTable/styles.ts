@@ -21,7 +21,7 @@ export const TableContainer = styled.div<TableContainerI>`
 
 	display: flex;
 	flex-direction: column;
-	align-items: ${(props) => (props.$loading == "true" ? "center" : "flex-start")};
+	align-items: flex-start;
 	justify-content: space-between;
 `;
 
