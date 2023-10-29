@@ -55,12 +55,16 @@ export default function Games() {
 				</Filter>
 			</FilterContainer>
 			<CardsContainer>
-				{statusGames == FetchStatus.Loading && <Loading />}
-				<div className="cards">
-					{dataGames?.map((game) => (
-						<GameCard key={game.id} game={game} />
-					))}
-				</div>
+				{statusGames != FetchStatus.Success && <Loading />}
+				{dataGames && (
+					<div className="cards">
+						{dataGames
+							.sort((a, b) => a.start.localeCompare(b.start))
+							.map((game) => (
+								<GameCard key={game.id} game={game} />
+							))}
+					</div>
+				)}
 			</CardsContainer>
 		</GamesContainer>
 	);

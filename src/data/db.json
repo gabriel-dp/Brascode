@@ -218,6 +218,66 @@
 			"teamIdAway": "FLU",
 			"goals": [],
 			"cards": []
+		},
+		{
+			"id": 4,
+			"tournamentId": 1,
+			"local": "Mineirão",
+			"start": "2023-10-29T20:50:00Z",
+			"teamIdHome": "CRU",
+			"teamIdAway": "CAM",
+			"goals": [],
+			"cards": []
+		},
+		{
+			"id": 5,
+			"tournamentId": 1,
+			"local": "Pacaembu",
+			"start": "2023-10-29T21:50:00Z",
+			"teamIdHome": "PAL",
+			"teamIdAway": "SAO",
+			"goals": [],
+			"cards": []
+		},
+		{
+			"id": 6,
+			"tournamentId": 1,
+			"local": "Mineirão",
+			"start": "2023-10-29T20:50:00Z",
+			"teamIdHome": "CRU",
+			"teamIdAway": "CAM",
+			"goals": [],
+			"cards": []
+		},
+		{
+			"id": 7,
+			"tournamentId": 1,
+			"local": "Pacaembu",
+			"start": "2023-10-29T21:50:00Z",
+			"teamIdHome": "PAL",
+			"teamIdAway": "SAO",
+			"goals": [],
+			"cards": []
+		},
+		{
+			"id": 8,
+			"tournamentId": 1,
+			"local": "Mineirão",
+			"start": "2023-10-29T20:50:00Z",
+			"teamIdHome": "CRU",
+			"teamIdAway": "CAM",
+			"goals": [],
+			"cards": []
+		},
+		{
+			"id": 9,
+			"tournamentId": 1,
+			"local": "Pacaembu",
+			"start": "2023-10-29T21:50:00Z",
+			"teamIdHome": "PAL",
+			"teamIdAway": "SAO",
+			"goals": [],
+			"cards": []
 		}
 	]
 }

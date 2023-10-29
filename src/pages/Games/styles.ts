@@ -38,13 +38,12 @@ export const CardsContainer = styled.div`
 
 	.cards {
 		width: 100%;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 		gap: 1rem;
 
 		> div {
-			flex-grow: 1;
+			width: 100%;
 			margin: auto;
 		}
 	}
