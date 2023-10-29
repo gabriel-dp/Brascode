@@ -5,11 +5,11 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
-		"host": "vite --host",
 		"build": "tsc && vite build",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"json-server": "json-server --watch"
 	},
 	"dependencies": {
 		"react": "^18.2.0",
@@ -30,9 +30,11 @@
 		"eslint-plugin-react-hooks": "^4.6.0",
 		"eslint-plugin-react-refresh": "^0.4.3",
 		"husky": "^8.0.3",
+		"json-server": "^0.17.4",
 		"lint-staged": "^14.0.1",
 		"typescript": "^5.0.2",
 		"vite": "^4.4.5",
 		"vite-tsconfig-paths": "^4.2.1"
 	}
 }
+
