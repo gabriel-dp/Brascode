@@ -30,13 +30,13 @@ interface TableI {
 }
 
 export const Table = styled.table<TableI>`
-	width: max(100%, 25rem);
+	width: 100%;
 	border-spacing: 0;
 	font-size: 0.85rem;
 	color: ${(props) => props.theme.text};
+	white-space: nowrap;
 
 	thead {
-		width: 100%;
 		background-color: ${(props) => props.theme.lightgray};
 
 		th {
