@@ -17,6 +17,7 @@ export const Screen = styled.div`
 
 	.navbar-wrapper {
 		width: min(100%, ${CONTENT_WIDTH}rem);
+		padding: 0 1.5rem;
 	}
 
 	.main-content {

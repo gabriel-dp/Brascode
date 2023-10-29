@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
+const NAVBUTTON_PADDING = "0.75rem";
+
 export const NavContainer = styled.nav`
 	width: 100%;
-	padding: 0 2rem;
+	padding: 0;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.primaryText};
 	filter: drop-shadow(0 0 0.5rem #00000077);
@@ -19,6 +21,7 @@ export const NavContainer = styled.nav`
 		list-style: none;
 		display: flex;
 		gap: 1rem;
+		transform: translateX(${NAVBUTTON_PADDING});
 	}
 
 	li {
@@ -31,7 +34,7 @@ export const NavContainer = styled.nav`
 			height: 100%;
 			color: inherit;
 			text-decoration: none;
-			padding: 0 0.75rem;
+			padding: 0 ${NAVBUTTON_PADDING};
 			transition: all ease-in-out 0.25s;
 
 			display: flex;
@@ -68,6 +71,7 @@ export const NavContainer = styled.nav`
 			justify-content: flex-start;
 			background-color: ${(props) => props.theme.primary};
 			transition: transform ease-in-out 0.5s;
+			transform: translateX(0);
 
 			position: fixed;
 			left: 100%;
@@ -109,7 +113,6 @@ export const NavWrapper = styled.div`
 
 export const NavHome = styled.div`
 	height: 100%;
-	padding: 0 0.25rem;
 	display: flex;
 	align-items: center;
 
