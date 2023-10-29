@@ -120,7 +120,7 @@ export const NavHome = styled.div`
 		color: inherit;
 		text-decoration: none;
 		height: 100%;
-		padding: 0.5rem 0;
+		padding: 0.65rem 0;
 
 		img {
 			height: 100%;
