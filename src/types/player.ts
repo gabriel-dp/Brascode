@@ -1,4 +1,4 @@
-import { Entity, Id } from "./entity";
+import { Entity, Id } from "@/types/entity";
 
 export interface PlayerI extends Entity {
 	name: string;

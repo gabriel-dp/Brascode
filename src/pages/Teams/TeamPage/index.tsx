@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { TeamI } from "@/types/team";
 import { PlayerI } from "@/types/player";
+import { ApiRequest } from "@/utils/requests";
 import { generateFlagUrl } from "@/utils/country";
 import { formatDateToDDMMYYYY, calculateAge } from "@/utils/dates";
-
-import { BioContainer, DataContainer, TeamContainer, TeamImageContainer } from "./styles";
 import DataTable from "@/components/DataTable";
 import { TableEntity } from "@/components/DataTable/types";
-import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
-import { ApiRequest } from "@/utils/requests";
+
+import { BioContainer, DataContainer, TeamContainer, TeamImageContainer } from "./styles";
 
 function Data(props: { title: string; children: React.ReactNode }) {
 	return (

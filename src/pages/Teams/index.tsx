@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
 
 import useSearchTimeout from "@/hooks/useSearchTimeout";
-import { TournamentsI, generateTournamentText } from "@/types/tournaments";
-import Searchbar from "@/components/Searchbar";
-import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
-import DropdownOptions from "@/components/DropdownOptions";
-import DataTable from "@/components/DataTable";
-import { TableEntity } from "@/components/DataTable/types";
-
-import { TeamsContainer, FilterContainer, Filter } from "./styles";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { TeamI } from "@/types/team";
+import { TournamentsI, generateTournamentText } from "@/types/tournaments";
 import { ApiRequest } from "@/utils/requests";
+import DropdownOptions from "@/components/DropdownOptions";
+import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
+import DataTable from "@/components/DataTable";
+import { TableEntity } from "@/components/DataTable/types";
+import Searchbar from "@/components/Searchbar";
+
+import { TeamsContainer, FilterContainer, Filter } from "./styles";
 
 export default function Teams() {
 	// Filters

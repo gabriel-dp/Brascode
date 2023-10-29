@@ -7,7 +7,7 @@ import Games from "@/pages/Games";
 import Teams from "@/pages/Teams/";
 import TeamPage from "@/pages/Teams/TeamPage";
 import Players from "@/pages/Players";
-import PlayerPage from "./pages/Players/PlayerPage";
+import PlayerPage from "@/pages/Players/PlayerPage";
 
 export default function Router() {
 	return (

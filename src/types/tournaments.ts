@@ -1,4 +1,4 @@
-import { Entity } from "./entity";
+import { Entity } from "@/types/entity";
 
 export interface TournamentsI extends Entity {
 	name: string;

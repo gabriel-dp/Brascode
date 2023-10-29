@@ -2,16 +2,16 @@ import { useState, useEffect } from "react";
 
 import { useFetchData, FetchStatus } from "@/hooks/useFetchData";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
-import { TeamI, generateTeamText } from "@/types/team";
 import { PlayerI } from "@/types/player";
-import { TableEntity } from "@/components/DataTable/types";
+import { TeamI, generateTeamText } from "@/types/team";
+import { ApiRequest } from "@/utils/requests";
 import DataTable from "@/components/DataTable";
-import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
+import { TableEntity } from "@/components/DataTable/types";
 import DropdownOptions from "@/components/DropdownOptions";
+import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
 import Searchbar from "@/components/Searchbar";
 
 import { PlayersContainer, FilterContainer, Filter } from "./styles";
-import { ApiRequest } from "@/utils/requests";
 
 export default function Players() {
 	// Filters
