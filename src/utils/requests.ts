@@ -1,6 +1,6 @@
 import { Id } from "@/types/entity";
 
-type Complement = "players" | "teams" | "tournaments";
+type Complement = "players" | "teams" | "tournaments" | "games";
 
 export class ApiRequest {
 	static readonly BASE_URL: string = `${import.meta.env.VITE_API_URL}`;

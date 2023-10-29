@@ -3,7 +3,7 @@ import { Entity } from "@/types/entity";
 export interface TeamI extends Entity {
 	name: string;
 	abbreviation: string;
-	foundation: string; // !
+	foundation: string; // date
 	coach: string;
 	colors?: {
 		primary: string;

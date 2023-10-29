@@ -31,3 +31,13 @@ export function calculateAge(strDate: string): number {
 	return age;
 }
 
+export function formatDateToHHmm(strDate: string) {
+	const date = new Date(strDate);
+	if (isNaN(date.getTime())) return `--:--`;
+
+	const hours = date.getHours();
+	const minutes = date.getMinutes();
+
+	return `${hours}:${minutes}`;
+}
+
