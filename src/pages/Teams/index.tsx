@@ -44,7 +44,7 @@ export default function Teams() {
 		setBodyTeamTable(
 			dataTeams.map((team) => ({
 				id: team.id,
-				data: [{ text: team.name, image: team.image }, { text: team.name }],
+				data: [{ text: team.abbreviation, image: team.image }, { text: team.name }],
 			}))
 		);
 	}, [dataTeams]);

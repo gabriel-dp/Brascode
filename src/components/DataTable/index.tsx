@@ -46,7 +46,9 @@ function TableBody(props: TableBodyI) {
 			{props.body.map((row) => (
 				<tr key={row.id} onClick={() => handleRowClick(row.id)}>
 					{row.data.map((column, j) => (
-						<td key={`${row.id}-${j}`}>{column.image ? <img src={column.image} /> : <p>{column.text}</p>}</td>
+						<td key={`${row.id}-${j}`}>
+							{column.image ? <img src={column.image} alt={column.text.toString()} /> : <p>{column.text}</p>}
+						</td>
 					))}
 				</tr>
 			))}

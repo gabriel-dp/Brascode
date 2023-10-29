@@ -56,7 +56,7 @@ export default function Tournaments() {
 					id: s.teamId,
 					data: [
 						{ text: s.position },
-						{ text: "", image: team?.image },
+						{ text: team?.abbreviation ?? "", image: team?.image },
 						{ text: team?.name ?? "" },
 						{ text: s.points },
 						{ text: s.games },
