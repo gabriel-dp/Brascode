@@ -6,11 +6,17 @@ import Loading from "@/components/Loading";
 import PageNavigator from "@/components/PageNavigator";
 
 import { TableEntity } from "./types";
-import { DataTableContainer, TableContainer, Table } from "./styles";
+import { DataTableContainer, TableContainer, Table, DirectionArrow } from "./styles";
+
+enum sortDirectionEnum {
+	Ascending,
+	Descending,
+}
 
 interface TableHeaderI {
 	header: string[];
 	sortIndex: number;
+	sortDirection: sortDirectionEnum;
 	handleHeaderButtonClick: (value: number) => void;
 }
 
@@ -22,7 +28,12 @@ function TableHeader(props: TableHeaderI) {
 					<th
 						key={column}
 						className={(props.sortIndex == index ? "selected" : "unselected") + (column == "" ? " min" : "")}>
-						<button onClick={() => props.handleHeaderButtonClick(index)}>{column}</button>
+						<button onClick={() => props.handleHeaderButtonClick(index)}>
+							{column}
+							{props.sortIndex == index && (
+								<DirectionArrow $ascending={props.sortDirection == sortDirectionEnum.Ascending ? "true" : "false"} />
+							)}
+						</button>
 					</th>
 				))}
 			</tr>
@@ -69,6 +80,7 @@ export default function DataTable(props: TableProps) {
 	const [body, setBody] = useState<TableEntity[]>([]);
 	const [intervalBody, setIntervalBody] = useState<TableEntity[]>([]);
 	const [sortIndex, setSortIndex] = useState(props.sortIndex ?? 0);
+	const [sortDirection, setSortDirection] = useState(sortDirectionEnum.Ascending);
 
 	useEffect(() => {
 		setBody(props.body);
@@ -85,9 +97,13 @@ export default function DataTable(props: TableProps) {
 		if (sortIndex != index) {
 			// Sets a new sorting index
 			setSortIndex(index);
+			setSortDirection(sortDirectionEnum.Ascending);
 		} else {
 			// Reverse sorting
 			setBody((body) => body.slice().reverse());
+			setSortDirection((actual) =>
+				actual == sortDirectionEnum.Ascending ? sortDirectionEnum.Descending : sortDirectionEnum.Ascending
+			);
 		}
 	};
 
@@ -105,7 +121,12 @@ export default function DataTable(props: TableProps) {
 		<DataTableContainer>
 			<TableContainer $loading={props.loading.toString()}>
 				<Table $hasLink={props.url != undefined ? "true" : "false"}>
-					<TableHeader header={props.header} sortIndex={sortIndex} handleHeaderButtonClick={handleHeaderButtonClick} />
+					<TableHeader
+						header={props.header}
+						sortIndex={sortIndex}
+						handleHeaderButtonClick={handleHeaderButtonClick}
+						sortDirection={sortDirection}
+					/>
 					<TableBody body={intervalBody} url={props.url} />
 				</Table>
 				{props.loading && <Loading />}

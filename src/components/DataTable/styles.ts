@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MdKeyboardArrowDown } from "react-icons/md";
 
 export const DataTableContainer = styled.div`
 	width: 100%;
@@ -37,9 +38,11 @@ export const Table = styled.table<TableI>`
 	white-space: nowrap;
 
 	thead {
+		height: 100%;
 		background-color: ${(props) => props.theme.lightgray};
 
 		th {
+			height: 100%;
 			text-align: left;
 
 			button {
@@ -50,6 +53,7 @@ export const Table = styled.table<TableI>`
 				background-color: transparent;
 				height: 100%;
 				cursor: pointer;
+				position: relative;
 			}
 
 			&.selected {
@@ -92,5 +96,18 @@ export const Table = styled.table<TableI>`
 	@media (max-width: 480px) {
 		font-size: 0.75rem;
 	}
+`;
+
+interface DirectionArrowI {
+	$ascending: string;
+}
+
+export const DirectionArrow = styled(MdKeyboardArrowDown)<DirectionArrowI>`
+	font-size: 1rem;
+	transition: transform ease-in-out 0.25s;
+	transform: rotate(${(props) => (props.$ascending == "true" ? "0deg" : "180deg")});
+
+	position: absolute;
+	right: 0;
 `;
 
