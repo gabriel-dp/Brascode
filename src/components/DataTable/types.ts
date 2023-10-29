@@ -1,7 +1,7 @@
 import { Id, Entity } from "@/types/entity";
 
 export interface TableItem {
-	text: string;
+	text: string | number;
 	image?: string;
 }
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+import { Pages } from "@/routes";
 import { useFetchData, FetchStatus } from "@/hooks/useFetchData";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
 import { PlayerI } from "@/types/player";
@@ -73,7 +74,7 @@ export default function Players() {
 				header={headerPlayerTable}
 				body={bodyPlayerTable}
 				perpage={30}
-				url=""
+				url={Pages.Players}
 				loading={statusPlayers != FetchStatus.Success}
 			/>
 		</PlayersContainer>

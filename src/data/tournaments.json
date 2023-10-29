@@ -3,7 +3,22 @@
 		{
 			"id": 1,
 			"name": "Campeonato Brasileiro Série A",
-			"year": 2023
+			"year": 2023,
+			"standings": [
+				{
+					"position": 5,
+					"teamId": "SAO",
+					"points": 50,
+					"games": 30,
+					"wins": 15,
+					"draws": 5,
+					"losses": 10,
+					"goalsScored": 40,
+					"goalsSuffered": 17,
+					"yellowCards": 11,
+					"redCards": 3
+				}
+			]
 		},
 		{
 			"id": 2,

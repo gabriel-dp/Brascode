@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import { Pages } from "@/routes";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { TeamI } from "@/types/team";
 import { PlayerI } from "@/types/player";
@@ -77,7 +78,7 @@ export default function TeamPage() {
 					header={headerPlayerTable}
 					body={bodyPlayerTable}
 					perpage={25}
-					url="/jogadores/"
+					url={Pages.Players}
 					loading={statusRoster != FetchStatus.Success}
 				/>
 			</div>

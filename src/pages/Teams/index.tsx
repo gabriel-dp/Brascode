@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { Pages } from "@/routes";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { TeamI } from "@/types/team";
@@ -69,7 +70,7 @@ export default function Teams() {
 				header={Object.values(headerTeamTable)}
 				body={bodyTeamTable}
 				perpage={20}
-				url=""
+				url={Pages.Teams}
 				loading={statusTeams != FetchStatus.Success}
 				sortIndex={1}
 			/>

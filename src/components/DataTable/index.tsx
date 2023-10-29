@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Pages } from "@/routes";
 import Loading from "@/components/Loading";
 import PageNavigator from "@/components/PageNavigator";
 
@@ -59,7 +60,7 @@ interface TableProps {
 	perpage: number;
 	loading: boolean;
 	sortIndex?: number;
-	url?: string;
+	url?: Pages;
 }
 
 export default function DataTable(props: TableProps) {
@@ -93,7 +94,7 @@ export default function DataTable(props: TableProps) {
 		// Sort based on the desired column
 		setBody((body) => [
 			...body.sort((a, b) =>
-				Object.values(a.data)[sortIndex].text.localeCompare(Object.values(b.data)[sortIndex].text)
+				Object.values(a.data)[sortIndex].text.toString().localeCompare(Object.values(b.data)[sortIndex].text.toString())
 			),
 		]);
 	}, [sortIndex]);
