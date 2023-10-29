@@ -11,6 +11,7 @@ import { CardContainer } from "./styles";
 
 interface GameCardI {
 	game: GameI;
+	refScroll: React.MutableRefObject<HTMLDivElement | null> | null;
 }
 
 export default function GameCard(props: GameCardI) {
@@ -37,7 +38,7 @@ export default function GameCard(props: GameCardI) {
 	};
 
 	return (
-		<CardContainer onClick={handleCardClick}>
+		<CardContainer onClick={handleCardClick} ref={props.refScroll}>
 			<div className="description">
 				<div className="time">
 					<p>{formatDateToHHmm(props.game.start)}</p>

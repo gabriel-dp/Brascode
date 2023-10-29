@@ -23,7 +23,33 @@ export const Filter = styled.div`
 	flex-grow: 1;
 
 	&.tournament {
-		width: min(100%, 15rem);
+		width: min(100%, 40rem);
+	}
+
+	&.nextgame {
+		width: min(100%, 13rem);
+	}
+`;
+
+export const FilterButton = styled.button`
+	width: 100%;
+	height: 100%;
+	padding: 0 1rem;
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.primaryText};
+	border: none;
+	border-radius: 100rem;
+	cursor: pointer;
+	transition: all ease-in-out 0.25s;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:hover {
+		background-color: ${(props) => props.theme.primaryHighlight};
 	}
 `;
 
