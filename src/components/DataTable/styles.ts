@@ -16,7 +16,8 @@ export const TableContainer = styled.div<TableContainerI>`
 	min-height: ${(props) => (props.$loading == "true" ? "7rem" : "none")};
 	border: 1px solid ${(props) => props.theme.gray};
 	border-radius: 0.5rem;
-	overflow-x: ${(props) => (props.$loading == "true" ? "none" : "scroll")};
+	overflow-x: auto;
+	overflow-y: ${(props) => (props.$loading == "true" ? "hidden" : "auto")};
 
 	display: flex;
 	flex-direction: column;

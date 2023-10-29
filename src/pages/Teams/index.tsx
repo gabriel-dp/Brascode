@@ -71,6 +71,7 @@ export default function Teams() {
 				perpage={20}
 				url=""
 				loading={statusTeams != FetchStatus.Success}
+				sortIndex={1}
 			/>
 		</TeamsContainer>
 	);
