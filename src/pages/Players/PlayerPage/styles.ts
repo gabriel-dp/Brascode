@@ -31,7 +31,7 @@ export const PlayerContainer = styled.div`
 
 	.statistics-wrapper {
 		flex-grow: 1;
-		max-width: 100%;
+		width: 100%;
 
 		display: flex;
 		flex-direction: column;
@@ -145,4 +145,3 @@ export const FilterContainer = styled.div`
 	gap: 1rem;
 	row-gap: 0.5rem;
 `;
-
