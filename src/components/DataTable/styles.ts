@@ -7,14 +7,28 @@ export const DataTableContainer = styled.div`
 	align-items: center;
 `;
 
-export const TableContainer = styled.div`
+interface TableContainerI {
+	$loading: string;
+}
+
+export const TableContainer = styled.div<TableContainerI>`
 	width: 100%;
+	min-height: ${(props) => (props.$loading == "true" ? "7rem" : "none")};
 	border: 1px solid ${(props) => props.theme.gray};
 	border-radius: 0.5rem;
-	overflow-x: scroll;
+	overflow-x: ${(props) => (props.$loading == "true" ? "none" : "scroll")};
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
 `;
 
-export const Table = styled.table`
+interface TableI {
+	$hasLink: string;
+}
+
+export const Table = styled.table<TableI>`
 	width: max(100%, 25rem);
 	border-spacing: 0;
 	font-size: 0.85rem;
@@ -57,7 +71,7 @@ export const Table = styled.table`
 		background-color: ${(props) => props.theme.white};
 
 		tr {
-			cursor: pointer;
+			cursor: ${(props) => (props.$hasLink == "true" ? "pointer" : "default")};
 			transition: background 0.25s ease;
 			&:hover {
 				background-color: ${(props) => props.theme.primaryHighlight}55;

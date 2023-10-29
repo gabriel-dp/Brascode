@@ -1,43 +1,55 @@
 import { useState, useEffect } from "react";
 
-import { TableEntity } from "@/components/DataTable/types";
-import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
-import { generateTeamText } from "@/types/team";
+import { useFetchData, FetchStatus } from "@/hooks/useFetchData";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
+import { TeamI, generateTeamText } from "@/types/team";
+import { PlayerI } from "@/types/player";
+import { TableEntity } from "@/components/DataTable/types";
 import DataTable from "@/components/DataTable";
+import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
 import DropdownOptions from "@/components/DropdownOptions";
 import Searchbar from "@/components/Searchbar";
 
-import dataPlayers from "@/data/players.json";
-import dataTeams from "@/data/teams.json";
-
 import { PlayersContainer, FilterContainer, Filter } from "./styles";
+import { ApiRequest } from "@/utils/requests";
 
 export default function Players() {
-	// Triggers when the filters change
+	// Filters
 	const [playerName, setPlayerName, playerNameTimed] = useSearchTimeout(1000);
 	const [teamSelected, setTeamSelected] = useState<MenuEntity | null>(null);
-	useEffect(() => {
-		console.log(playerNameTimed, teamSelected);
-	}, [playerNameTimed, teamSelected]);
 
-	// Creates table header and body
+	// Requests based on the filters
+	const { data: dataPlayers, status: statusPlayers } = useFetchData<PlayerI[]>(
+		ApiRequest.getUrlByFilters("players", { name_like: playerNameTimed }, { teamId: teamSelected?.id })
+	);
+	const { data: dataTeams, status: statusTeams } = useFetchData<TeamI[]>(ApiRequest.getUrlAll("teams"));
+
+	// Menu entities
+	const [teamsMenu, setTeamsMenu] = useState<MenuEntity[]>([]);
+	useEffect(() => {
+		if (!dataTeams) return;
+		setTeamsMenu(dataTeams.map((team) => convertToMenuEntity(team, generateTeamText(team))));
+	}, [dataTeams]);
+
+	// Table header and body
 	const headerPlayerTable = ["Nome", "Posição", "Time"];
 	const [bodyPlayerTable, setBodyPlayerTable] = useState<TableEntity[]>([]);
 	useEffect(() => {
+		if (!dataPlayers || !dataTeams) return;
 		setBodyPlayerTable(
-			dataPlayers.players.map((player) => ({
-				id: player.id,
-				data: [{ text: player.name }, { text: player.position }, { text: player.teamName }],
-			}))
+			dataPlayers.map(
+				(player) =>
+					({
+						id: player.id,
+						data: [
+							{ text: player.name },
+							{ text: player.position },
+							{ text: dataTeams.find((team) => team.id == player.teamId)?.name },
+						],
+					} as TableEntity)
+			)
 		);
-	}, []);
-
-	// Creates menu enitites
-	const [teamsMenu, setTeamsMenu] = useState<MenuEntity[]>([]);
-	useEffect(() => {
-		setTeamsMenu(dataTeams.teams.map((team) => convertToMenuEntity(team, generateTeamText(team))));
-	}, []);
+	}, [dataPlayers, dataTeams]);
 
 	return (
 		<PlayersContainer>
@@ -53,11 +65,17 @@ export default function Players() {
 						selected={teamSelected}
 						setSelected={setTeamSelected}
 						items={teamsMenu}
-						loading={false}
+						loading={statusTeams != FetchStatus.Success}
 					/>
 				</Filter>
 			</FilterContainer>
-			<DataTable header={headerPlayerTable} body={bodyPlayerTable} perpage={30} url="" />
+			<DataTable
+				header={headerPlayerTable}
+				body={bodyPlayerTable}
+				perpage={30}
+				url=""
+				loading={statusPlayers != FetchStatus.Success}
+			/>
 		</PlayersContainer>
 	);
 }

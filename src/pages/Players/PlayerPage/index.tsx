@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import { useFetchData } from "@/hooks/useFetchData";
 import { PlayerI } from "@/types/player";
 import { TeamI } from "@/types/team";
-import { generateTournamentText } from "@/types/tournaments";
+import { TournamentsI, generateTournamentText } from "@/types/tournaments";
+import { ApiRequest } from "@/utils/requests";
 import { formatDateToDDMMYYYY, calculateAge } from "@/utils/dates";
 import { generateFlagUrl } from "@/utils/country";
 import StatisticsPanel from "@/components/StatisticsPanel";
@@ -11,41 +13,44 @@ import { Statistics } from "@/components/StatisticsPanel/types";
 import DropdownOptions from "@/components/DropdownOptions";
 import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
 
-import dataPlayers from "@/data/players.json";
-import dataTeams from "@/data/teams.json";
-import dataTornaments from "@/data/tournaments.json";
-
 import { BioContainer, PlayerContainer, PlayerImageContainer, DataContainer, FilterContainer } from "./styles";
 
+function Data(props: { title: string; children: React.ReactNode }) {
+	return (
+		<DataContainer>
+			<p className="title">{props.title}</p>
+			<p className="data">{props.children}</p>
+		</DataContainer>
+	);
+}
+
 export default function PlayerPage() {
-	const [playerData, setPlayerData] = useState<PlayerI | undefined>(undefined);
-	const [teamData, setTeamData] = useState<TeamI | undefined>(undefined);
-
-	// Get player data based on params
-	const { id } = useParams();
-	useEffect(() => {
-		setPlayerData(dataPlayers.players.find((player) => player.id.toString() == id));
-	}, [id]);
-
-	// Get team data after get player data
-	useEffect(() => {
-		if (playerData) setTeamData(dataTeams.teams.find((team) => team.id.toString() == playerData.teamId));
-	}, [playerData]);
-
-	const [tournaments, setTournaments] = useState<MenuEntity[]>([]);
+	// Filters
 	const [selectedTournament, setSelectedTournament] = useState<MenuEntity | null>(null);
-	const [statistics, setStatistics] = useState<Statistics | null>(null);
 
-	// Get data from all tournaments
+	// Get id from url
+	const { id } = useParams();
+
+	// Requests
+	const { data: dataPlayer } = useFetchData<PlayerI>(ApiRequest.getUrlById("players", id ?? 0));
+	const { data: dataTeam } = useFetchData<TeamI>(
+		ApiRequest.getUrlById("teams", dataPlayer?.teamId ?? 0),
+		{},
+		dataPlayer != undefined
+	);
+	const { data: dataTournaments } = useFetchData<TournamentsI[]>(ApiRequest.getUrlByFilters("tournaments"));
+
+	// Menu
+	const [tournaments, setTournaments] = useState<MenuEntity[]>([]);
 	useEffect(() => {
+		if (!dataTournaments) return;
 		setTournaments(
-			dataTornaments.tournaments.map((tournament) =>
-				convertToMenuEntity(tournament, generateTournamentText(tournament))
-			)
+			dataTournaments.map((tournament) => convertToMenuEntity(tournament, generateTournamentText(tournament)))
 		);
-	}, []);
+	}, [dataTournaments]);
 
 	// Reload statistics when selected tournament changes
+	const [statistics, setStatistics] = useState<Statistics | null>(null);
 	useEffect(() => {
 		if (tournaments.length == 0) return;
 		if (!selectedTournament) {
@@ -60,36 +65,27 @@ export default function PlayerPage() {
 		});
 	}, [tournaments, selectedTournament]);
 
-	function Data(props: { title: string; children: React.ReactNode }) {
-		return (
-			<DataContainer>
-				<p className="title">{props.title}</p>
-				<p className="data">{props.children}</p>
-			</DataContainer>
-		);
-	}
-
 	return (
 		<PlayerContainer>
 			<div className="bio-container">
 				<PlayerImageContainer>
-					<img className="player" src={playerData?.image} />
+					<img className="player" src={dataPlayer?.image} />
 				</PlayerImageContainer>
 				<div className="bio-wrapper">
-					{playerData && (
-						<BioContainer $teamColor={teamData?.colors?.primary}>
+					{dataPlayer && (
+						<BioContainer $teamColor={dataTeam?.colors?.primary}>
 							<div className="main">
 								<div>
-									<p className="nick">{playerData?.nickname}</p>
-									<p className="name">{playerData?.name}</p>
-									<img className="country" src={generateFlagUrl(playerData?.nationality)} />
+									<p className="nick">{dataPlayer?.nickname}</p>
+									<p className="name">{dataPlayer?.name}</p>
+									<img className="country" src={generateFlagUrl(dataPlayer?.nationality)} />
 								</div>
 								<div>
-									{playerData?.teamId && (
+									{dataPlayer?.teamId && (
 										<div className="team">
-											<p>#{playerData?.jersey}</p>
-											<Link to={`/times/${teamData?.id}`}>
-												<img src={teamData?.image} />
+											<p>#{dataPlayer?.jersey}</p>
+											<Link to={`/times/${dataTeam?.id}`}>
+												<img src={dataTeam?.image} />
 											</Link>
 										</div>
 									)}
@@ -97,12 +93,12 @@ export default function PlayerPage() {
 							</div>
 							<hr />
 							<div className="data">
-								<Data title="Posição">{playerData.position}</Data>
-								<Data title="Altura">{playerData.height}cm</Data>
-								<Data title="Peso">{playerData.weight}kg</Data>
-								<Data title="Pé">{playerData.foot}</Data>
+								<Data title="Posição">{dataPlayer.position}</Data>
+								<Data title="Altura">{dataPlayer.height}cm</Data>
+								<Data title="Peso">{dataPlayer.weight}kg</Data>
+								<Data title="Pé">{dataPlayer.foot}</Data>
 								<Data title="Data de Nascimento">
-									{formatDateToDDMMYYYY(playerData.birthdate)} ({calculateAge(playerData.birthdate)} anos)
+									{formatDateToDDMMYYYY(dataPlayer.birthdate)} ({calculateAge(dataPlayer.birthdate)} anos)
 								</Data>
 							</div>
 						</BioContainer>

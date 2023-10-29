@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Loading from "@/components/Loading";
 import PageNavigator from "@/components/PageNavigator";
 
 import { TableEntity } from "./types";
@@ -56,6 +57,7 @@ interface TableProps {
 	header: string[];
 	body: TableEntity[];
 	perpage: number;
+	loading: boolean;
 	sortIndex?: number;
 	url?: string;
 }
@@ -98,11 +100,12 @@ export default function DataTable(props: TableProps) {
 
 	return (
 		<DataTableContainer>
-			<TableContainer>
-				<Table>
+			<TableContainer $loading={props.loading.toString()}>
+				<Table $hasLink={props.url != undefined ? "true" : "false"}>
 					<TableHeader header={props.header} sortIndex={sortIndex} handleHeaderButtonClick={handleHeaderButtonClick} />
 					<TableBody body={intervalBody} url={props.url} />
 				</Table>
+				{props.loading && <Loading />}
 			</TableContainer>
 			<PageComponent />
 		</DataTableContainer>
