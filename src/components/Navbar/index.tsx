@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MdMenu, MdOutlineClose } from "react-icons/md";
 
+import logo from "@/assets/logo-white.svg";
+
 import { NavContainer, NavHome, MenuIconContainer, NavWrapper } from "./styles";
 
 export default function Navbar() {
@@ -33,7 +35,7 @@ export default function Navbar() {
 			<NavWrapper className="navbar-wrapper">
 				<NavHome onClick={closeMenu}>
 					<Link to="/">
-						<h1>LOGO</h1>
+						<img src={logo} />
 					</Link>
 				</NavHome>
 				<ul className={menuActive ? "on" : "off"}>
@@ -47,4 +49,3 @@ export default function Navbar() {
 		</NavContainer>
 	);
 }
-

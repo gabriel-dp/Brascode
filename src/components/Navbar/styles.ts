@@ -119,6 +119,13 @@ export const NavHome = styled.div`
 	a {
 		color: inherit;
 		text-decoration: none;
+		height: 100%;
+		padding: 0.5rem 0;
+
+		img {
+			height: 100%;
+			max-height: 100%;
+		}
 	}
 `;
 
@@ -131,4 +138,3 @@ export const MenuIconContainer = styled.div`
 		display: block;
 	}
 `;
-
