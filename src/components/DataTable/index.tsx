@@ -76,15 +76,28 @@ interface TableProps {
 	url?: Pages;
 }
 
+function sortBody(a: TableEntity, b: TableEntity, sortIndex: number) {
+	const dataA = Object.values(a.data)[sortIndex].text,
+		dataB = Object.values(b.data)[sortIndex].text;
+	if (typeof dataA == "number" && typeof dataB == "number") {
+		return dataA == dataB ? 0 : dataA < dataB ? -1 : 1;
+	} else {
+		return dataA.toString().localeCompare(dataB.toString());
+	}
+}
+
 export default function DataTable(props: TableProps) {
 	const [body, setBody] = useState<TableEntity[]>([]);
 	const [intervalBody, setIntervalBody] = useState<TableEntity[]>([]);
 	const [sortIndex, setSortIndex] = useState(props.sortIndex ?? 0);
 	const [sortDirection, setSortDirection] = useState(sortDirectionEnum.Ascending);
 
+	// Sort body when component is rendered and when sorting index changes
 	useEffect(() => {
-		setBody(props.body);
-	}, [props.body]);
+		setBody((body) => [
+			...(props.body.length != body.length ? props.body : body).sort((a, b) => sortBody(a, b, sortIndex)),
+		]);
+	}, [props.body, sortIndex]);
 
 	// Controls the interval that will be displayed in the actual page
 	const [page, PageComponent] = PageNavigator({ length: body.length, max_per_page: props.perpage, interval: 1 });
@@ -106,16 +119,6 @@ export default function DataTable(props: TableProps) {
 			);
 		}
 	};
-
-	// Triggers when component is rendered and when sorting index changes
-	useEffect(() => {
-		// Sort based on the desired column
-		setBody((body) => [
-			...body.sort((a, b) =>
-				Object.values(a.data)[sortIndex].text.toString().localeCompare(Object.values(b.data)[sortIndex].text.toString())
-			),
-		]);
-	}, [sortIndex]);
 
 	return (
 		<DataTableContainer>

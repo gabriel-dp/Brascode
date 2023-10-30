@@ -143,7 +143,7 @@
 					"wins": 15,
 					"draws": 5,
 					"losses": 10,
-					"goalsScored": 40,
+					"goalsScored": 3,
 					"goalsSuffered": 17,
 					"yellowCards": 11,
 					"redCards": 3
@@ -160,6 +160,19 @@
 					"goalsSuffered": 57,
 					"yellowCards": 19,
 					"redCards": 8
+				},
+				{
+					"position": 1,
+					"teamId": "FLA",
+					"points": 60,
+					"games": 20,
+					"wins": 20,
+					"draws": 0,
+					"losses": 0,
+					"goalsScored": 95,
+					"goalsSuffered": 2,
+					"yellowCards": 1,
+					"redCards": 38
 				}
 			]
 		},
