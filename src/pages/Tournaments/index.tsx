@@ -5,7 +5,7 @@ import DataTable from "@/components/DataTable";
 import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
 import DropdownOptions from "@/components/DropdownOptions";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
-import { TournamentsI, generateTournamentText } from "@/types/tournaments";
+import { TournamentI, generateTournamentText } from "@/types/tournament";
 import { ApiRequest } from "@/utils/requests";
 import { TableEntity } from "@/components/DataTable/types";
 import { TeamI } from "@/types/team";
@@ -17,7 +17,7 @@ export default function Tournaments() {
 	const [selectedTournament, setSelectedTournament] = useState<MenuEntity | null>(null);
 
 	// Requests
-	const { data: dataTournaments, status: statusTournaments } = useFetchData<TournamentsI[]>(
+	const { data: dataTournaments, status: statusTournaments } = useFetchData<TournamentI[]>(
 		ApiRequest.getUrlAll("tournaments")
 	);
 	const { data: dataTeams, status: statusTeams } = useFetchData<TeamI[]>(
@@ -76,7 +76,7 @@ export default function Tournaments() {
 
 	return (
 		<TournamentsContainer>
-			<h1>Times</h1>
+			<h1>Torneios</h1>
 			<FilterContainer>
 				<Filter className="tournament">
 					<DropdownOptions

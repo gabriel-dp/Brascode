@@ -14,11 +14,11 @@ export interface StandingsI {
 	redCards: number;
 }
 
-export interface TournamentsI extends Entity {
+export interface TournamentI extends Entity {
 	name: string;
 	year: number;
 	standings: StandingsI[];
 }
 
-export const generateTournamentText = (t: TournamentsI) => `${t.name} (${t.year})`;
+export const generateTournamentText = (t: TournamentI) => `${t.name} (${t.year})`;
 

@@ -67,6 +67,7 @@ export default function Players() {
 						setSelected={setTeamSelected}
 						items={teamsMenu}
 						loading={statusTeams != FetchStatus.Success}
+						sort
 					/>
 				</Filter>
 			</FilterContainer>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdCheck } from "react-icons/md";
 
 import { stringIncludes, stringMatches } from "@/utils/strings";
@@ -15,12 +15,18 @@ interface DropdownOptionsI {
 	loading: boolean;
 	textInput?: boolean;
 	disableClear?: boolean;
+	sort?: boolean;
 }
 
 export default function DropdownOptions(props: DropdownOptionsI) {
 	const [search, setSearch] = useState("");
 	const [matchSearch, setMatchSearch] = useState<MenuEntity[]>([]);
 	const [isOpen, setIsOpen] = useState(false);
+
+	const items = useMemo(
+		() => (props.sort ? props.items.sort((a, b) => a.text.localeCompare(b.text)) : props.items),
+		[props.items, props.sort]
+	);
 
 	// Switches open/close menu state
 	const toggleOpen = () => setIsOpen(!isOpen);
@@ -42,8 +48,8 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 	};
 
 	useEffect(() => {
-		setMatchSearch(props.textInput ? [] : props.items);
-	}, [props]);
+		setMatchSearch(props.textInput ? [] : items);
+	}, [props, items]);
 
 	// Controls which items will appear as options
 	useEffect(() => {
@@ -58,9 +64,9 @@ export default function DropdownOptions(props: DropdownOptionsI) {
 				props.setSelected(null);
 			}
 
-			setMatchSearch(props.items.filter((item) => stringIncludes(item.text, search)));
+			setMatchSearch(items.filter((item) => stringIncludes(item.text, search)));
 		}
-	}, [search, props]);
+	}, [search, props, items]);
 
 	// Controls outside clicks
 	const dropdownRef = useRef<HTMLDivElement>(null);

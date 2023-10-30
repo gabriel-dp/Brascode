@@ -23,11 +23,15 @@ export const Filter = styled.div`
 	flex-grow: 1;
 
 	&.tournament {
-		width: min(100%, 40rem);
+		width: min(100%, 20rem);
+	}
+
+	&.team {
+		width: min(100%, 20rem);
 	}
 
 	&.nextgame {
-		width: min(100%, 13rem);
+		width: min(100%, 20rem);
 	}
 `;
 

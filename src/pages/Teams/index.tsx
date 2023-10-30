@@ -4,7 +4,7 @@ import { Pages } from "@/routes";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { TeamI } from "@/types/team";
-import { TournamentsI, generateTournamentText } from "@/types/tournaments";
+import { TournamentsI, generateTournamentText } from "@/types/tournament";
 import { ApiRequest } from "@/utils/requests";
 import DropdownOptions from "@/components/DropdownOptions";
 import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";

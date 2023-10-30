@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useFetchData } from "@/hooks/useFetchData";
 import { PlayerI } from "@/types/player";
 import { TeamI } from "@/types/team";
-import { TournamentsI, generateTournamentText } from "@/types/tournaments";
+import { TournamentsI, generateTournamentText } from "@/types/tournament";
 import { ApiRequest } from "@/utils/requests";
 import { formatDateToDDMMYYYY, calculateAge } from "@/utils/dates";
 import { generateFlagUrl } from "@/utils/country";

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { GameI } from "@/types/game";
-import { TournamentsI, generateTournamentText } from "@/types/tournaments";
+import { TournamentI, generateTournamentText } from "@/types/tournament";
 import { ApiRequest } from "@/utils/requests";
 import DropdownOptions from "@/components/DropdownOptions";
 import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
@@ -10,22 +10,25 @@ import GameCard from "@/components/GameCard";
 import Loading from "@/components/Loading";
 
 import { CardsContainer, Filter, FilterButton, FilterContainer, GamesContainer } from "./styles";
+import { TeamI, generateTeamText } from "@/types/team";
 
 export default function Games() {
 	// Filters
 	const [selectedTournament, setSelectedTournament] = useState<MenuEntity | null>(null);
+	const [selectedTeam, setSelectedTeam] = useState<MenuEntity | null>(null);
 
 	// Requests
 	const { data: dataGames, status: statusGames } = useFetchData<GameI[]>(
-		ApiRequest.getUrlByFilters("games", { tournamentId: selectedTournament?.id }),
+		ApiRequest.getUrlByFilters("games", { tournamentId: selectedTournament?.id }, { teamI: selectedTeam?.id }),
 		{},
 		selectedTournament != null
 	);
-	const { data: dataTournaments, status: statusTournaments } = useFetchData<TournamentsI[]>(
+	const { data: dataTournaments, status: statusTournaments } = useFetchData<TournamentI[]>(
 		ApiRequest.getUrlAll("tournaments")
 	);
+	const { data: dataTeams, status: statusTeams } = useFetchData<TeamI[]>(ApiRequest.getUrlAll("teams"));
 
-	// Menu
+	// Tournaments Menu
 	const [tournaments, setTournaments] = useState<MenuEntity[]>([]);
 	useEffect(() => {
 		if (!dataTournaments) return;
@@ -33,6 +36,13 @@ export default function Games() {
 			dataTournaments.map((tournament) => convertToMenuEntity(tournament, generateTournamentText(tournament)))
 		);
 	}, [dataTournaments]);
+
+	// Teams menu
+	const [teams, setTeams] = useState<MenuEntity[]>([]);
+	useEffect(() => {
+		if (!dataTeams) return;
+		setTeams(dataTeams.map((team) => convertToMenuEntity(team, generateTeamText(team))));
+	}, [dataTeams]);
 
 	// Set inital menu selection
 	useEffect(() => {
@@ -72,6 +82,16 @@ export default function Games() {
 						setSelected={setSelectedTournament}
 						loading={statusTournaments != FetchStatus.Success}
 						disableClear
+					/>
+				</Filter>
+				<Filter className="team">
+					<DropdownOptions
+						placeholder="Time"
+						items={teams}
+						selected={selectedTeam}
+						setSelected={setSelectedTeam}
+						loading={statusTeams != FetchStatus.Success}
+						sort
 					/>
 				</Filter>
 				<Filter className="nextgame">
