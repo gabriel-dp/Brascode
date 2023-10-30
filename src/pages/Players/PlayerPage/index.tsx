@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { useFetchData } from "@/hooks/useFetchData";
 import { PlayerI } from "@/types/player";
 import { TeamI } from "@/types/team";
-import { TournamentsI, generateTournamentText } from "@/types/tournament";
+import { TournamentI, generateTournamentText } from "@/types/tournament";
 import { ApiRequest } from "@/utils/requests";
 import { formatDateToDDMMYYYY, calculateAge } from "@/utils/dates";
 import { generateFlagUrl } from "@/utils/country";
@@ -38,7 +38,7 @@ export default function PlayerPage() {
 		{},
 		dataPlayer != undefined
 	);
-	const { data: dataTournaments } = useFetchData<TournamentsI[]>(ApiRequest.getUrlByFilters("tournaments"));
+	const { data: dataTournaments } = useFetchData<TournamentI[]>(ApiRequest.getUrlByFilters("tournaments"));
 
 	// Menu
 	const [tournaments, setTournaments] = useState<MenuEntity[]>([]);
