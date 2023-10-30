@@ -1,11 +1,16 @@
 import { Id, Entity } from "@/types/entity";
 
+export interface TableColumn {
+	text: string;
+	tooltip?: string;
+}
+
 export interface TableItem {
 	text: string | number;
 	image?: string;
 }
 
-export interface TableEntity {
+export interface TableRow {
 	id: Id;
 	data: TableItem[];
 }

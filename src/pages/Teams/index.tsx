@@ -4,12 +4,12 @@ import { Pages } from "@/routes";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { TeamI } from "@/types/team";
-import { TournamentsI, generateTournamentText } from "@/types/tournament";
+import { TournamentI, generateTournamentText } from "@/types/tournament";
 import { ApiRequest } from "@/utils/requests";
 import DropdownOptions from "@/components/DropdownOptions";
 import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
 import DataTable from "@/components/DataTable";
-import { TableEntity } from "@/components/DataTable/types";
+import { TableRow, TableColumn } from "@/components/DataTable/types";
 import Searchbar from "@/components/Searchbar";
 
 import { TeamsContainer, FilterContainer, Filter } from "./styles";
@@ -23,7 +23,7 @@ export default function Teams() {
 	const { data: dataTeams, status: statusTeams } = useFetchData<TeamI[]>(
 		ApiRequest.getUrlByFilters("teams", { name_like: teamNameTimed }, { tournamentId: tournamentSelected?.id })
 	);
-	const { data: dataTournaments, status: statusTournaments } = useFetchData<TournamentsI[]>(
+	const { data: dataTournaments, status: statusTournaments } = useFetchData<TournamentI[]>(
 		ApiRequest.getUrlAll("tournaments")
 	);
 
@@ -37,8 +37,8 @@ export default function Teams() {
 	}, [dataTournaments]);
 
 	// Table header and body
-	const headerTeamTable: string[] = ["", "Nome"];
-	const [bodyTeamTable, setBodyTeamTable] = useState<TableEntity[]>([]);
+	const headerTeamTable: TableColumn[] = [{ text: "" }, { text: "Nome" }];
+	const [bodyTeamTable, setBodyTeamTable] = useState<TableRow[]>([]);
 	useEffect(() => {
 		if (!dataTeams) return;
 		setBodyTeamTable(

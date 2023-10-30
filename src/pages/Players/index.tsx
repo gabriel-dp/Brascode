@@ -7,7 +7,7 @@ import { PlayerI } from "@/types/player";
 import { TeamI, generateTeamText } from "@/types/team";
 import { ApiRequest } from "@/utils/requests";
 import DataTable from "@/components/DataTable";
-import { TableEntity } from "@/components/DataTable/types";
+import { TableColumn, TableRow } from "@/components/DataTable/types";
 import DropdownOptions from "@/components/DropdownOptions";
 import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
 import Searchbar from "@/components/Searchbar";
@@ -33,22 +33,19 @@ export default function Players() {
 	}, [dataTeams]);
 
 	// Table header and body
-	const headerPlayerTable = ["Nome", "Posição", "Time"];
-	const [bodyPlayerTable, setBodyPlayerTable] = useState<TableEntity[]>([]);
+	const headerPlayerTable: TableColumn[] = [{ text: "Nome" }, { text: "Posição" }, { text: "Time" }];
+	const [bodyPlayerTable, setBodyPlayerTable] = useState<TableRow[]>([]);
 	useEffect(() => {
 		if (!dataPlayers || !dataTeams) return;
 		setBodyPlayerTable(
-			dataPlayers.map(
-				(player) =>
-					({
-						id: player.id,
-						data: [
-							{ text: player.name },
-							{ text: player.position },
-							{ text: dataTeams.find((team) => team.id == player.teamId)?.name },
-						],
-					} as TableEntity)
-			)
+			dataPlayers.map((player) => ({
+				id: player.id,
+				data: [
+					{ text: player.name },
+					{ text: player.position },
+					{ text: dataTeams.find((team) => team.id == player.teamId)?.name ?? "" },
+				],
+			}))
 		);
 	}, [dataPlayers, dataTeams]);
 

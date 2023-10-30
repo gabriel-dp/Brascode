@@ -7,7 +7,7 @@ import DropdownOptions from "@/components/DropdownOptions";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { TournamentI, generateTournamentText } from "@/types/tournament";
 import { ApiRequest } from "@/utils/requests";
-import { TableEntity } from "@/components/DataTable/types";
+import { TableRow, TableColumn } from "@/components/DataTable/types";
 import { TeamI } from "@/types/team";
 
 import { Filter, FilterContainer, TournamentsContainer } from "./styles";
@@ -42,8 +42,22 @@ export default function Tournaments() {
 	}, [tournamentsMenu]);
 
 	// Table header and body
-	const headerStandingsTable = ["#", "", "Time", "PTS", "JG", "VIT", "EMP", "DER", "GP", "GC", "SG", "CA", "CV"];
-	const [bodyStandingsTable, setBodyStandingsTable] = useState<TableEntity[]>([]);
+	const headerStandingsTable: TableColumn[] = [
+		{ text: "#", tooltip: "Classificação" },
+		{ text: "" },
+		{ text: "Time" },
+		{ text: "PTS", tooltip: "Pontos" },
+		{ text: "JG", tooltip: "Jogos" },
+		{ text: "VIT", tooltip: "Vitórias" },
+		{ text: "EMP", tooltip: "Empates" },
+		{ text: "DER", tooltip: "Derrotas" },
+		{ text: "GP", tooltip: "Gols Pró" },
+		{ text: "GC", tooltip: "Gols Contra" },
+		{ text: "SG", tooltip: "Saldo de Gols" },
+		{ text: "CA", tooltip: "Cartões Amarelos" },
+		{ text: "CV", tooltip: "Cartões Vermelhos" },
+	];
+	const [bodyStandingsTable, setBodyStandingsTable] = useState<TableRow[]>([]);
 	useEffect(() => {
 		if (!dataTournaments || !selectedTournament || !dataTeams) return;
 		const standings = dataTournaments.find((tournament) => tournament.id == selectedTournament.id)?.standings;

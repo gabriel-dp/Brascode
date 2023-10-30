@@ -5,7 +5,7 @@ import { Pages } from "@/routes";
 import Loading from "@/components/Loading";
 import PageNavigator from "@/components/PageNavigator";
 
-import { TableEntity } from "./types";
+import { TableColumn, TableRow } from "./types";
 import { DataTableContainer, TableContainer, Table, DirectionArrow } from "./styles";
 
 enum sortDirectionEnum {
@@ -14,7 +14,7 @@ enum sortDirectionEnum {
 }
 
 interface TableHeaderI {
-	header: string[];
+	header: TableColumn[];
 	sortIndex: number;
 	sortDirection: sortDirectionEnum;
 	handleHeaderButtonClick: (value: number) => void;
@@ -26,10 +26,10 @@ function TableHeader(props: TableHeaderI) {
 			<tr>
 				{props.header.map((column, index) => (
 					<th
-						key={column}
-						className={(props.sortIndex == index ? "selected" : "unselected") + (column == "" ? " min" : "")}>
-						<button onClick={() => props.handleHeaderButtonClick(index)}>
-							{column}
+						key={column.text + index}
+						className={(props.sortIndex == index ? "selected" : "unselected") + (column.text == "" ? " min" : "")}>
+						<button onClick={() => props.handleHeaderButtonClick(index)} title={column.tooltip}>
+							{column.text}
 							{props.sortIndex == index && (
 								<DirectionArrow $ascending={props.sortDirection == sortDirectionEnum.Ascending ? "true" : "false"} />
 							)}
@@ -42,7 +42,7 @@ function TableHeader(props: TableHeaderI) {
 }
 
 interface TableBodyI {
-	body: TableEntity[];
+	body: TableRow[];
 	url?: string;
 }
 
@@ -68,15 +68,15 @@ function TableBody(props: TableBodyI) {
 }
 
 interface TableProps {
-	header: string[];
-	body: TableEntity[];
+	header: TableColumn[];
+	body: TableRow[];
 	perpage: number;
 	loading: boolean;
 	sortIndex?: number;
 	url?: Pages;
 }
 
-function sortBody(a: TableEntity, b: TableEntity, sortIndex: number) {
+function sortBody(a: TableRow, b: TableRow, sortIndex: number) {
 	const dataA = Object.values(a.data)[sortIndex].text,
 		dataB = Object.values(b.data)[sortIndex].text;
 	if (typeof dataA == "number" && typeof dataB == "number") {
@@ -87,8 +87,8 @@ function sortBody(a: TableEntity, b: TableEntity, sortIndex: number) {
 }
 
 export default function DataTable(props: TableProps) {
-	const [body, setBody] = useState<TableEntity[]>([]);
-	const [intervalBody, setIntervalBody] = useState<TableEntity[]>([]);
+	const [body, setBody] = useState<TableRow[]>([]);
+	const [intervalBody, setIntervalBody] = useState<TableRow[]>([]);
 	const [sortIndex, setSortIndex] = useState(props.sortIndex ?? 0);
 	const [sortDirection, setSortDirection] = useState(sortDirectionEnum.Ascending);
 

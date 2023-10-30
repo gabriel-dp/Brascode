@@ -9,7 +9,7 @@ import { ApiRequest } from "@/utils/requests";
 import { generateFlagUrl } from "@/utils/country";
 import { formatDateToDDMMYYYY, calculateAge } from "@/utils/dates";
 import DataTable from "@/components/DataTable";
-import { TableEntity } from "@/components/DataTable/types";
+import { TableRow, TableColumn } from "@/components/DataTable/types";
 
 import { BioContainer, DataContainer, TeamContainer, TeamImageContainer } from "./styles";
 
@@ -33,8 +33,8 @@ export default function TeamPage() {
 	);
 
 	// Table header and body
-	const headerPlayerTable = ["Nome", "Posição"];
-	const [bodyPlayerTable, setBodyPlayerTable] = useState<TableEntity[]>([]);
+	const headerPlayerTable: TableColumn[] = [{ text: "Nome" }, { text: "Posição" }];
+	const [bodyPlayerTable, setBodyPlayerTable] = useState<TableRow[]>([]);
 	useEffect(() => {
 		if (!dataRoster) return;
 		setBodyPlayerTable(
