@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MdMenu, MdOutlineClose } from "react-icons/md";
 
+import { Pages } from "@/routes";
 import logo from "@/assets/logo-white.svg";
 
 import { NavContainer, NavHome, MenuIconContainer, NavWrapper } from "./styles";
@@ -30,22 +31,29 @@ export default function Navbar() {
 		);
 	}
 
+	// Fix page path active state removing the end slash
+	function fixPagePath(page: string) {
+		if (page[page.length - 1] == "/") return page.slice(0, page.length - 1);
+		return page;
+	}
+
 	return (
 		<NavContainer className="navbar-container">
 			<NavWrapper className="navbar-wrapper">
 				<NavHome onClick={closeMenu}>
-					<Link to="/">
+					<Link to={fixPagePath(Pages.Home)}>
 						<img src={logo} />
 					</Link>
 				</NavHome>
 				<ul className={menuActive ? "on" : "off"}>
-					<NavComponent title="Torneios" path="/torneios" />
-					<NavComponent title="Jogos" path="/jogos" />
-					<NavComponent title="Times" path="/times" />
-					<NavComponent title="Jogadores" path="/jogadores" />
+					<NavComponent title="Torneios" path={fixPagePath(Pages.Tournaments)} />
+					<NavComponent title="Jogos" path={fixPagePath(Pages.Games)} />
+					<NavComponent title="Times" path={fixPagePath(Pages.Teams)} />
+					<NavComponent title="Jogadores" path={fixPagePath(Pages.Players)} />
 				</ul>
 				<MenuIconContainer onClick={handleMenuClick}>{menuActive ? <MdOutlineClose /> : <MdMenu />}</MenuIconContainer>
 			</NavWrapper>
 		</NavContainer>
 	);
 }
+
