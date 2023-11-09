@@ -2,12 +2,12 @@ import { Entity, Id } from "./entity";
 
 export type TimeInterval = string; // minutes and seconds
 
-export interface GoalI {
+export interface GoalI extends Entity {
 	time: TimeInterval;
 	teamIdAuthor: Id;
 	teamIdSuffered: Id;
 	playerIdAuthor: Id;
-	playerIdAssit: Id | null;
+	playerIdAssist: Id | null;
 	isOwn: boolean;
 }
 
@@ -16,7 +16,7 @@ export enum CardColor {
 	Yellow = "yellow",
 }
 
-export interface CardI {
+export interface CardI extends Entity {
 	time: TimeInterval;
 	color: CardColor;
 	teamId: Id;

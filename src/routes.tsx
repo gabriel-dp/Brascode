@@ -4,6 +4,7 @@ import MainPanel from "@/components/MainPanel";
 import Home from "@/pages/Home";
 import Tournaments from "@/pages/Tournaments";
 import Games from "@/pages/Games";
+import GamePage from "@/pages/Games/GamePage";
 import Teams from "@/pages/Teams/";
 import TeamPage from "@/pages/Teams/TeamPage";
 import Players from "@/pages/Players";
@@ -25,6 +26,7 @@ export default function Router() {
 					<Route path={Pages.Home} element={<Home />} />
 					<Route path={Pages.Tournaments} element={<Tournaments />} />
 					<Route path={Pages.Games} element={<Games />} />
+					<Route path={Pages.Games + ":id"} element={<GamePage />} />
 					<Route path={Pages.Teams} element={<Teams />} />
 					<Route path={Pages.Teams + ":id"} element={<TeamPage />} />
 					<Route path={Pages.Players} element={<Players />} />

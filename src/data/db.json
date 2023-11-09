@@ -209,8 +209,38 @@
 			"start": "2023-10-29T20:50:00.000Z",
 			"teamIdHome": "CRU",
 			"teamIdAway": "CAM",
-			"goals": [],
-			"cards": []
+			"goals": [
+				{
+					"time": 50,
+					"teamIdAuthor": "CRU",
+					"teamIdSuffered": "CAM",
+					"playerIdAuthor": 1,
+					"playerIdAssist": 2,
+					"isOwn": true
+				},
+				{
+					"time": 91,
+					"teamIdAuthor": "CAM",
+					"teamIdSuffered": "CRU",
+					"playerIdAuthor": 2,
+					"playerIdAssist": 1,
+					"isOwn": false
+				}
+			],
+			"cards": [
+				{
+					"time": 10,
+					"color": "yellow",
+					"teamId": "CRU",
+					"playerId": 2
+				},
+				{
+					"time": 82,
+					"color": "red",
+					"teamId": "CRU",
+					"playerId": 2
+				}
+			]
 		},
 		{
 			"id": 2,
