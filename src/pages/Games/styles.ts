@@ -60,6 +60,7 @@ export const FilterButton = styled.button`
 export const CardsContainer = styled.div`
 	width: 100%;
 	overflow-x: auto;
+	overflow-y: hidden;
 
 	display: flex;
 	flex-direction: column;
