@@ -53,7 +53,7 @@ export const DropdownHeader = styled.div<{ loading: string }>`
 
 export const DropdownContent = styled.div`
 	max-height: 575%;
-	overflow-y: scroll;
+	overflow-y: auto;
 	width: 100%;
 	border-radius: 0.5rem;
 	box-shadow: 0 0 1rem ${(props) => props.theme.gray}77;
@@ -87,4 +87,3 @@ export const DropdownItem = styled.div`
 		background-color: ${(props) => props.theme.lightgray};
 	}
 `;
-
