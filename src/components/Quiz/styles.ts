@@ -30,10 +30,10 @@ export const OptionButton = styled.button`
 	padding: 0.625rem 1rem;
 	border-radius: 0.5rem;
 	border: 1px solid ${(props) => props.theme.gray};
-	transition: all 0.25s ease-in-out;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 	overflow: hidden;
+	transition: all 0.25s ease-in-out;
 
 	&.active {
 		background-color: ${(props) => props.theme.lightgray || "default"};
@@ -41,6 +41,7 @@ export const OptionButton = styled.button`
 
 		&:hover {
 			border: 1px solid ${(props) => props.theme.primary};
+			filter: drop-shadow(0 0 0.5rem ${(props) => props.theme.primary}77);
 		}
 	}
 
