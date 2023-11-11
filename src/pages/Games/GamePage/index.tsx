@@ -65,7 +65,7 @@ function EventCard(props: EventI<CardI>) {
 	return (
 		<EventCardContainer $primaryColor={primaryColor} $secondaryColor={secondaryColor}>
 			<div className="header">
-				<p>{props.event.color == CardColor.Red ? "Expulsão!" : "Punição!"}</p>
+				<p>Punição!</p>
 				<p>{props.event.time}&quot;</p>
 			</div>
 			<div className="description">
@@ -194,4 +194,3 @@ export default function GamePage() {
 		</GameContainer>
 	);
 }
-
