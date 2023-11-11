@@ -46,7 +46,7 @@ export default function GameCard(props: GameCardI) {
 			</div>
 			<div className="teams">
 				<div className="team">
-					<img src={dataHome?.image} />
+					<img src={dataHome?.image} alt={dataHome?.id.toString()} />
 					<p>{dataHome?.abbreviation}</p>
 					<p className="score">{scoreHome}</p>
 				</div>
@@ -54,7 +54,7 @@ export default function GameCard(props: GameCardI) {
 				<div className="team">
 					<p className="score">{scoreAway}</p>
 					<p>{dataAway?.abbreviation}</p>
-					<img src={dataAway?.image} />
+					<img src={dataAway?.image} alt={dataAway?.id.toString()} />
 				</div>
 			</div>
 			<div className="description">
@@ -65,4 +65,3 @@ export default function GameCard(props: GameCardI) {
 		</CardContainer>
 	);
 }
-

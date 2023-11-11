@@ -49,7 +49,7 @@ export default function TeamPage() {
 		<TeamContainer $teamColor={dataTeam?.colors?.primary}>
 			<div className="bio-container">
 				<TeamImageContainer>
-					<img className="team" src={dataTeam?.image} />
+					<img className="team" src={dataTeam?.image} alt={dataTeam?.id.toString()} />
 				</TeamImageContainer>
 				<div className="bio-wrapper">
 					{dataTeam && (
@@ -58,7 +58,7 @@ export default function TeamPage() {
 								<div>
 									<p className="name">{dataTeam.name}</p>
 									<p className="abbreviation">{dataTeam.abbreviation}</p>
-									<img className="country" src={generateFlagUrl(dataTeam.country)} />
+									<img className="country" src={generateFlagUrl(dataTeam.country)} alt={dataTeam.country} />
 								</div>
 							</div>
 							<hr />
@@ -85,4 +85,3 @@ export default function TeamPage() {
 		</TeamContainer>
 	);
 }
-

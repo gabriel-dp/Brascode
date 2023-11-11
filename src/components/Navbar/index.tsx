@@ -42,7 +42,7 @@ export default function Navbar() {
 			<NavWrapper className="navbar-wrapper">
 				<NavHome onClick={closeMenu}>
 					<Link to={fixPagePath(Pages.Home)}>
-						<img src={logo} />
+						<img src={logo} alt="Menu" />
 					</Link>
 				</NavHome>
 				<ul className={menuActive ? "on" : "off"}>
@@ -56,4 +56,3 @@ export default function Navbar() {
 		</NavContainer>
 	);
 }
-

@@ -69,7 +69,7 @@ export default function PlayerPage() {
 		<PlayerContainer>
 			<div className="bio-container">
 				<PlayerImageContainer>
-					<img className="player" src={dataPlayer?.image} />
+					<img className="player" src={dataPlayer?.image} alt={dataPlayer?.name} />
 				</PlayerImageContainer>
 				<div className="bio-wrapper">
 					{dataPlayer && (
@@ -78,14 +78,18 @@ export default function PlayerPage() {
 								<div>
 									<p className="nick">{dataPlayer?.nickname}</p>
 									<p className="name">{dataPlayer?.name}</p>
-									<img className="country" src={generateFlagUrl(dataPlayer?.nationality)} />
+									<img
+										className="country"
+										src={generateFlagUrl(dataPlayer?.nationality)}
+										alt={dataPlayer?.nationality}
+									/>
 								</div>
 								<div>
 									{dataPlayer?.teamId && (
 										<div className="team">
 											<p>#{dataPlayer?.jersey}</p>
 											<Link to={`/times/${dataTeam?.id}`}>
-												<img src={dataTeam?.image} />
+												<img src={dataTeam?.image} alt={dataTeam?.id.toString()} />
 											</Link>
 										</div>
 									)}
@@ -122,4 +126,3 @@ export default function PlayerPage() {
 		</PlayerContainer>
 	);
 }
-

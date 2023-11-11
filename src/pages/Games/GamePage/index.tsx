@@ -149,7 +149,7 @@ export default function GamePage() {
 					{dataGame && (
 						<div className="teams">
 							<Link className="team" to={Pages.Teams + dataTeamHome?.id.toString()}>
-								<img src={dataTeamHome?.image} />
+								<img src={dataTeamHome?.image} alt={dataTeamHome?.name} />
 								<p>{dataTeamHome?.abbreviation}</p>
 							</Link>
 							<div className="score">
@@ -158,7 +158,7 @@ export default function GamePage() {
 								<p>{goalsAway.length}</p>
 							</div>
 							<Link className="team" to={Pages.Teams + dataTeamAway?.id.toString()}>
-								<img src={dataTeamAway?.image} />
+								<img src={dataTeamAway?.image} alt={dataTeamAway?.name} />
 								<p>{dataTeamAway?.abbreviation}</p>
 							</Link>
 						</div>
@@ -180,11 +180,19 @@ export default function GamePage() {
 			<div className="timeline-container">
 				<h2>Linha do tempo</h2>
 				{timeline.length > 0 && dataTeamHome && dataTeamAway ? (
-					timeline.map((event) =>
+					timeline.map((event, i) =>
 						event.type == Event.Goal ? (
-							<EventGoal key={event.data.id} event={event.data as GoalI} teams={[dataTeamHome, dataTeamAway]} />
+							<EventGoal
+								key={`${event.data.id}-${i}`}
+								event={event.data as GoalI}
+								teams={[dataTeamHome, dataTeamAway]}
+							/>
 						) : (
-							<EventCard key={event.data.id} event={event.data as CardI} teams={[dataTeamHome, dataTeamAway]} />
+							<EventCard
+								key={`${event.data.id}-${i}`}
+								event={event.data as CardI}
+								teams={[dataTeamHome, dataTeamAway]}
+							/>
 						)
 					)
 				) : (

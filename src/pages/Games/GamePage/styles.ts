@@ -114,6 +114,7 @@ export const EventCardContainer = styled.div<EventCardContainerI>`
 	border-radius: 1rem;
 	overflow: hidden;
 	white-space: nowrap;
+	border: 1px solid ${(props) => props.theme.lightgray};
 	filter: drop-shadow(0 0 0.5rem ${(props) => props.$primaryColor}AA);
 
 	display: flex;
@@ -164,4 +165,3 @@ export const EventCardContainer = styled.div<EventCardContainerI>`
 		}
 	}
 `;
-
