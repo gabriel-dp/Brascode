@@ -59,7 +59,6 @@ export const FilterButton = styled.button`
 
 export const CardsContainer = styled.div`
 	width: 100%;
-	padding: 1rem 0;
 	overflow-x: auto;
 
 	display: flex;
@@ -78,4 +77,3 @@ export const CardsContainer = styled.div`
 		}
 	}
 `;
-
