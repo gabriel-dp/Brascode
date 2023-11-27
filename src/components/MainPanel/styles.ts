@@ -43,5 +43,10 @@ export const MainContainer = styled.div.attrs({
 		font-size: 1.5rem;
 		color: ${(props) => props.theme.primary};
 	}
+
+	hr {
+		border: 1px solid ${(props) => props.theme.gray};
+		margin: 1rem 0;
+	}
 `;
 

@@ -1,0 +1,4 @@
+{
+	"/ranking/:tournamentId/:category/:limit": "/ranking?tournamentId=:tournamentId&category=:category&_limit=:limit&_sort=quantity&_order=desc"
+}
+

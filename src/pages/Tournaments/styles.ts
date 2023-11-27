@@ -27,3 +27,9 @@ export const Filter = styled.div`
 	}
 `;
 
+export const RankingsContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+`;
+

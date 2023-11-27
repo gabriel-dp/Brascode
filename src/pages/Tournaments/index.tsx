@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 
 import { Pages } from "@/routes";
-import DataTable from "@/components/DataTable";
-import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
-import DropdownOptions from "@/components/DropdownOptions";
+import { ApiRequest } from "@/utils/requests";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { TournamentI, generateTournamentText } from "@/types/tournament";
-import { ApiRequest } from "@/utils/requests";
-import { TableRow, TableColumn } from "@/components/DataTable/types";
 import { TeamI } from "@/types/team";
+import DataTable from "@/components/DataTable";
+import { TableRow, TableColumn } from "@/components/DataTable/types";
+import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
+import DropdownOptions from "@/components/DropdownOptions";
+import PlayerRanking from "@/components/PlayerRanking";
 
-import { Filter, FilterContainer, TournamentsContainer } from "./styles";
+import { Filter, FilterContainer, RankingsContainer, TournamentsContainer } from "./styles";
 
 export default function Tournaments() {
 	// Filters
@@ -110,6 +111,18 @@ export default function Tournaments() {
 				loading={statusTournaments != FetchStatus.Success || statusTeams != FetchStatus.Success}
 				url={Pages.Teams}
 			/>
+			<hr />
+			{selectedTournament && (
+				<RankingsContainer>
+					<h1>Rankings</h1>
+					<PlayerRanking
+						title={"Mais Gols na Temporada"}
+						tournamentId={selectedTournament?.id}
+						category="goals"
+						limit={5}
+					/>
+				</RankingsContainer>
+			)}
 		</TournamentsContainer>
 	);
 }

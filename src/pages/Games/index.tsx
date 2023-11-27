@@ -19,7 +19,7 @@ export default function Games() {
 
 	// Requests
 	const { data: dataGames, status: statusGames } = useFetchData<GameI[]>(
-		ApiRequest.getUrlByFilters("games", { tournamentId: selectedTournament?.id }, { teamI: selectedTeam?.id }),
+		ApiRequest.getUrlByFilters("games", { tournamentId: selectedTournament?.id }, { teamId: selectedTeam?.id }),
 		{},
 		selectedTournament != null
 	);

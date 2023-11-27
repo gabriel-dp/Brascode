@@ -392,6 +392,42 @@
 			"goals": [],
 			"cards": []
 		}
+	],
+	"ranking": [
+		{
+			"id": 1,
+			"name": "Gabriel de Paula Meira",
+			"nickname": "Gabriel",
+			"birthdate": "2004-06-19T13:40:00Z",
+			"nationality": "BR",
+			"height": 183,
+			"weight": 70,
+			"position": "Goleiro",
+			"foot": "Destro",
+			"teamId": "SAO",
+			"jersey": 23,
+			"image": "https://avatars.githubusercontent.com/u/66735014?v=4",
+			"tournamentId": 1,
+			"category": "goals",
+			"quantity": 5
+		},
+		{
+			"id": 2,
+			"name": "Pedro Antônio Machado Costa",
+			"nickname": "Pedro Machado",
+			"birthdate": "2004-06-19T13:40:00Z",
+			"nationality": "BR",
+			"height": 175,
+			"weight": 70,
+			"position": "FW",
+			"foot": "Destro",
+			"teamId": "CRU",
+			"jersey": 10,
+			"image": "https://avatars.githubusercontent.com/u/102988416?v=4",
+			"tournamentId": 1,
+			"category": "goals",
+			"quantity": 15
+		}
 	]
 }
 

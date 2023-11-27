@@ -13,5 +13,9 @@ export interface PlayerI extends Entity {
 	jersey: number | null;
 }
 
+export interface RankedPlayerI extends PlayerI {
+	quantity: number;
+}
+
 export const generatePlayerText = (p: PlayerI): string => p.name;
 
