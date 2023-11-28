@@ -13,9 +13,15 @@ export interface PlayerI extends Entity {
 	jersey: number | null;
 }
 
+export const generatePlayerText = (p: PlayerI): string => p.name;
+
 export interface RankedPlayerI extends PlayerI {
 	quantity: number;
 }
 
-export const generatePlayerText = (p: PlayerI): string => p.name;
-
+export interface StatisticsPlayerI extends PlayerI {
+	goals: number;
+	assists: number;
+	cardsYellow: number;
+	cardsRed: number;
+}

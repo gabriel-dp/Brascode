@@ -1,20 +1,31 @@
+import { Link } from "react-router-dom";
+
+import { Pages } from "@/routes";
 import { ApiRequest } from "@/utils/requests";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { RankedPlayerI } from "@/types/player";
 import { Id } from "@/types/entity";
+import Loading from "@/components/Loading";
 
 import { RankingContainer, PlayerCardContainer } from "./styles";
-import Loading from "../Loading";
 
 function PlayerCard(props: { position: number; player: RankedPlayerI }) {
 	return (
 		<PlayerCardContainer>
-			<div className="position">{props.position}º</div>
-			<div className="player">
-				<p>
-					{props.player.name} ({props.player.nickname})
-				</p>
+			<div className="position">
+				<p>{props.position}º</p>
 			</div>
+			<Link to={Pages.Players + props.player.id.toString()}>
+				<div className="player">
+					<div className="image">
+						<img src={props.player.image} alt={props.player.id.toString()} />
+					</div>
+					<p>{props.player.nickname}</p>
+					<div className="quantity">
+						<p>({props.player.quantity})</p>
+					</div>
+				</div>
+			</Link>
 		</PlayerCardContainer>
 	);
 }
@@ -43,4 +54,3 @@ export default function PlayerRanking(props: PlayerRankingI) {
 		</RankingContainer>
 	);
 }
-

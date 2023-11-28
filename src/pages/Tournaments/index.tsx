@@ -116,9 +116,21 @@ export default function Tournaments() {
 				<RankingsContainer>
 					<h1>Rankings</h1>
 					<PlayerRanking
-						title={"Mais Gols na Temporada"}
+						title="Mais Gols no Torneio"
 						tournamentId={selectedTournament?.id}
 						category="goals"
+						limit={5}
+					/>
+					<PlayerRanking
+						title="Mais Assistências no Torneio"
+						tournamentId={selectedTournament?.id}
+						category="assists"
+						limit={5}
+					/>
+					<PlayerRanking
+						title="Mais Cartões na Torneio"
+						tournamentId={selectedTournament?.id}
+						category="cards"
 						limit={5}
 					/>
 				</RankingsContainer>
@@ -126,4 +138,3 @@ export default function Tournaments() {
 		</TournamentsContainer>
 	);
 }
-

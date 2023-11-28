@@ -9,7 +9,7 @@
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview",
 		"prepare": "husky install",
-		"json-server": "json-server --watch"
+		"json-server": "json-server --watch src/data/db.json --routes src/data/routes.json"
 	},
 	"dependencies": {
 		"react": "^18.2.0",
@@ -37,4 +37,3 @@
 		"vite-tsconfig-paths": "^4.2.1"
 	}
 }
-
