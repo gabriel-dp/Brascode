@@ -1,4 +1,5 @@
 {
-	"/ranking/:tournamentId/:category/:limit": "/ranking?tournamentId=:tournamentId&category=:category&_limit=:limit&_sort=quantity&_order=desc"
+	"/ranking/:tournamentId/:category/:limit": "/ranking?tournamentId=:tournamentId&category=:category&_limit=:limit&_sort=quantity&_order=desc",
+	"/statistics/:tournamentId/:playerId/": "/statistics/:playerId?tournamentId=:tournamentId"
 }
 

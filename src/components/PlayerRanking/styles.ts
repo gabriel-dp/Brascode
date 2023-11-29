@@ -52,13 +52,10 @@ export const PlayerCardContainer = styled.div`
 		width: 100%;
 	}
 
-	.position {
-		font-size: 1.25rem;
-		font-weight: bold;
-	}
-
 	.quantity {
-		font-size: 1.15rem;
+		width: 3.5rem;
+		text-align: center;
+		font-size: 1.25rem;
 		font-weight: bold;
 	}
 
@@ -80,3 +77,4 @@ export const PlayerCardContainer = styled.div`
 		}
 	}
 `;
+

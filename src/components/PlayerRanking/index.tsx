@@ -12,8 +12,8 @@ import { RankingContainer, PlayerCardContainer } from "./styles";
 function PlayerCard(props: { position: number; player: RankedPlayerI }) {
 	return (
 		<PlayerCardContainer>
-			<div className="position">
-				<p>{props.position}º</p>
+			<div className="quantity">
+				<p>{props.player.quantity}</p>
 			</div>
 			<Link to={Pages.Players + props.player.id.toString()}>
 				<div className="player">
@@ -21,9 +21,6 @@ function PlayerCard(props: { position: number; player: RankedPlayerI }) {
 						<img src={props.player.image} alt={props.player.id.toString()} />
 					</div>
 					<p>{props.player.nickname}</p>
-					<div className="quantity">
-						<p>({props.player.quantity})</p>
-					</div>
 				</div>
 			</Link>
 		</PlayerCardContainer>
@@ -54,3 +51,4 @@ export default function PlayerRanking(props: PlayerRankingI) {
 		</RankingContainer>
 	);
 }
+

@@ -9,7 +9,6 @@ import { ApiRequest } from "@/utils/requests";
 import { formatDateToDDMMYYYY, calculateAge } from "@/utils/dates";
 import { generateFlagUrl } from "@/utils/country";
 import StatisticsPanel from "@/components/StatisticsPanel";
-import { Statistics } from "@/components/StatisticsPanel/types";
 import DropdownOptions from "@/components/DropdownOptions";
 import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
 
@@ -49,20 +48,13 @@ export default function PlayerPage() {
 		);
 	}, [dataTournaments]);
 
-	// Reload statistics when selected tournament changes
-	const [statistics, setStatistics] = useState<Statistics | null>(null);
+	// Set default selected tournament
 	useEffect(() => {
 		if (tournaments.length == 0) return;
 		if (!selectedTournament) {
 			setSelectedTournament(tournaments[0]);
 			return;
 		}
-		setStatistics({
-			goalsScored: { data: 10 },
-			goalsAssisted: { data: 2 },
-			cardsYellow: { data: 4 },
-			cardsRed: { data: 0 },
-		});
 	}, [tournaments, selectedTournament]);
 
 	return (
@@ -121,8 +113,11 @@ export default function PlayerPage() {
 						disableClear
 					/>
 				</FilterContainer>
-				{statistics && <StatisticsPanel statistics={statistics} />}
+				{selectedTournament && dataPlayer && (
+					<StatisticsPanel playerId={dataPlayer.id} tournamentId={selectedTournament.id} />
+				)}
 			</div>
 		</PlayerContainer>
 	);
 }
+

@@ -1,31 +1,55 @@
-import { CounterData, Statistics, ICONS_STATISTICS } from "./types";
-import { CounterElement, StatisticsContainer } from "./styles";
+import { Id } from "@/types/entity";
+import { Statistics, StatisticsPlayerI } from "@/types/player";
 
-function Counter(props: { name: string; counter: CounterData }) {
+import { ICONS_STATISTICS } from "./types";
+import { CounterElement, StatisticsContainer } from "./styles";
+import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
+import { ApiRequest } from "@/utils/requests";
+import Loading from "../Loading";
+import { useEffect, useState } from "react";
+
+function Counter(props: { name: string; counter: number }) {
 	const findedIcon = ICONS_STATISTICS[props.name as keyof Statistics];
 	const CounterIcon = findedIcon?.icon;
 
 	return (
 		<CounterElement $iconColor={findedIcon?.iconColor}>
 			{CounterIcon && <CounterIcon className="icon" />}
-			<p className="data">{props.counter.data}</p>
+			<p className="data">{props.counter}</p>
 			<p className="title">{findedIcon?.title}</p>
 		</CounterElement>
 	);
 }
 
 interface StatisticsPanelI {
-	statistics: Statistics;
+	tournamentId: Id;
+	playerId: Id;
 }
 
 export default function StatisticsPanel(props: StatisticsPanelI) {
+	const [counters, setCounters] = useState<JSX.Element[]>([]);
+
+	const { data: dataStatistics, status: StatusStatistics } = useFetchData<StatisticsPlayerI>(
+		ApiRequest.getUrlById(`statistics/${props.tournamentId}`, props.playerId)
+	);
+
+	useEffect(() => {
+		if (dataStatistics == null) {
+			setCounters([]);
+			return;
+		}
+		setCounters([
+			<Counter key="Gols" name="goalsScored" counter={dataStatistics.goalsScored} />,
+			<Counter key="Assistências" name="goalsAssisted" counter={dataStatistics.goalsAssisted} />,
+			<Counter key="Cartões Amarelos" name="cardsYellow" counter={dataStatistics.cardsYellow} />,
+			<Counter key="Cartões Vermelhos" name="cardsRed" counter={dataStatistics.cardsRed} />,
+		]);
+	}, [dataStatistics]);
+
 	return (
 		<StatisticsContainer>
-			{Object.keys(props.statistics).map((s) => {
-				const obj = props.statistics[s as keyof Statistics];
-				if (obj == undefined) return <></>;
-				else return <Counter key={s} name={s} counter={{ data: obj.data }} />;
-			})}
+			{StatusStatistics != FetchStatus.Success && <Loading />}
+			{dataStatistics && counters.map((counter) => counter)}
 		</StatisticsContainer>
 	);
 }

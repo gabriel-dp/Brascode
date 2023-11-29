@@ -19,9 +19,12 @@ export interface RankedPlayerI extends PlayerI {
 	quantity: number;
 }
 
-export interface StatisticsPlayerI extends PlayerI {
-	goals: number;
-	assists: number;
+export interface Statistics {
+	goalsScored: number;
+	goalsAssisted: number;
 	cardsYellow: number;
 	cardsRed: number;
 }
+
+export interface StatisticsPlayerI extends PlayerI, Statistics {}
+

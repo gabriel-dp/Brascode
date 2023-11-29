@@ -428,6 +428,46 @@
 			"category": "goals",
 			"quantity": 15
 		}
+	],
+	"statistics": [
+		{
+			"id": 1,
+			"name": "Gabriel de Paula Meira",
+			"nickname": "Gabriel",
+			"birthdate": "2004-06-19T13:40:00Z",
+			"nationality": "BR",
+			"height": 183,
+			"weight": 70,
+			"position": "Goleiro",
+			"foot": "Destro",
+			"teamId": "SAO",
+			"jersey": 23,
+			"image": "https://avatars.githubusercontent.com/u/66735014?v=4",
+			"tournamentId": 1,
+			"goalsScored": 5,
+			"goalsAssisted": 2,
+			"cardsYellow": 3,
+			"cardsRed": 1
+		},
+		{
+			"id": 1,
+			"name": "Gabriel de Paula Meira",
+			"nickname": "Gabriel",
+			"birthdate": "2004-06-19T13:40:00Z",
+			"nationality": "BR",
+			"height": 183,
+			"weight": 70,
+			"position": "Goleiro",
+			"foot": "Destro",
+			"teamId": "SAO",
+			"jersey": 23,
+			"image": "https://avatars.githubusercontent.com/u/66735014?v=4",
+			"tournamentId": 2,
+			"goalsScored": 6,
+			"goalsAssisted": 2,
+			"cardsYellow": 3,
+			"cardsRed": 1
+		}
 	]
 }
 
