@@ -22,7 +22,7 @@ export default function Tournaments() {
 		ApiRequest.getUrlAll("tournaments")
 	);
 	const { data: dataTeams, status: statusTeams } = useFetchData<TeamI[]>(
-		ApiRequest.getUrlByFilters("teams", { tournamentId: selectedTournament?.id }),
+		ApiRequest.getUrlAll("teams"),
 		{},
 		selectedTournament != null
 	);
@@ -138,3 +138,4 @@ export default function Tournaments() {
 		</TournamentsContainer>
 	);
 }
+
