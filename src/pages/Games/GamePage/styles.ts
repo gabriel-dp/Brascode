@@ -154,6 +154,10 @@ export const EventCardContainer = styled.div<EventCardContainerI>`
 			row-gap: 0.25rem;
 		}
 
+		a {
+			color: inherit;
+		}
+
 		.yellow {
 			font-weight: bold;
 			color: #cccc00;

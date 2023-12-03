@@ -38,12 +38,11 @@ export default function StatisticsPanel(props: StatisticsPanelI) {
 			setCounters([]);
 			return;
 		}
-		console.log(dataStatistics);
 		setCounters([
-			<Counter key="Gols" name="goalsScored" counter={dataStatistics.gols} />,
-			<Counter key="Assistências" name="goalsAssisted" counter={dataStatistics.assistencia} />,
-			<Counter key="Cartões Amarelos" name="cardsYellow" counter={dataStatistics.cartao_amarelo} />,
-			<Counter key="Cartões Vermelhos" name="cardsRed" counter={dataStatistics.cartao_vermelho} />,
+			<Counter key="Gols" name="gols" counter={dataStatistics.gols} />,
+			<Counter key="Assistências" name="assistencia" counter={dataStatistics.assistencia} />,
+			<Counter key="Cartões Amarelos" name="cartao_amarelo" counter={dataStatistics.cartao_amarelo} />,
+			<Counter key="Cartões Vermelhos" name="cartao_vermelho" counter={dataStatistics.cartao_vermelho} />,
 		]);
 	}, [dataStatistics]);
 

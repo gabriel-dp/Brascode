@@ -140,7 +140,7 @@ export default function Tournaments() {
 						limit={5}
 					/>
 					<PlayerRanking
-						title="Mais Cartões na Torneio"
+						title="Mais Cartões no Torneio"
 						tournamentId={selectedTournament?.id}
 						category="cards"
 						limit={5}
