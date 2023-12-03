@@ -7,7 +7,7 @@ export interface TableColumn {
 
 export interface TableItem {
 	text: string | number;
-	image?: string;
+	imagem?: string;
 }
 
 export interface TableRow {
@@ -24,4 +24,3 @@ export function getAttrs<T extends Entity>(entity: T, attrs: string[]): Partial<
 	}
 	return selectedAttrs;
 }
-

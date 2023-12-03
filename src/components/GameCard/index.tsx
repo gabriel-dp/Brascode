@@ -16,19 +16,17 @@ interface GameCardI {
 
 export default function GameCard(props: GameCardI) {
 	// Request data of both teams
-	const { data: dataHome } = useFetchData<TeamI>(ApiRequest.getUrlById("teams", props.game.teamIdHome));
-	const { data: dataAway } = useFetchData<TeamI>(ApiRequest.getUrlById("teams", props.game.teamIdAway));
+	const { data: dataHome } = useFetchData<TeamI>(ApiRequest.getUrlById("teams", props.game.time_casa));
+	const { data: dataAway } = useFetchData<TeamI>(ApiRequest.getUrlById("teams", props.game.time_visitante));
 
 	// Calculates the score if the game already started
 	const timeNow = new Date(),
-		timeStart = new Date(props.game.start),
+		timeStart = new Date(props.game.data_hora_inicio),
 		started = timeNow.getTime() > timeStart.getTime();
 
-	const scoreHome = started
-		? props.game.goals.filter((goal) => goal.teamIdAuthor == props.game.teamIdHome).length
-		: "-";
+	const scoreHome = started ? props.game.gols.filter((goal) => goal.time_marcou == props.game.time_casa).length : "-";
 	const scoreAway = started
-		? props.game.goals.filter((goal) => goal.teamIdAuthor == props.game.teamIdAway).length
+		? props.game.gols.filter((goal) => goal.time_marcou == props.game.time_visitante).length
 		: "-";
 
 	// Redirects to game page on click
@@ -41,25 +39,25 @@ export default function GameCard(props: GameCardI) {
 		<CardContainer onClick={handleCardClick} ref={props.refScroll}>
 			<div className="description">
 				<div className="time">
-					<p>{formatDateToHHmm(props.game.start)}</p>
+					<p>{formatDateToHHmm(props.game.data_hora_inicio)}</p>
 				</div>
 			</div>
 			<div className="teams">
 				<div className="team">
-					<img src={dataHome?.image} alt={dataHome?.id.toString()} />
-					<p>{dataHome?.abbreviation}</p>
+					<img src={dataHome?.imagem} alt={dataHome?.id.toString()} />
+					<p>{dataHome?.abreviacao}</p>
 					<p className="score">{scoreHome}</p>
 				</div>
 				<p>X</p>
 				<div className="team">
 					<p className="score">{scoreAway}</p>
-					<p>{dataAway?.abbreviation}</p>
-					<img src={dataAway?.image} alt={dataAway?.id.toString()} />
+					<p>{dataAway?.abreviacao}</p>
+					<img src={dataAway?.imagem} alt={dataAway?.id.toString()} />
 				</div>
 			</div>
 			<div className="description">
 				<div className="time">
-					<p>{formatDateToDDMMYYYY(props.game.start)}</p>
+					<p>{formatDateToDDMMYYYY(props.game.data_hora_inicio)}</p>
 				</div>
 			</div>
 		</CardContainer>

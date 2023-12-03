@@ -31,7 +31,7 @@ export default function Quiz<T extends TeamI | PlayerI>(props: QuizI<T>) {
 	return (
 		<QuizContainer>
 			<div className="image-container">
-				<img src={correct.image} alt="quiz" draggable={false} />
+				<img src={correct.imagem} alt="quiz" draggable={false} />
 			</div>
 			<div className="options-container">
 				{options.map((option) => (
@@ -41,7 +41,7 @@ export default function Quiz<T extends TeamI | PlayerI>(props: QuizI<T>) {
 							selected == option.id ? "wrong" : ""
 						}`}
 						onClick={() => handleOptionClick(option.id)}>
-						{option.name}
+						{option.nome}
 					</OptionButton>
 				))}
 			</div>

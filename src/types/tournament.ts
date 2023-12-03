@@ -1,24 +1,22 @@
 import { Entity, Id } from "@/types/entity";
 
 export interface StandingsI {
-	position: number;
-	teamId: Id;
-	points: number;
+	time: Id;
+	pontuacao: number;
 	games: number;
-	wins: number;
-	draws: number;
-	losses: number;
-	goalsScored: number;
-	goalsSuffered: number;
-	yellowCards: number;
-	redCards: number;
+	vitorias: number;
+	empates: number;
+	derrotas: number;
+	gols_marcados: number;
+	gols_sofridos: number;
+	cartao_amarelo: number;
+	cartao_vermelho: number;
 }
 
 export interface TournamentI extends Entity {
-	name: string;
-	year: number;
-	standings: StandingsI[];
+	nome: string;
+	data: string;
+	estatistica: StandingsI[];
 }
 
-export const generateTournamentText = (t: TournamentI) => `${t.name} (${t.year})`;
-
+export const generateTournamentText = (t: TournamentI) => `${t.nome} (${t.data})`;

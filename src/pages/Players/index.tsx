@@ -41,9 +41,9 @@ export default function Players() {
 			dataPlayers.map((player) => ({
 				id: player.id,
 				data: [
-					{ text: player.name },
-					{ text: player.position },
-					{ text: dataTeams.find((team) => team.id == player.teamId)?.name ?? "" },
+					{ text: player.nome },
+					{ text: player.posicao },
+					{ text: dataTeams.find((team) => team.id == player.time)?.nome ?? "" },
 				],
 			}))
 		);
@@ -78,4 +78,3 @@ export default function Players() {
 		</PlayersContainer>
 	);
 }
-

@@ -1,30 +1,34 @@
 import { Entity, Id } from "@/types/entity";
 
+export enum Position {}
+
 export interface PlayerI extends Entity {
-	name: string;
-	nickname: string;
-	birthdate: string; // date
-	nationality: string;
-	height: number;
-	weight: number;
-	position: string;
-	foot: string;
-	teamId: Id | null;
-	jersey: number | null;
+	nome: string;
+	apelido: string;
+	dt_nascimento: string; // date
+	pais: string;
+	altura: number;
+	peso: number;
+	posicao: Position;
+	preferencia_pe: string;
+	time: Id | null;
+	numero_camisa: number | null;
 }
 
-export const generatePlayerText = (p: PlayerI): string => p.name;
+export const generatePlayerText = (p: PlayerI): string => p.nome;
 
-export interface RankedPlayerI extends PlayerI {
-	quantity: number;
+export interface RankedPlayerI {
+	quantidade: number;
+	jogador: PlayerI;
 }
 
 export interface Statistics {
-	goalsScored: number;
-	goalsAssisted: number;
-	cardsYellow: number;
-	cardsRed: number;
+	gols: number;
+	assistencia: number;
+	cartao_amarelo: number;
+	cartao_vermelho: number;
 }
 
-export interface StatisticsPlayerI extends PlayerI, Statistics {}
-
+export interface StatisticsPlayerI extends Statistics {
+	jogador: PlayerI;
+}

@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import { TableRow } from "@/components/DataTable/types";
 
 import { NavigatorContainer } from "./styles";
 
@@ -6,6 +8,7 @@ interface PageNavigatorI {
 	length: number;
 	max_per_page: number;
 	interval: number;
+	body: TableRow[];
 }
 
 export default function PageNavigator(props: PageNavigatorI): [number, () => JSX.Element] {
@@ -26,6 +29,11 @@ export default function PageNavigator(props: PageNavigatorI): [number, () => JSX
 	const handlePageButtonClick = (index: number) => {
 		setPage(index);
 	};
+
+	// Resets page every time body changes
+	useEffect(() => {
+		setPage(1);
+	}, [props.body]);
 
 	// Generates a array with the page indexes based on the actual page and configs passed by props
 	const generatePageInterval = (): number[] => {
@@ -68,4 +76,3 @@ export default function PageNavigator(props: PageNavigatorI): [number, () => JSX
 
 	return [page, PageComponent];
 }
-

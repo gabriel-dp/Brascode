@@ -12,23 +12,22 @@ export interface CounterIcon {
 }
 
 export const ICONS_STATISTICS: { [key in keyof Statistics]: CounterIcon } = {
-	goalsScored: {
+	gols: {
 		title: "Gols",
 		icon: MdSportsSoccer,
 	},
-	goalsAssisted: {
+	assistencia: {
 		title: "Assistências",
 		icon: MdHandshake,
 	},
-	cardsYellow: {
+	cartao_amarelo: {
 		title: "Cartões Amarelos",
 		icon: Card,
 		iconColor: "#EEEE00",
 	},
-	cardsRed: {
+	cartao_vermelho: {
 		title: "Cartões Vermelhos",
 		icon: Card,
 		iconColor: "#FF0000",
 	},
 };
-

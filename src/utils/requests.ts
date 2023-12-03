@@ -1,6 +1,6 @@
 import { Id } from "@/types/entity";
 
-type Complement = "players" | "teams" | "tournaments" | "games" | `ranking/${string}` | `statistics/${string}`;
+type Complement = "players" | "teams" | "tournaments" | "games" | `rankings/${string}` | `statistics/${string}`;
 
 export class ApiRequest {
 	static readonly BASE_URL: string = `${import.meta.env.VITE_API_URL}`;
@@ -27,7 +27,7 @@ export class ApiRequest {
 			const [key, value] = Object.entries(filter)[0];
 			if (!value) continue; // Ignores undefined filters
 
-			finalUrl += isFirst ? "?" : "&";
+			finalUrl += isFirst ? "/" : "&";
 			finalUrl += key + "=" + value;
 
 			if (isFirst) isFirst = false;
@@ -36,4 +36,3 @@ export class ApiRequest {
 		return finalUrl;
 	}
 }
-

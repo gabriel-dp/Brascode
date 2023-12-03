@@ -57,7 +57,8 @@ export default function Games() {
 		if (!dataGames) return;
 		const now = new Date();
 		setNextGame(
-			dataGames.find((game) => now.getTime() < new Date(game.start).getTime()) ?? dataGames[dataGames.length - 1]
+			dataGames.find((game) => now.getTime() < new Date(game.data_hora_inicio).getTime()) ??
+				dataGames[dataGames.length - 1]
 		);
 	}, [dataGames]);
 
@@ -111,4 +112,3 @@ export default function Games() {
 		</GamesContainer>
 	);
 }
-

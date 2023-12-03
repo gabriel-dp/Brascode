@@ -61,31 +61,43 @@ export default function Tournaments() {
 	const [bodyStandingsTable, setBodyStandingsTable] = useState<TableRow[]>([]);
 	useEffect(() => {
 		if (!dataTournaments || !selectedTournament || !dataTeams) return;
-		const standings = dataTournaments.find((tournament) => tournament.id == selectedTournament.id)?.standings;
+		const standings = dataTournaments.find((tournament) => tournament.id == selectedTournament.id)?.estatistica;
 		if (!standings) return;
 
 		setBodyStandingsTable(
-			standings.map((s) => {
-				const team = dataTeams.find((team) => team.id == s.teamId);
-				return {
-					id: s.teamId,
-					data: [
-						{ text: s.position },
-						{ text: team?.abbreviation ?? "", image: team?.image },
-						{ text: team?.name ?? "" },
-						{ text: s.points },
-						{ text: s.games },
-						{ text: s.wins },
-						{ text: s.draws },
-						{ text: s.losses },
-						{ text: s.goalsScored },
-						{ text: s.goalsSuffered },
-						{ text: s.goalsScored - s.goalsSuffered },
-						{ text: s.yellowCards },
-						{ text: s.redCards },
-					],
-				};
-			})
+			standings
+				.sort((a, b) => {
+					if (a.pontuacao != b.pontuacao) return a.pontuacao > b.pontuacao ? 1 : 0;
+					if (a.vitorias != b.vitorias) return a.vitorias > b.vitorias ? 1 : 0;
+					const aDiff = a.gols_marcados - a.gols_sofridos;
+					const bDiff = b.gols_marcados - b.gols_sofridos;
+					if (aDiff != bDiff) return aDiff > bDiff ? 1 : 0;
+					if (a.gols_marcados != b.gols_marcados) return a.gols_marcados > b.gols_marcados ? 1 : 0;
+					if (a.cartao_vermelho != b.cartao_vermelho) return a.cartao_vermelho < b.cartao_vermelho ? 1 : 0;
+					if (a.cartao_amarelo != a.cartao_amarelo) return a.cartao_amarelo < a.cartao_amarelo ? 1 : 0;
+					return Math.random() - 0.5;
+				})
+				.map((s, index) => {
+					const team = dataTeams.find((team) => team.id == s.time);
+					return {
+						id: s.time,
+						data: [
+							{ text: index + 1 },
+							{ text: team?.abreviacao ?? "", imagem: team?.imagem },
+							{ text: team?.nome ?? "" },
+							{ text: s.pontuacao },
+							{ text: s.vitorias + s.empates + s.derrotas },
+							{ text: s.vitorias },
+							{ text: s.empates },
+							{ text: s.derrotas },
+							{ text: s.gols_marcados },
+							{ text: s.gols_sofridos },
+							{ text: s.gols_marcados - s.gols_sofridos },
+							{ text: s.cartao_amarelo },
+							{ text: s.cartao_vermelho },
+						],
+					};
+				})
 		);
 	}, [dataTournaments, selectedTournament, dataTeams]);
 
@@ -138,4 +150,3 @@ export default function Tournaments() {
 		</TournamentsContainer>
 	);
 }
-

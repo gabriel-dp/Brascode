@@ -56,11 +56,13 @@ function TableBody(props: TableBodyI) {
 		<tbody>
 			{props.body.map((row) => (
 				<tr key={row.id} onClick={() => handleRowClick(row.id)}>
-					{row.data.map((column, j) => (
-						<td key={`${row.id}-${j}`}>
-							{column.image ? <img src={column.image} alt={column.text.toString()} /> : <p>{column.text}</p>}
-						</td>
-					))}
+					{row.data.map((column, j) => {
+						return (
+							<td key={`${row.id}-${j}`}>
+								{column.imagem ? <img src={column.imagem} alt={column.text.toString()} /> : <p>{column.text}</p>}
+							</td>
+						);
+					})}
 				</tr>
 			))}
 		</tbody>
@@ -82,7 +84,7 @@ function sortBody(a: TableRow, b: TableRow, sortIndex: number) {
 	if (typeof dataA == "number" && typeof dataB == "number") {
 		return dataA == dataB ? 0 : dataA < dataB ? -1 : 1;
 	} else {
-		return dataA.toString().localeCompare(dataB.toString());
+		return dataA?.toString().localeCompare(dataB?.toString());
 	}
 }
 
@@ -100,7 +102,12 @@ export default function DataTable(props: TableProps) {
 	}, [props.body, sortIndex]);
 
 	// Controls the interval that will be displayed in the actual page
-	const [page, PageComponent] = PageNavigator({ length: body.length, max_per_page: props.perpage, interval: 1 });
+	const [page, PageComponent] = PageNavigator({
+		length: body.length,
+		max_per_page: props.perpage,
+		interval: 1,
+		body: body,
+	});
 	useEffect(() => {
 		setIntervalBody(body.slice(props.perpage * (page - 1), Math.min(body.length, props.perpage * page)));
 	}, [page, body, props]);
@@ -138,4 +145,3 @@ export default function DataTable(props: TableProps) {
 		</DataTableContainer>
 	);
 }
-

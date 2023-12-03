@@ -54,4 +54,3 @@ export function useFetchData<Data>(url: string, options?: object, immediate = tr
 		status,
 	};
 }
-

@@ -1,16 +1,13 @@
 import { Entity } from "@/types/entity";
 
 export interface TeamI extends Entity {
-	name: string;
-	abbreviation: string;
-	foundation: string; // date
-	coach: string;
-	colors?: {
-		primary: string;
-		secondary: string;
-	};
-	country: string;
+	nome: string;
+	abreviacao: string;
+	fundacao: string; // date
+	tecnico: string;
+	cor_primaria: string | null;
+	cor_secundaria: string | null;
+	pais: string;
 }
 
-export const generateTeamText = (t: TeamI): string => `${t.name} (${t.abbreviation})`;
-
+export const generateTeamText = (t: TeamI): string => `${t.nome} (${t.abreviacao})`;

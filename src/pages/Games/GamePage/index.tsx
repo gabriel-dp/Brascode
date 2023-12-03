@@ -9,6 +9,7 @@ import { formatDateToDDMMYYYY, formatDateToHHmm } from "@/utils/dates";
 import { CardColor, CardI, GameI, GoalI } from "@/types/game";
 import { TeamI } from "@/types/team";
 import { TournamentI } from "@/types/tournament";
+import { PlayerI } from "@/types/player";
 
 import { EventCardContainer, GameContainer } from "./styles";
 
@@ -23,32 +24,41 @@ interface EventI<T> {
 }
 
 function EventGoal(props: EventI<GoalI>) {
-	const teamAuthor: TeamI | undefined = props.teams.find((team) => team.id == props.event.teamIdAuthor);
-	const primaryColor: string | undefined = teamAuthor?.colors?.primary;
-	const secondaryColor: string | undefined = teamAuthor?.colors?.secondary;
+	const teamAuthor: TeamI | undefined = props.teams.find((team) => team.id == props.event.time_marcou);
+	const primaryColor: string | undefined = teamAuthor?.cor_primaria?.toString();
+	const secondaryColor: string | undefined = teamAuthor?.cor_secundaria?.toString();
+
+	const { data: dataAuthor } = useFetchData<PlayerI>(ApiRequest.getUrlById("players", props.event.jogador));
+	const { data: dataAssist } = useFetchData<PlayerI>(ApiRequest.getUrlById("players", props.event.assistido ?? -1));
 
 	return (
 		<EventCardContainer $primaryColor={primaryColor} $secondaryColor={secondaryColor}>
 			<div className="header">
 				<p>Gooool!</p>
-				<p>{props.event.time}&quot;</p>
+				<p>
+					{props.event.tempo.split(":")[0]}+{props.event.tempo_acrescimo.split(":")[0]}&quot;
+				</p>
 			</div>
 			<div className="description">
 				<div className="data">
-					<p>{teamAuthor?.name} + 1</p>
+					<p>{teamAuthor?.nome} + 1</p>
 				</div>
 				<div className="data">
 					<p className="title">Autor:</p>
-					<Link to={Pages.Players + props.event.playerIdAuthor.toString()}>
-						<p>Pedro Machado #10</p>
+					<Link to={Pages.Players + props.event.jogador.toString()}>
+						<p>
+							{dataAuthor?.nome} ({dataAuthor?.numero_camisa})
+						</p>
 					</Link>
-					{props.event.isOwn && <p>(Contra)</p>}
+					{props.event.foi_contra && <p>(Contra)</p>}
 				</div>
-				{props.event.playerIdAssist && (
+				{props.event.assistido && (
 					<div className="data">
 						<p className="title">Assistência:</p>
-						<Link to={Pages.Players + props.event.playerIdAssist.toString()}>
-							<p>Gabriel de Paula #23</p>
+						<Link to={Pages.Players + props.event.assistido.toString()}>
+							<p>
+								{dataAssist?.nome} ({dataAssist?.numero_camisa})
+							</p>
 						</Link>
 					</div>
 				)}
@@ -58,30 +68,36 @@ function EventGoal(props: EventI<GoalI>) {
 }
 
 function EventCard(props: EventI<CardI>) {
-	const team: TeamI | undefined = props.teams.find((team) => team.id == props.event.teamId);
-	const primaryColor: string | undefined = team?.colors?.primary;
-	const secondaryColor: string | undefined = team?.colors?.secondary;
+	const team: TeamI | undefined = props.teams.find((team) => team.id == props.event.time);
+	const primaryColor: string | undefined = team?.cor_primaria?.toString();
+	const secondaryColor: string | undefined = team?.cor_secundaria?.toString();
+
+	const { data: dataPlayer } = useFetchData<PlayerI>(ApiRequest.getUrlById("players", props.event.jogador ?? -1));
 
 	return (
 		<EventCardContainer $primaryColor={primaryColor} $secondaryColor={secondaryColor}>
 			<div className="header">
 				<p>Punição!</p>
-				<p>{props.event.time}&quot;</p>
+				<p>
+					{props.event.tempo.split(":")[0]}+{props.event.tempo_acrescimo.split(":")[0]}&quot;
+				</p>
 			</div>
 			<div className="description">
 				<div className="data">
-					{props.event.color == CardColor.Red ? (
+					{props.event.tipo == CardColor.Red ? (
 						<p className="red">Cartão vermelho</p>
 					) : (
 						<p className="yellow">Cartão amarelo</p>
 					)}
-					<p>({team?.name})</p>
+					<p>({team?.nome})</p>
 				</div>
-				{props.event.playerId && (
+				{props.event.jogador && (
 					<div className="data">
 						<p className="title">Jogador:</p>
-						<Link to={Pages.Players + props.event.playerId.toString()}>
-							<p>Pedro Machado #10</p>
+						<Link to={Pages.Players + props.event.jogador.toString()}>
+							<p>
+								{dataPlayer?.nome} ({dataPlayer?.numero_camisa})
+							</p>
 						</Link>
 					</div>
 				)}
@@ -97,17 +113,17 @@ export default function GamePage() {
 	// Requests
 	const { data: dataGame } = useFetchData<GameI>(ApiRequest.getUrlById("games", id ?? 0));
 	const { data: dataTeamHome } = useFetchData<TeamI>(
-		ApiRequest.getUrlById("teams", dataGame?.teamIdHome ?? 0),
+		ApiRequest.getUrlById("teams", dataGame?.time_casa ?? 0),
 		{},
 		dataGame != undefined
 	);
 	const { data: dataTeamAway } = useFetchData<TeamI>(
-		ApiRequest.getUrlById("teams", dataGame?.teamIdAway ?? 0),
+		ApiRequest.getUrlById("teams", dataGame?.time_visitante ?? 0),
 		{},
 		dataGame != undefined
 	);
 	const { data: dataTournament } = useFetchData<TournamentI>(
-		ApiRequest.getUrlById("tournaments", dataGame?.tournamentId ?? 0),
+		ApiRequest.getUrlById("tournaments", dataGame?.torneio ?? 0),
 		{},
 		dataGame != undefined
 	);
@@ -117,8 +133,8 @@ export default function GamePage() {
 	const [goalsAway, setGoalsAway] = useState<GoalI[]>([]);
 	useEffect(() => {
 		if (!dataGame || !dataTeamHome || !dataTeamAway) return;
-		setGoalsHome(dataGame.goals.filter((goal) => goal.teamIdAuthor == dataTeamHome.id));
-		setGoalsAway(dataGame.goals.filter((goal) => goal.teamIdAuthor == dataTeamAway.id));
+		setGoalsHome(dataGame.gols.filter((goal) => goal.time_marcou == dataTeamHome.id));
+		setGoalsAway(dataGame.gols.filter((goal) => goal.time_marcou == dataTeamAway.id));
 	}, [dataGame, dataTeamHome, dataTeamAway]);
 
 	// Create game facts timeline
@@ -127,15 +143,15 @@ export default function GamePage() {
 		if (!dataGame) return;
 		setTimeline(
 			[
-				...dataGame.cards.map((card) => ({
+				...dataGame.cartoes.map((card) => ({
 					type: Event.Card,
 					data: card,
 				})),
-				...dataGame.goals.map((goal) => ({
+				...dataGame.gols.map((goal) => ({
 					type: Event.Goal,
 					data: goal,
 				})),
-			].sort((a, b) => a.data.time.toString().localeCompare(b.data.time.toString()))
+			].sort((a, b) => a.data.tempo.toString().localeCompare(b.data.tempo.toString()))
 		);
 	}, [dataGame]);
 
@@ -143,14 +159,14 @@ export default function GamePage() {
 		<GameContainer>
 			<div className="description-container">
 				<div className="tournament-container">
-					<p>{dataTournament?.name}</p>
+					<p>{dataTournament?.nome}</p>
 				</div>
 				<div className="score-container">
 					{dataGame && (
 						<div className="teams">
 							<Link className="team" to={Pages.Teams + dataTeamHome?.id.toString()}>
-								<img src={dataTeamHome?.image} alt={dataTeamHome?.name} />
-								<p>{dataTeamHome?.abbreviation}</p>
+								<img src={dataTeamHome?.imagem} alt={dataTeamHome?.nome} />
+								<p>{dataTeamHome?.abreviacao}</p>
 							</Link>
 							<div className="score">
 								<p>{goalsHome.length}</p>
@@ -158,23 +174,23 @@ export default function GamePage() {
 								<p>{goalsAway.length}</p>
 							</div>
 							<Link className="team" to={Pages.Teams + dataTeamAway?.id.toString()}>
-								<img src={dataTeamAway?.image} alt={dataTeamAway?.name} />
-								<p>{dataTeamAway?.abbreviation}</p>
+								<img src={dataTeamAway?.imagem} alt={dataTeamAway?.nome} />
+								<p>{dataTeamAway?.abreviacao}</p>
 							</Link>
 						</div>
 					)}
 				</div>
 				<div className="data">
 					<MdPlace className="icon" />
-					<p>{dataGame?.local}</p>
+					<p>{dataGame?.estadio}</p>
 				</div>
 				<div className="data">
 					<MdCalendarMonth className="icon" />
-					<p>{formatDateToDDMMYYYY(dataGame?.start ?? "")}</p>
+					<p>{formatDateToDDMMYYYY(dataGame?.data_hora_inicio ?? "")}</p>
 				</div>
 				<div className="data">
 					<MdAccessTimeFilled className="icon" />
-					<p>{formatDateToHHmm(dataGame?.start ?? "")}</p>
+					<p>{formatDateToHHmm(dataGame?.data_hora_inicio ?? "")}</p>
 				</div>
 			</div>
 			<div className="timeline-container">

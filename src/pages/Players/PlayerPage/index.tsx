@@ -33,7 +33,7 @@ export default function PlayerPage() {
 	// Requests
 	const { data: dataPlayer } = useFetchData<PlayerI>(ApiRequest.getUrlById("players", id ?? 0));
 	const { data: dataTeam } = useFetchData<TeamI>(
-		ApiRequest.getUrlById("teams", dataPlayer?.teamId ?? 0),
+		ApiRequest.getUrlById("teams", dataPlayer?.time ?? 0),
 		{},
 		dataPlayer != undefined
 	);
@@ -61,27 +61,23 @@ export default function PlayerPage() {
 		<PlayerContainer>
 			<div className="bio-container">
 				<PlayerImageContainer>
-					<img className="player" src={dataPlayer?.image} alt={dataPlayer?.name} />
+					<img className="player" src={dataPlayer?.imagem} alt={dataPlayer?.nome} />
 				</PlayerImageContainer>
 				<div className="bio-wrapper">
 					{dataPlayer && (
-						<BioContainer $teamColor={dataTeam?.colors?.primary}>
+						<BioContainer $teamColor={dataTeam?.cor_primaria?.toString()}>
 							<div className="main">
 								<div>
-									<p className="nick">{dataPlayer?.nickname}</p>
-									<p className="name">{dataPlayer?.name}</p>
-									<img
-										className="country"
-										src={generateFlagUrl(dataPlayer?.nationality)}
-										alt={dataPlayer?.nationality}
-									/>
+									<p className="nick">{dataPlayer?.apelido}</p>
+									<p className="name">{dataPlayer?.nome}</p>
+									<img className="country" src={generateFlagUrl(dataPlayer?.pais)} alt={dataPlayer?.pais} />
 								</div>
 								<div>
-									{dataPlayer?.teamId && (
+									{dataPlayer?.time && (
 										<div className="team">
-											<p>#{dataPlayer?.jersey}</p>
+											<p>#{dataPlayer?.numero_camisa}</p>
 											<Link to={`/times/${dataTeam?.id}`}>
-												<img src={dataTeam?.image} alt={dataTeam?.id.toString()} />
+												<img src={dataTeam?.imagem} alt={dataTeam?.id.toString()} />
 											</Link>
 										</div>
 									)}
@@ -89,12 +85,12 @@ export default function PlayerPage() {
 							</div>
 							<hr />
 							<div className="data">
-								<Data title="Posição">{dataPlayer.position}</Data>
-								<Data title="Altura">{dataPlayer.height}cm</Data>
-								<Data title="Peso">{dataPlayer.weight}kg</Data>
-								<Data title="Pé">{dataPlayer.foot}</Data>
+								<Data title="Posição">{dataPlayer.posicao}</Data>
+								<Data title="Altura">{dataPlayer.altura}cm</Data>
+								<Data title="Peso">{dataPlayer.peso}kg</Data>
+								<Data title="Pé">{dataPlayer.preferencia_pe}</Data>
 								<Data title="Data de Nascimento">
-									{formatDateToDDMMYYYY(dataPlayer.birthdate)} ({calculateAge(dataPlayer.birthdate)} anos)
+									{formatDateToDDMMYYYY(dataPlayer.dt_nascimento)} ({calculateAge(dataPlayer.dt_nascimento)} anos)
 								</Data>
 							</div>
 						</BioContainer>
@@ -120,4 +116,3 @@ export default function PlayerPage() {
 		</PlayerContainer>
 	);
 }
-

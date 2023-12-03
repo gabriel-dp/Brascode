@@ -13,14 +13,14 @@ function PlayerCard(props: { position: number; player: RankedPlayerI }) {
 	return (
 		<PlayerCardContainer>
 			<div className="quantity">
-				<p>{props.player.quantity}</p>
+				<p>{props.player.quantidade}</p>
 			</div>
-			<Link to={Pages.Players + props.player.id.toString()}>
+			<Link to={Pages.Players + props.player.jogador.id.toString()}>
 				<div className="player">
 					<div className="image">
-						<img src={props.player.image} alt={props.player.id.toString()} />
+						<img src={props.player.jogador.imagem} alt={props.player.jogador.id.toString()} />
 					</div>
-					<p>{props.player.nickname}</p>
+					<p>{props.player.jogador.apelido}</p>
 				</div>
 			</Link>
 		</PlayerCardContainer>
@@ -36,7 +36,7 @@ interface PlayerRankingI {
 
 export default function PlayerRanking(props: PlayerRankingI) {
 	const { data: dataRanking, status: statusRanking } = useFetchData<RankedPlayerI[]>(
-		ApiRequest.getUrlAll(`ranking/${props.tournamentId}/${props.category}/${props.limit}`)
+		ApiRequest.getUrlAll(`rankings/${props.tournamentId}/${props.category}/${props.limit}`)
 	);
 
 	return (
@@ -46,9 +46,9 @@ export default function PlayerRanking(props: PlayerRankingI) {
 			</div>
 			<div className="players">
 				{statusRanking != FetchStatus.Success && <Loading />}
-				{dataRanking && dataRanking.map((player, i) => <PlayerCard key={player.id} player={player} position={i + 1} />)}
+				{dataRanking &&
+					dataRanking.map((player, i) => <PlayerCard key={player.jogador.id} player={player} position={i + 1} />)}
 			</div>
 		</RankingContainer>
 	);
 }
-

@@ -40,32 +40,32 @@ export default function TeamPage() {
 		setBodyPlayerTable(
 			dataRoster.map((player) => ({
 				id: player.id,
-				data: [{ text: player.name }, { text: player.position }],
+				data: [{ text: player.nome }, { text: player.posicao }],
 			}))
 		);
 	}, [dataRoster]);
 
 	return (
-		<TeamContainer $teamColor={dataTeam?.colors?.primary}>
+		<TeamContainer $teamColor={dataTeam?.cor_primaria?.toString()}>
 			<div className="bio-container">
 				<TeamImageContainer>
-					<img className="team" src={dataTeam?.image} alt={dataTeam?.id.toString()} />
+					<img className="team" src={dataTeam?.imagem} alt={dataTeam?.id.toString()} />
 				</TeamImageContainer>
 				<div className="bio-wrapper">
 					{dataTeam && (
-						<BioContainer $teamColor={dataTeam.colors?.primary}>
+						<BioContainer $teamColor={dataTeam?.cor_primaria?.toString()}>
 							<div className="main">
 								<div>
-									<p className="name">{dataTeam.name}</p>
-									<p className="abbreviation">{dataTeam.abbreviation}</p>
-									<img className="country" src={generateFlagUrl(dataTeam.country)} alt={dataTeam.country} />
+									<p className="name">{dataTeam.nome}</p>
+									<p className="abbreviation">{dataTeam.abreviacao}</p>
+									<img className="country" src={generateFlagUrl(dataTeam.pais)} alt={dataTeam.pais} />
 								</div>
 							</div>
 							<hr />
 							<div className="data">
-								<Data title="Técnico">{dataTeam.coach}</Data>
+								<Data title="Técnico">{dataTeam.tecnico}</Data>
 								<Data title="Fundação">
-									{formatDateToDDMMYYYY(dataTeam.foundation)} ({calculateAge(dataTeam.foundation)} anos)
+									{formatDateToDDMMYYYY(dataTeam.fundacao)} ({calculateAge(dataTeam.fundacao)} anos)
 								</Data>
 							</div>
 						</BioContainer>
