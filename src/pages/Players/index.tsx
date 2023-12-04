@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Pages } from "@/routes";
 import { useFetchData, FetchStatus } from "@/hooks/useFetchData";
 import useSearchTimeout from "@/hooks/useSearchTimeout";
-import { PlayerI } from "@/types/player";
+import { PlayerI, Position } from "@/types/player";
 import { TeamI, generateTeamText } from "@/types/team";
 import { ApiRequest } from "@/utils/requests";
 import DataTable from "@/components/DataTable";
@@ -42,7 +42,7 @@ export default function Players() {
 				id: player.id,
 				data: [
 					{ text: player.nome },
-					{ text: player.posicao },
+					{ text: Position[player.posicao] },
 					{ text: dataTeams.find((team) => team.id == player.time)?.nome ?? "" },
 				],
 			}))
@@ -78,3 +78,4 @@ export default function Players() {
 		</PlayersContainer>
 	);
 }
+

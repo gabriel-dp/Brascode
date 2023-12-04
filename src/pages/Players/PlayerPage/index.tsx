@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import { useFetchData } from "@/hooks/useFetchData";
-import { PlayerI } from "@/types/player";
+import { Foot, PlayerI, Position } from "@/types/player";
 import { TeamI } from "@/types/team";
 import { TournamentI, generateTournamentText } from "@/types/tournament";
 import { ApiRequest } from "@/utils/requests";
@@ -85,10 +85,10 @@ export default function PlayerPage() {
 							</div>
 							<hr />
 							<div className="data">
-								<Data title="Posição">{dataPlayer.posicao}</Data>
+								<Data title="Posição">{Position[dataPlayer.posicao]}</Data>
 								<Data title="Altura">{dataPlayer.altura}cm</Data>
 								<Data title="Peso">{dataPlayer.peso}kg</Data>
-								<Data title="Pé">{dataPlayer.preferencia_pe}</Data>
+								<Data title="Pé">{Foot[dataPlayer.preferencia_pe]}</Data>
 								<Data title="Data de Nascimento">
 									{formatDateToDDMMYYYY(dataPlayer.dt_nascimento)} ({calculateAge(dataPlayer.dt_nascimento)} anos)
 								</Data>
@@ -116,3 +116,4 @@ export default function PlayerPage() {
 		</PlayerContainer>
 	);
 }
+

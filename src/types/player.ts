@@ -1,6 +1,18 @@
 import { Entity, Id } from "@/types/entity";
 
-export enum Position {}
+export enum Position {
+	"Goleiro" = 0,
+	"Zagueiro",
+	"Lateral",
+	"Volante",
+	"Meio-campo",
+	"Atacante",
+}
+
+export enum Foot {
+	"Esquerdo" = 0,
+	"Direito",
+}
 
 export interface PlayerI extends Entity {
 	nome: string;
@@ -10,7 +22,7 @@ export interface PlayerI extends Entity {
 	altura: number;
 	peso: number;
 	posicao: Position;
-	preferencia_pe: string;
+	preferencia_pe: Foot;
 	time: Id | null;
 	numero_camisa: number | null;
 }
@@ -32,3 +44,4 @@ export interface Statistics {
 export interface StatisticsPlayerI extends Statistics {
 	jogador: PlayerI;
 }
+
