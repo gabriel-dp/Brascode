@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Pages } from "@/routes";
 import { FetchStatus, useFetchData } from "@/hooks/useFetchData";
 import { TeamI } from "@/types/team";
-import { PlayerI } from "@/types/player";
+import { PlayerI, Position } from "@/types/player";
 import { ApiRequest } from "@/utils/requests";
 import { generateFlagUrl } from "@/utils/country";
 import { formatDateToDDMMYYYY, calculateAge } from "@/utils/dates";
@@ -40,7 +40,7 @@ export default function TeamPage() {
 		setBodyPlayerTable(
 			dataRoster.map((player) => ({
 				id: player.id,
-				data: [{ text: player.nome }, { text: player.posicao }],
+				data: [{ text: player.nome }, { text: Position[player.posicao] }],
 			}))
 		);
 	}, [dataRoster]);
