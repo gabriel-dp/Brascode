@@ -11,6 +11,7 @@ import { generateFlagUrl } from "@/utils/country";
 import StatisticsPanel from "@/components/StatisticsPanel";
 import DropdownOptions from "@/components/DropdownOptions";
 import { MenuEntity, convertToMenuEntity } from "@/components/DropdownOptions/types";
+import playerDefault from "@/assets/player-default.svg";
 
 import { BioContainer, PlayerContainer, PlayerImageContainer, DataContainer, FilterContainer } from "./styles";
 
@@ -61,7 +62,7 @@ export default function PlayerPage() {
 		<PlayerContainer>
 			<div className="bio-container">
 				<PlayerImageContainer>
-					<img className="player" src={dataPlayer?.imagem} alt={dataPlayer?.nome} />
+					<img className="player" src={dataPlayer?.imagem ?? playerDefault} alt={dataPlayer?.nome} />
 				</PlayerImageContainer>
 				<div className="bio-wrapper">
 					{dataPlayer && (
@@ -116,4 +117,3 @@ export default function PlayerPage() {
 		</PlayerContainer>
 	);
 }
-
