@@ -21,7 +21,7 @@ export default function Quiz<T extends TeamI | PlayerI>(props: QuizI<T>) {
 	const options = useMemo(() => {
 		setSelected(null);
 		return shuffleElements(
-			props.elements.filter((element) => element.imagem != undefined || element.imagem == "")
+			props.elements.filter((element) => element.imagem != undefined && element.imagem != "")
 		).slice(0, props.quantity);
 	}, [props]);
 	const correct = useMemo(() => shuffleElements(options)[0], [options]);
