@@ -28,6 +28,8 @@ function EventGoal(props: EventI<GoalI>) {
 	const primaryColor: string | undefined = teamAuthor?.cor_primaria?.toString();
 	const secondaryColor: string | undefined = teamAuthor?.cor_secundaria?.toString();
 
+	const plus = props.event.tempo_acrescimo.slice(-5) == "00:00" ? "" : `+${props.event.tempo_acrescimo.split(":")[0]}`;
+
 	const { data: dataAuthor } = useFetchData<PlayerI>(ApiRequest.getUrlById("players", props.event.jogador));
 	const { data: dataAssist } = useFetchData<PlayerI>(ApiRequest.getUrlById("players", props.event.assistido ?? -1));
 
@@ -36,7 +38,8 @@ function EventGoal(props: EventI<GoalI>) {
 			<div className="header">
 				<p>Gooool!</p>
 				<p>
-					{props.event.tempo.split(":")[0]}+{props.event.tempo_acrescimo.split(":")[0]}&quot;
+					{props.event.tempo.split(":")[0]}
+					{plus}&quot;
 				</p>
 			</div>
 			<div className="description">
@@ -72,6 +75,8 @@ function EventCard(props: EventI<CardI>) {
 	const primaryColor: string | undefined = team?.cor_primaria?.toString();
 	const secondaryColor: string | undefined = team?.cor_secundaria?.toString();
 
+	const plus = props.event.tempo_acrescimo.slice(-5) == "00:00" ? "" : `+${props.event.tempo_acrescimo.split(":")[0]}`;
+
 	const { data: dataPlayer } = useFetchData<PlayerI>(ApiRequest.getUrlById("players", props.event.jogador ?? -1));
 
 	return (
@@ -79,7 +84,8 @@ function EventCard(props: EventI<CardI>) {
 			<div className="header">
 				<p>Punição!</p>
 				<p>
-					{props.event.tempo.split(":")[0]}+{props.event.tempo_acrescimo.split(":")[0]}&quot;
+					{props.event.tempo.split(":")[0]}
+					{plus}&quot;
 				</p>
 			</div>
 			<div className="description">
