@@ -14,8 +14,8 @@ export interface GoalI extends EntityGame {
 }
 
 export enum CardColor {
-	Red = "red",
-	Yellow = "yellow",
+	Yellow = 0,
+	Red = 1,
 }
 
 export interface CardI extends EntityGame {
