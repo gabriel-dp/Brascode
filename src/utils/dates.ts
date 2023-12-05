@@ -35,9 +35,8 @@ export function formatDateToHHmm(strDate: string) {
 	const date = new Date(strDate);
 	if (isNaN(date.getTime())) return `--:--`;
 
-	const hours = date.getHours();
-	const minutes = date.getMinutes();
+	const hours = String(date.getHours()).padStart(2, "0");
+	const minutes = String(date.getMinutes()).padStart(2, "0");
 
 	return `${hours}:${minutes}`;
 }
-

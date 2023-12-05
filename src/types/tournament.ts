@@ -19,4 +19,4 @@ export interface TournamentI extends Entity {
 	estatistica: StandingsI[];
 }
 
-export const generateTournamentText = (t: TournamentI) => `${t.nome} (${t.data})`;
+export const generateTournamentText = (t: TournamentI) => `${t.nome} (${new Date(t.data).getFullYear()})`;

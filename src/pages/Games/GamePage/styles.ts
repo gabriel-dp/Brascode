@@ -75,6 +75,7 @@ export const GameContainer = styled.div`
 
 				.score {
 					font-size: 1.5rem;
+					transform: translateY(-50%);
 					display: flex;
 					flex-direction: row;
 					align-items: center;

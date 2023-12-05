@@ -67,14 +67,17 @@ export default function Tournaments() {
 		setBodyStandingsTable(
 			standings
 				.sort((a, b) => {
-					if (a.pontuacao != b.pontuacao) return a.pontuacao > b.pontuacao ? 1 : 0;
-					if (a.vitorias != b.vitorias) return a.vitorias > b.vitorias ? 1 : 0;
+					if (a.pontuacao != b.pontuacao) return b.pontuacao - a.pontuacao;
+					if (a.vitorias != b.vitorias) return b.vitorias - a.vitorias;
+
 					const aDiff = a.gols_marcados - a.gols_sofridos;
 					const bDiff = b.gols_marcados - b.gols_sofridos;
-					if (aDiff != bDiff) return aDiff > bDiff ? 1 : 0;
-					if (a.gols_marcados != b.gols_marcados) return a.gols_marcados > b.gols_marcados ? 1 : 0;
-					if (a.cartao_vermelho != b.cartao_vermelho) return a.cartao_vermelho < b.cartao_vermelho ? 1 : 0;
-					if (a.cartao_amarelo != a.cartao_amarelo) return a.cartao_amarelo < a.cartao_amarelo ? 1 : 0;
+					if (aDiff != bDiff) return bDiff - aDiff;
+
+					if (a.gols_marcados != b.gols_marcados) return b.gols_marcados - a.gols_marcados;
+					if (a.cartao_vermelho != b.cartao_vermelho) return a.cartao_vermelho - b.cartao_vermelho;
+					if (a.cartao_amarelo != b.cartao_amarelo) return a.cartao_amarelo - b.cartao_amarelo;
+
 					return Math.random() - 0.5;
 				})
 				.map((s, index) => {

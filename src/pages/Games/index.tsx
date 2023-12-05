@@ -103,9 +103,11 @@ export default function Games() {
 				{statusGames != FetchStatus.Success && <Loading />}
 				{dataGames && (
 					<div className="cards">
-						{dataGames.map((game) => (
-							<GameCard key={game.id} game={game} refScroll={game == nextGame ? ref : null} />
-						))}
+						{dataGames
+							.sort((a, b) => a.data_hora_inicio.localeCompare(b.data_hora_inicio))
+							.map((game) => (
+								<GameCard key={game.id} game={game} refScroll={game == nextGame ? ref : null} />
+							))}
 					</div>
 				)}
 			</CardsContainer>
