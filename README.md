@@ -1,27 +1,62 @@
-# React + TypeScript + Vite
+<h1>
+    <p align=center>
+        <img height=150 src='./docs/logo.svg'/>
+    </p>
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align=center>
+    <img height=30 src='https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white'>
+    &nbsp;
+    <img height=30 src='https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=20232A'>
+    &nbsp;
+    <img height=30 src='https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white'>
+</p>
 
-Currently, two official plugins are available:
+&nbsp;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<p align=center>
+    <img width=70% src='./docs/mockup-desktop.png'>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <img width=15% src='./docs/mockup-mobile.png'>
+</p>
 
-## Expanding the ESLint configuration
+&nbsp;
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 💡 Motivation
 
-- Configure the top-level `parserOptions` property like this:
+This project is a component of the practical work of Databases subject at UFSJ, being able to display to the user all data about soccer tournaments, including the final standings and player rankings.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+&nbsp;
+
+## ✨ Features
+
+### Front-End (React)
+
+- 🧾 Advanced data retrieval
+- 🔍 Search Teams and Players using filters (name, team and tournament)
+- ✅ Quiz minigame
+- 📱 Responsive layout (styled-components)
+
+### Back-End (Python)
+
+[` > Check the Back-End repository < `](https://github.com/bahdias/projeto_futebol)
+
+&nbsp;
+
+## 🖥️ Running the project
+
+> The application uses NPM as the package manager, so you should have it installed before all steps
+
+- Install the dependencies specified in `package.json`:
+
+```bash
+npm install
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Run the application:
+
+```bash
+npm run dev
+```
+
+- Open it on your browser!
