@@ -62,7 +62,11 @@ export default function PlayerPage() {
 		<PlayerContainer>
 			<div className="bio-container">
 				<PlayerImageContainer>
-					<img className="player" src={dataPlayer?.imagem ?? playerDefault} alt={dataPlayer?.nome} />
+					<img
+						className="player"
+						src={dataPlayer?.imagem == "" || dataPlayer?.imagem == undefined ? playerDefault : dataPlayer?.imagem}
+						alt={dataPlayer?.nome}
+					/>
 				</PlayerImageContainer>
 				<div className="bio-wrapper">
 					{dataPlayer && (
